@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import LoginView from '@/views/LoginView.vue'
 import HomeView from '@/views/HomeView.vue'
 import { useAccountStore } from '@/stores/account'
+import ReportHomeView from '@/views/home/Report.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -42,29 +43,34 @@ const router = createRouter({
       path: '/404',
       name: 'not-found',
       component: HomeView
-    }
+    },
+    {
+      path: '/home/report',
+      name: 'report',
+      component: ReportHomeView
+    },
   ]
 })
 
-router.beforeEach((to, from, next) => {
-  const account = useAccountStore()
-  if (to.matched.length === 0) {
-    next('/404')
-  } else {
-    if (account.isAuthenticated) {
-      if (to.path === '/login' || to.path === '/') {
-        next('/home')
-      } else {
-        next()
-      }
-    } else {
-      if (to.path !== '/404' && to.path !== '/home') {
-        next('/login')
-      } else {
-        next()
-      }
-    }
-  }
-})
+// router.beforeEach((to, from, next) => {
+//   const account = useAccountStore()
+//   if (to.matched.length === 0) {
+//     next('/404')
+//   } else {
+//     if (account.isAuthenticated) {
+//       if (to.path === '/login' || to.path === '/') {
+//         next('/home')
+//       } else {
+//         next()
+//       }
+//     } else {
+//       if (to.path !== '/404' && to.path !== '/home') {
+//         next('/login')
+//       } else {
+//         next()
+//       }
+//     }
+//   }
+// })
 
 export default router

@@ -14,6 +14,7 @@
     "tailwind": "tailwindcss -i ./src/assets/css/tailwind.config.css -o ./src/assets/css/style.css --watch"
   },
   "dependencies": {
+    "chart.js": "^4.4.3",
     "pinia": "^2.1.7",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0",
@@ -43,7 +44,8 @@
     "qrcode-vue3": "^1.6.8",
     "swiper": "^10.0.4",
     "tinymce": "^6.6.2",
-    "vue-chartjs": "^5.2.0"
+    "vue-chartjs": "^5.3.1",
+    "vue-router": "^4.3.0"
   },
   "devDependencies": {
     "@tailwindcss/aspect-ratio": "^0.4.2",

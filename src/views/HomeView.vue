@@ -1,7 +1,9 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { LaporanPendapatan } from '@/components'
+</script>
 
 <template>
-  <p class="font-bold text-2xl text-primary-500">
-    Anjay Mabar
-  </p>
+  <main>
+    <LaporanPendapatan />
+  </main>
 </template>

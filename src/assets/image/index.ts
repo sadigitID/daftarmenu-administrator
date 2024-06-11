@@ -1,0 +1,1 @@
+export {default as Prof} from '@/assets/image/profile.png'

@@ -1,7 +1,16 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import Navigasi from '@/components/Navigasi.vue'
+import Header from '@/components/Header.vue'
+</script>
 
 <template>
-  <p class="font-bold text-2xl text-primary-500">
-    Anjay Mabar
-  </p>
+  <div class="flex h-screen">
+    <Navigasi />
+    <div class="flex flex-col flex-grow">
+      <Header />
+      <main class="">
+        <!-- Konten utama di sini -->
+      </main>
+    </div>
+  </div>
 </template>

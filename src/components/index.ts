@@ -1,0 +1,1 @@
+export { default as Pw } from '@/components/PasswordHidden.vue'

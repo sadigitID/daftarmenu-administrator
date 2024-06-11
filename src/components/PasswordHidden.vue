@@ -22,6 +22,7 @@ import { EyesClose, EyesOpen } from "@/components/icons/";
 <div class="relative">
     <input
       :type="isPasswordVisible ? 'text' : 'password'"
+      placeholder="Masukan Password"
       class="border-x-8 border-gray-50  py-1 pe-32 bg-gray-50 text-dark text-start"
       v-model="password"
     />

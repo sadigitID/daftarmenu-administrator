@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Navigasi from '@/components/Navigasi.vue'
 import Header from '@/components/Header.vue'
+import ReportView from '@/views/pages/ReportView.vue'
 </script>
 
 <template>
@@ -10,6 +11,7 @@ import Header from '@/components/Header.vue'
       <Header />
       <main class="">
         <!-- Konten utama di sini -->
+        <ReportView />
       </main>
     </div>
   </div>

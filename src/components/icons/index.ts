@@ -1,0 +1,8 @@
+export { default as CommunityIcon } from '@/components/icons/IconCommunity.vue'
+export { default as DocumentationIcon } from '@/components/icons/IconDocumentation.vue'
+export { default as EcosystemIcon } from '@/components/icons/IconEcosystem.vue'
+export { default as SupportIcon } from '@/components/icons/IconSupport.vue'
+export { default as ToolingIcon } from '@/components/icons/IconTooling.vue'
+export { default as ErrorIcon } from '@/components/icons/IconError.vue'
+export { default as WarningIcon } from '@/components/icons/IconWarning.vue'
+export { default as SuccessIcon } from '@/components/icons/IconSuccess.vue'

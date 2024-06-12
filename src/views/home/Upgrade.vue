@@ -3,12 +3,37 @@
 import { Search, Dropdown, UserInvalid, UserValid } from "@/components/icons";
 import { Food } from '@/assets/image'
 import { useAccountStore } from '@/stores/account'
+import { Resto } from '@/components'
+import { RestoProfile } from '@/assets/image';
+
+const restoList = [
+  {
+    image: RestoProfile,
+    name: 'Resto Sadigit',
+    memberStatus: 'premium',
+    activeStatus: true,
+    lastTransaction: '8 transaksi pada hari ini'
+  },
+  {
+    image: RestoProfile,
+    name: 'Resto Sadigit',
+    memberStatus: 'free',
+    activeStatus: false,
+    lastTransaction: 'Exp:22-08-2024'
+  },
+  {
+    image: RestoProfile,
+    name: 'Resto Sadigit',
+    memberStatus: 'trial',
+    lastTransaction: 'Tidak aktif lebih dari 30 hari'
+  }
+]
 const account = useAccountStore()
 </script>
 
 <template>
    <section id="upgrade" class="container overflow-hidden  m-6 p-6 justify-between" >
-    <div class="flex container justify-between my-4 ">
+    <div class="flex container justify-between ">
             <div class=""> 
                 <h1 class="text-extrabold text-2xl  text-primary-900">Daftar Pengguna</h1>
                 <p class="text-base  text-primary-900">Menampilkan 1350 pengguna</p>
@@ -28,7 +53,7 @@ const account = useAccountStore()
 
 
 
-    <div class="container overflow-hidden flex gap-5 w-full m-auto">
+    <div class="container overflow-hidden flex gap-5 w-full m-auto py-6">
     <div class="relative flex items-center rounded-2xl overflow-hidden w-1/4 h-[115px]">
         <img :src="Food" alt="food" class="object-cover object-center w-full h-full">
     </div>
@@ -76,5 +101,18 @@ const account = useAccountStore()
     </div>
 </div>
 
+
+
+<div name="resto" id="resto" class="grid grid-cols-4 grid-row-5 gap-x-2 gap-y-3">
+    <Resto 
+      v-for="resto in restoList"
+      :image="resto.image"
+      :name="resto.name"
+      :memberStatus="resto.memberStatus"
+      :activeStatus="resto.activeStatus"
+      :lastTransaction="resto.lastTransaction"
+    />
+  </div>
    </section>
+   
 </template>

@@ -14,16 +14,16 @@ export default {
   },
 }
 
-import { EyesClose, EyesOpen } from "@/components/icons/";
+
 
 </script>
 
 <template>
-<div class="relative">
+<div class="relative ">
     <input
       :type="isPasswordVisible ? 'text' : 'password'"
       placeholder="Masukan Password"
-      class="border-x-8 border-gray-50  py-1 pe-32 bg-gray-50 text-dark text-start"
+      class="border-x-8 rounded-lg border-gray-50  py-1 w-full bg-gray-50 text-dark text-start"
       v-model="password"
     />
     <button

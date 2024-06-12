@@ -2,6 +2,8 @@
 
 import { Search, Dropdown } from "@/components/icons";
 
+import { useAccountStore } from '@/stores/account'
+const account = useAccountStore()
 </script>
 
 <template>

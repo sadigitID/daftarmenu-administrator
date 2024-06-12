@@ -1,43 +1,111 @@
 <script setup lang="ts">
+import { InputPassword, InputEmail } from "@/components"
+import { ref } from 'vue'
+import { useDialogStore } from '@/stores/dialog'
+import { Login } from '@/assets/image'
+import { useAccountStore } from '@/stores/account'
+const dialog = useDialogStore()
+const account = useAccountStore()
 
-import { Login } from "@/assets/image";
-import { Pw } from "@/components";
+const email = ref('')
+const password = ref('')
+
+const onLogout = () => {
+  alert('Logout')
+}
+
+const onCanceled = () => {
+  alert('Canceled')
+}
+
+const showDialogLogout = () => {
+  dialog.onConfirm = onLogout
+  dialog.onCancel = onCanceled
+
+  dialog.title = 'Keluar dari aplikasi?'
+  dialog.content = 'Anda akan keluar dari aplikasi. Apakah Anda yakin?'
+  dialog.confirmText = 'Keluar'
+  dialog.cancelText = 'Batal'
+  dialog.type = 'error'
+  dialog.open = true
+}
+
+const showDialogForgotPassword = () => {
+  dialog.title = 'Lupa Password?'
+  dialog.content = 'Silahkan masukan email Anda untuk mendapatkan link reset password.'
+  dialog.confirmText = 'Kirim'
+  dialog.cancelText = 'Batal'
+  dialog.type = 'warning'
+  dialog.onConfirm = () => {}
+  dialog.open = true
+}
 
 </script>
 
-
 <template>
-     <section id="login" class="container flex justify-center items-center mt-8 m-auto ">
-      <div class=" p-16 m-auto ">
-<div class="mx-2">
-<h1 class="text-3xl font-sans text-dark">Selamat Datang</h1>
-<p class="text-gray-800 mb-4">Silahkan masuk untuk melihat statistik.</p>
-</div>
+  <section class="container flex items-center justify-center m-auto">
+    <div class="p-16 m-auto">
+      <div class="mx-2">
+        <h1 class="font-sans text-3xl text-dark">Selamat Datang</h1>
+        <p class="mb-4 text-gray-800">Silahkan masuk untuk melihat statistik.</p>
+      </div>
 
-<div class="mx-2 mb-8 justify-center items-center">
-    <h1 class="text-dark font-sans text-base mt-4">Email</h1>
-    <input type="email" id="email" name="email" placeholder="Masukan Email"  class="pe-32 py-1 border-x-8 border-gray-50   bg-gray-50 text-dark " required>
-    <h1 class="text-dark font-sans text-base mt-4" >Password</h1>
-    <!-- <input type="password" id="password" name="password" placeholder="Masukan Password" class="border-x-8 border-gray-50  py-1 pe-32 bg-gray-50 text-dark text-start" required> -->
-     <Pw/>
-</div>
 
-<div class="text-primary-500 text-end mx-4"><p ref="">lupa password?</p></div>
 
-    <div class="" ref="#home">
+<form id="login">
+      <div class="items-center justify-center mx-2 mb-2 ">
+        <h1 class="mt-4 font-sans text-base text-dark">Email</h1>
+        <InputEmail/>
 
-      <button class="px-36 py-1 border-8 border-primary-500 rounded-lg bg-primary-500 justify-start text-white m-auto ">Login</button>
+        <!-- <input
+          v-model="account.email"
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Masukan Email"
+          class="px-16 py-1 border-x-8 border-gray-50 bg-gray-50 text-dark text-start"
+          required
+        /> -->
+
+
+        <h1 class="mt-4 font-sans text-base text-dark">Password</h1>
+       <InputPassword/>
+        <!-- <input
+          v-model="account.password"
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Masukan Password"
+          class="px-16 py-1 border-x-8 border-gray-50 bg-gray-50 text-dark text-start"
+          required
+        /> -->
+        
+      </div>
+
+</form>
+
+      <div @click="showDialogForgotPassword" class="w-full  text-primary-500 text-end mb-8">
+        <p>Lupa password?</p>
+      </div>
+
+      <div class="">
+        <button 
+          @click="showDialogLogout"
+          class="justify-start py-1 m-auto font-semibold text-white border-8 rounded-lg px-36 border-primary-500 bg-primary-500"
+        >
+          Login
+        </button>
+      </div>
+
+      <div>
+        <h1 class="mt-16 text-center text-primary-800">©2024 - PT.Sawarga Digital Indonesia</h1>
+        <h1 class="text-center text-primary-800">V2.0.0</h1>
+      </div>
     </div>
-
-    <div>
-      <h1 class="text-center mt-16 text-primary-800">©2024 - PT.Sawarga Digital Indonesia</h1>
-      <h1 class="text-center  text-primary-800">V2.0.0</h1>
-      
+    <div class="w-[50%]">
+      <img class="w-[85%]" :src="Login" alt="halaman login" />
     </div>
+  
 
-</div>
-<div class="w-[50%]">
-  <img class="w-[85%]" :src="Login" alt="halaman login">
-</div>
-   </section>
+</section>
 </template>

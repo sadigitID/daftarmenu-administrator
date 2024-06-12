@@ -5,10 +5,13 @@ export default {
     './src/*.{vue,js,ts,jsx,tsx}',
     './src/**/*.{vue,js,ts,jsx,tsx}',
     './src/**/**/*.{vue,js,ts,jsx,tsx}',
-    './src/**/**/**/*.{vue,js,ts,jsx,tsx}',
+    './src/**/**/**/*.{vue,js,ts,jsx,tsx}'
   ],
   theme: {
     extend: {
+      boxShadow: {
+        'custom-gray': '1px 1px 8px 0px rgba(180, 180, 180, 0.39)'
+      },
       backgroundImage: {
         device: "url('/assets/images/device.png')"
       },

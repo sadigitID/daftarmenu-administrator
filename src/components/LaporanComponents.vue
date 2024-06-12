@@ -1,0 +1,22 @@
+<script setup>
+defineProps({
+  month: String,
+  year: Number,
+  monthlyIncome: Number,
+  lastUpdated: String
+})
+</script>
+
+<template>
+  <div class="income-header">
+    <h1 class="text-xl font-semibold">Laporan Pendapatan</h1>
+    <p class="text-base font-normal font-sans leading-relaxed">
+      Pendapatan Bulan Ini
+      <span class="highlight text-primary-500 font-medium">{{ month }} {{ year }}</span>
+    </p>
+    <h2 class="text-2xl font-bold mt-6 leading-8 text-primary-800">
+      Rp {{ monthlyIncome.toLocaleString() }}
+    </h2>
+    <p class="update-info text-xs font-normal leading-5">*Diupdate {{ lastUpdated }}</p>
+  </div>
+</template>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
 import { computed, ref } from 'vue'
-// import { ErrorIcon, SuccessIcon, WarningIcon } from '@/components/icons'
+import { ErrorIcon, SuccessIcon, WarningIcon } from '@/components/icons'
 
 const props = defineProps({
   open: Boolean,

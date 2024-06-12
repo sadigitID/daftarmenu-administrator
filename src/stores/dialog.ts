@@ -4,16 +4,15 @@ import { ref, watch } from 'vue'
 export const useDialogStore = defineStore('dialog', () => {
   const onConfirm = ref<Function>()
   const onCancel = ref<Function>()
+
   const confirmText = ref('')
   const cancelText = ref('')
   const open = ref(false)
   const title = ref('')
   const content = ref('')
-  const expiredDate = ref('')
   const type = ref('normal')
   const showCancelButton = ref(true)
   const dismissOnAction = ref(true)
-  const subscriptionDialog = ref(false)
 
   const timer = ref<any>()
   watch(open, (value) => {
@@ -37,7 +36,6 @@ export const useDialogStore = defineStore('dialog', () => {
   })
 
   return {
-    subscriptionDialog,
     showCancelButton,
     dismissOnAction,
     onConfirm,
@@ -47,7 +45,6 @@ export const useDialogStore = defineStore('dialog', () => {
     type,
     open,
     confirmText,
-    cancelText,
-    expiredDate
+    cancelText
   }
 })

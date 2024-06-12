@@ -1,14 +1,40 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import { useDialogStore } from '@/stores/dialog'
 import { Login } from '@/assets/image'
+import { useAccountStore } from '@/stores/account'
 const dialog = useDialogStore()
+const account = useAccountStore()
+
+const email = ref('')
+const password = ref('')
+
+const onLogout = () => {
+  alert('Logout')
+}
+
+const onCanceled = () => {
+  alert('Canceled')
+}
 
 const showDialogLogout = () => {
+  dialog.onConfirm = onLogout
+  dialog.onCancel = onCanceled
+
   dialog.title = 'Keluar dari aplikasi?'
   dialog.content = 'Anda akan keluar dari aplikasi. Apakah Anda yakin?'
   dialog.confirmText = 'Keluar'
   dialog.cancelText = 'Batal'
   dialog.type = 'error'
+  dialog.open = true
+}
+
+const showDialogForgotPassword = () => {
+  dialog.title = 'Lupa Password?'
+  dialog.content = 'Silahkan masukan email Anda untuk mendapatkan link reset password.'
+  dialog.confirmText = 'Kirim'
+  dialog.cancelText = 'Batal'
+  dialog.type = 'warning'
   dialog.onConfirm = () => {}
   dialog.open = true
 }
@@ -25,6 +51,7 @@ const showDialogLogout = () => {
       <div class="items-center justify-center mx-2 mb-8">
         <h1 class="mt-4 font-sans text-base text-dark">Email</h1>
         <input
+          v-model="account.email"
           type="email"
           id="email"
           name="email"
@@ -34,6 +61,7 @@ const showDialogLogout = () => {
         />
         <h1 class="mt-4 font-sans text-base text-dark">Password</h1>
         <input
+          v-model="account.password"
           type="password"
           id="password"
           name="password"
@@ -43,7 +71,9 @@ const showDialogLogout = () => {
         />
       </div>
 
-      <div class="mx-4 text-primary-500 text-end"><p>lupa password?</p></div>
+      <div @click="showDialogForgotPassword" class="mx-4 text-primary-500 text-end">
+        <p>lupa password?</p>
+      </div>
 
       <div class="">
         <button

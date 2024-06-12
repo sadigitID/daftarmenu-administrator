@@ -4,6 +4,10 @@ import { RouterView } from 'vue-router'
 import { ActionDialog } from '@/components/dialogs'
 
 const dialog = useDialogStore()
+
+const onClose = () => {
+  dialog.open = false
+}
 </script>
 
 <template>
@@ -15,10 +19,11 @@ const dialog = useDialogStore()
     :message="dialog.content"
     :confirm-text="dialog.confirmText"
     :cancel-text="dialog.cancelText"
-    @on-close="dialog.open = false"
+    @on-close="onClose"
     @on-confirm="dialog.onConfirm"
     @on-cancel="dialog.onCancel"
     :type="dialog.type"
   />
+
   <RouterView />
 </template>

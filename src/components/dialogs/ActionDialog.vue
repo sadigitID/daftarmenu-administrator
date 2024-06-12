@@ -30,6 +30,7 @@ const props = defineProps({
 })
 
 const emits = defineEmits(['onClose', 'onCancel', 'onConfirm'])
+
 const open = ref(computed(() => props.open))
 const title = ref(computed(() => props.title))
 const message = ref(computed(() => props.message))

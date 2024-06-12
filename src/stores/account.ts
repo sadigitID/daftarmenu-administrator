@@ -10,6 +10,17 @@ interface AccountModel {
 }
 
 export const useAccountStore = defineStore('account', () => {
+  const email = ref('')
+  const password = ref('')
+
+  const saveEmail = (email: string) => {
+    writeData('email-user', email)
+  }
+
+  const getEmail = (): string | null => {
+    return readData('email-user')
+  }
+
   const getAccountData = (): AccountModel | null => {
     const accountString = readDataJson('account')
     let account: AccountModel | null = null
@@ -68,6 +79,10 @@ export const useAccountStore = defineStore('account', () => {
     isAuthenticated,
     logout,
     account,
-    saveAccount
+    saveAccount,
+    saveEmail,
+    getEmail,
+    email,
+    password
   }
 })

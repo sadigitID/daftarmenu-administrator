@@ -43,8 +43,7 @@
     "qrcode-vue3": "^1.6.8",
     "swiper": "^10.0.4",
     "tinymce": "^6.6.2",
-    "vue-chartjs": "^5.3.1",
-    "vue-router": "^4.3.0"
+    "vue-chartjs": "^5.3.1"
   },
   "devDependencies": {
     "@tailwindcss/aspect-ratio": "^0.4.2",

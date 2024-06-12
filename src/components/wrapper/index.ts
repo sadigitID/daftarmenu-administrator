@@ -1,0 +1,1 @@
+export { default as WrapperChartDoughnut } from "@/components/wrapper/WrapperChartDoughnut.vue"

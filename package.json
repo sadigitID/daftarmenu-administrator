@@ -14,11 +14,42 @@
     "tailwind": "tailwindcss -i ./src/assets/css/tailwind.config.css -o ./src/assets/css/style.css --watch"
   },
   "dependencies": {
+    "chart.js": "^4.4.3",
     "pinia": "^2.1.7",
     "vue": "^3.4.21",
-    "vue-router": "^4.3.0"
+    "vue-router": "^4.3.0",
+    "encrypt-storage": "^2.12.16",
+    "dotenv": "^16.3.1",
+    "vue-tailwind-datepicker": "^1.4.5",
+    "uuid": "^9.0.0",
+    "crypto-js": "^4.1.1",
+    "axios": "^1.4.0",
+    "@headlessui/tailwindcss": "^0.1.3",
+    "@headlessui/vue": "^1.7.14",
+    "@heroicons/vue": "^2.0.18",
+    "@lottiefiles/lottie-player": "^2.0.2",
+    "@paypal/paypal-js": "^7.0.3",
+    "@tinymce/tinymce-vue": "^5.1.0",
+    "@types/crypto-js": "^4.1.2",
+    "@types/uuid": "^9.0.2",
+    "datatables.net-dt": "^1.13.5",
+    "datatables.net-responsive-dt": "^2.5.0",
+    "datatables.net-select-dt": "^1.7.0",
+    "datatables.net-vue3": "^2.1.2",
+    "export-from-json": "^1.7.3",
+    "firebase": "^10.0.0",
+    "i18next-browser-languagedetector": "^7.1.0",
+    "i18next-vue": "^2.2.1",
+    "qrcode-vue3": "^1.6.8",
+    "swiper": "^10.0.4",
+    "tinymce": "^6.6.2",
+    "vue-chartjs": "^5.3.1"
   },
   "devDependencies": {
+    "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@tailwindcss/container-queries": "^0.1.1",
+    "@tailwindcss/forms": "^0.5.3",
+    "@tailwindcss/typography": "^0.5.9",
     "@rushstack/eslint-patch": "^1.8.0",
     "@tsconfig/node20": "^20.1.4",
     "@types/node": "^20.12.5",
@@ -36,6 +67,7 @@
     "tailwindcss": "^3.4.4",
     "typescript": "~5.4.0",
     "vite": "^5.2.8",
-    "vue-tsc": "^2.0.11"
+    "vue-tsc": "^2.0.11",
+    "moment": "^2.29.4"
   }
 }

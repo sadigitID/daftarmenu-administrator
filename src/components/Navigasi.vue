@@ -10,7 +10,7 @@ import {
   UpgradeClick,
   NotesClick
 } from '@/components/icons/index.ts'
-import NavComponents from '@/components/NavComponents.vue'
+import { NavComponents } from '@/components/index.ts'
 
 const NavigasiItem = [
   {

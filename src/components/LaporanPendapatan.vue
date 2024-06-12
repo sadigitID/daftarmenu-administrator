@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { LaporanComponents, PendapatanComponents } from '@/components'
+import { WrapperChartBar } from '@/components/wrapper'
 
 const LaporanItems = [
   {
@@ -30,8 +31,8 @@ const PendapatanItems = [
 ]
 </script>
 <template>
-  <div class="flex w-[810px] p-6 flex-col gap-6 shadow-custom-gray">
-    <div>
+  <div class="flex w-[810px] p-6 flex-col gap-6 bg-whites shadow-custom-gray rounded-2xl">
+    <div class="flex justify-between items-center self-stretch">
       <div>
         <LaporanComponents
           v-for="LaporanComponents in LaporanItems"
@@ -40,6 +41,14 @@ const PendapatanItems = [
           :monthlyIncome="LaporanComponents.monthlyIncome"
           :lastUpdated="LaporanComponents.lastUpdated"
         />
+      </div>
+      <div>
+        <div class="w-[24rem]">
+          <WrapperChartBar
+            :data="[60, 55, 65, 50, 45, 55, 70]"
+            :labels="['Nov 23', 'Dec 23', 'Jan 24', 'Feb 24', 'Mar 24', 'Apr 24', 'May 24']"
+          />
+        </div>
       </div>
     </div>
     <div class="flex">

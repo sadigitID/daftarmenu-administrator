@@ -7,7 +7,7 @@ import { Pw } from "@/components";
 
 
 <template>
-     <section class="container flex justify-center items-center mt-8 m-auto ">
+     <section id="login" class="container flex justify-center items-center mt-8 m-auto ">
       <div class=" p-16 m-auto ">
 <div class="mx-2">
 <h1 class="text-3xl font-sans text-dark">Selamat Datang</h1>

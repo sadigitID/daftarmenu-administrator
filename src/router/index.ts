@@ -46,25 +46,25 @@ const router = createRouter({
   ]
 })
 
-router.beforeEach((to, from, next) => {
-  const account = useAccountStore()
-  if (to.matched.length === 0) {
-    next('/404')
-  } else {
-    if (account.isAuthenticated) {
-      if (to.path === '/login' || to.path === '/') {
-        next('/home')
-      } else {
-        next()
-      }
-    } else {
-      if (to.path !== '/404' && to.path !== '/home') {
-        next('/login')
-      } else {
-        next()
-      }
-    }
-  }
-})
+// router.beforeEach((to, from, next) => {
+//   const account = useAccountStore()
+//   if (to.matched.length === 0) {
+//     next('/404')
+//   } else {
+//     if (account.isAuthenticated) {
+//       if (to.path === '/login' || to.path === '/') {
+//         next('/home')
+//       } else {
+//         next()
+//       }
+//     } else {
+//       if (to.path !== '/404' && to.path !== '/home') {
+//         next('/login')
+//       } else {
+//         next()
+//       }
+//     }
+//   }
+// })
 
 export default router

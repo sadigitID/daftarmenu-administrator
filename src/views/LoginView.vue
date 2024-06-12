@@ -3,8 +3,11 @@ import { ref } from 'vue'
 import { useDialogStore } from '@/stores/dialog'
 import { Login } from '@/assets/image'
 import { useAccountStore } from '@/stores/account'
+import { SlideDialog } from '@/components/dialogs'
 const dialog = useDialogStore()
 const account = useAccountStore()
+
+const slideDialogOpen = ref(false)
 
 const email = ref('')
 const password = ref('')
@@ -38,9 +41,15 @@ const showDialogForgotPassword = () => {
   dialog.onConfirm = () => {}
   dialog.open = true
 }
+
+const showSlideDialog = () => {
+  slideDialogOpen.value = true
+}
 </script>
 
 <template>
+  <SlideDialog :open="slideDialogOpen" @on-close="slideDialogOpen = false" />
+
   <section class="container flex items-center justify-center m-auto">
     <div class="p-16 m-auto">
       <div class="mx-2">
@@ -77,7 +86,7 @@ const showDialogForgotPassword = () => {
 
       <div class="">
         <button
-          @click="showDialogLogout"
+          @click="showSlideDialog"
           class="justify-start py-1 m-auto text-white border-8 rounded-lg px-36 border-primary-500 bg-primary-500"
         >
           Login

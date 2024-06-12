@@ -1,7 +1,7 @@
 <script setup>
 import { useAccountStore } from '@/stores/account'
 const account = useAccountStore()
-<script setup lang="ts">
+
 import Navigasi from '@/components/Navigasi.vue'
 import Header from '@/components/Header.vue'
 </script>

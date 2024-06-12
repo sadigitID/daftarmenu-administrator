@@ -20,6 +20,7 @@ export default {
       },
       colors: {
         dark: '#151617',
+        superorange: '#F59E0B',
         layout: '#F3F7F9',
         'vtd-primary': {
           50: '#f1f8ed',

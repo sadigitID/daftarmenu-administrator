@@ -1,79 +1,18 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import { CloseIcon } from '@/components/icons' // Pastikan untuk mengimpor ikon tutup dengan benar
+import { CloseIcon } from '@/components/icons'
 import { UpDownIcon } from '@/components/icons'
-import { MenuImage } from '@/assets/image/' // Menggunakan require untuk impor gambar
 
 // State untuk mengontrol visibilitas pop-up
 const showPopup = ref(false)
 
 // Data restaurant
-const restaurantData = ref({
-  imageSrc: MenuImage,
-  title: 'Sadigit Resto',
-  joinedDate: 'Bergabung 20 Mei 2022',
-  jumlahMenu: 50,
-  transaksiHariIni: 10,
-  alamat: 'Jl. Kutamaya Ruko A, Kec. Sumedang Selatan, Kab. Sumedang',
-  noWhatsapp: '+6282375737383',
-  email: 'user@gmail.com',
-  status: 'premium',
-  currentPackage: 'PREMIUM 3 BULAN',
-  currentPackageExpiry: '22-07-2024',
-  isActive: true // Menambahkan status aktif
-})
+const restaurantData = ref({})
 
-// Computed properties untuk kelas dinamis dan teks
-const statusClass = computed(() => {
-  switch (restaurantData.value.status) {
-    case 'premium':
-      return 'bg-green-200'
-    case 'trial':
-      return 'bg-yellow-500'
-    case 'free':
-      return 'bg-red-500'
-    default:
-      return 'bg-gray-500'
-  }
-})
-
-const statusText = computed(() => {
-  switch (restaurantData.value.status) {
-    case 'premium':
-      return 'Premium'
-    case 'trial':
-      return 'Trial'
-    case 'free':
-      return 'Free'
-    default:
-      return 'Unknown'
-  }
-})
-
-const isActiveText = computed(() => {
-  return restaurantData.value.isActive ? 'Aktif' : 'Tidak Aktif'
-})
-
-const isActiveClass = computed(() => {
-  return restaurantData.value.isActive ? 'text-label-100' : 'text-red-500'
-})
-
-const currentPackageClass = computed(() => {
-  return restaurantData.value.currentPackage ? 'text-primary-800' : 'text-red-500'
-})
-
-const currentPackageText = computed(() => {
-  return restaurantData.value.currentPackage
-    ? `${restaurantData.value.currentPackage} | Berlaku Sampai: ${restaurantData.value.currentPackageExpiry}`
-    : 'Tidak Ada Paket Terpilih'
-})
-
-// Function untuk membuka pop-up
+// Fungsi untuk menampilkan data restaurant
 const handleShowPopup = () => {
   showPopup.value = true
 }
-
-// Function untuk menutup pop-up
 const handleClosePopup = () => {
   showPopup.value = false
 }

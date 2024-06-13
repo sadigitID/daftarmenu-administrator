@@ -1,3 +1,7 @@
 export { default as Double } from '@/components/icons/UserDouble.vue'
 export { default as Red } from '@/components/icons/UserRed.vue'
 export { default as Green } from '@/components/icons/UserGreen.vue'
+export { default as Arrow } from '@/components/icons/IconArrow.vue'
+export { default as Search } from '@/components/icons/IconSearch.vue'
+export { default as Add } from '@/components/icons/IconAdd.vue'
+export { default as Vec} from '@/components/icons/Vector.vue'

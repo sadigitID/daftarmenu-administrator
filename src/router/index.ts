@@ -1,9 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import LoginView from '@/views/LoginView.vue'
-import HomeView from '@/views/HomeView.vue'
+import DashboardView '@/views/DashboardView.vue'
 import { useAccountStore } from '@/stores/account'
-import ReportHomeView from '@/views/home/Report.vue'
-import UpgradeHomeView from '@/views/home/Upgrade.vue'
+import HomeView from '@/views/home/Home.vue'
+import ReportView from '@/views/home/Report.vue'
+import UpgradeView from '@/views/home/Upgrade.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -11,22 +12,22 @@ const router = createRouter({
     {
       path: '',
       name: 'Dashboard',
-      component: HomeView,
+      component: DashboardView,
       children: [
         {
-          path: 'home',
+          path: '/home',
           name: 'home',
           component: HomeView
         },
         {
-          path: 'report',
+          path: '/home/report',
           name: 'report',
-          component: HomeView
+          component: ReportView
         },
         {
-          path: 'upgrade',
+          path: '/home/upgrade',
           name: 'upgrade',
-          component: HomeView
+          component: UpgradeView
         },
         {
           path: 'notes',
@@ -45,16 +46,16 @@ const router = createRouter({
       name: 'not-found',
       component: HomeView
     },
-    {
-      path: '/home/report',
-      name: 'report',
-      component: ReportHomeView
-    },
-    {
-      path: '/home/upgrade',
-      name: 'upgrade',
-      component: UpgradeHomeView
-    },
+    // {
+    //   path: '/home/report',
+    //   name: 'report',
+    //   component: ReportHomeView
+    // },
+    // {
+    //   path: '/home/upgrade',
+    //   name: 'upgrade',
+    //   component: UpgradeHomeView
+    // },
   ]
 })
 

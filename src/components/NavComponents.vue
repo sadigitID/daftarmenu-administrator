@@ -5,7 +5,7 @@ const props = defineProps({
   icon: Object,
   activeIcon: Object,
   title: String,
-  isActive: Boolean
+  isActive: Boolean,
 })
 
 const emit = defineEmits(['click'])

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Navigasi, Header } from '@/components/'
+import PopUpMenu from './home/PopUpMenu.vue'
 </script>
 
 <template>
@@ -9,6 +10,7 @@ import { Navigasi, Header } from '@/components/'
       <Header />
       <main class="">
         <!-- Konten utama di sini -->
+        <PopUpMenu />
       </main>
     </div>
   </div>

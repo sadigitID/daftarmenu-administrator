@@ -2,10 +2,9 @@
 import { IconSearch, Dropdown, UserInvalid, UserValid } from '@/components/icons'
 import { Food } from '@/assets/image'
 import { useAccountStore } from '@/stores/account'
-import { RestoProfile } from '@/assets/image';
-import { InputText } from '@/components/';
-import { PopoverPanel } from "@headlessui/vue";
-
+import { RestoProfile } from '@/assets/image'
+import { InputText } from '@/components/'
+import { PopoverPanel } from '@headlessui/vue'
 
 const dataList = [
   {
@@ -212,14 +211,7 @@ const account = useAccountStore()
           <!-- <input class="text-primary-900 font-light text-sm searchTerm bg-gray-50" placeholder="Cari Menu"> -->
           <InputText v-model:value="searchQuery" placeholder="Cari Menu" />
         </div>
-
-          
-               
-
-
-
-            </Popover>
-        </div>
+      </div>
     </div>
 
     <div class="container overflow-hidden flex gap-5 w-full m-auto py-6">
@@ -271,8 +263,7 @@ const account = useAccountStore()
             <h1 class="text-xl font-semibold text-white">800</h1>
           </div>
         </div>
+      </div>
     </div>
-</div>
-   </section>
-   
+  </section>
 </template>

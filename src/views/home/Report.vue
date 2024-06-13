@@ -1,6 +1,7 @@
 <script setup>
 import { CardDoughnut } from '@/components/card'
 
+// Data belum dari API
 const chartData = [
   {
     title: 'Jenis User',

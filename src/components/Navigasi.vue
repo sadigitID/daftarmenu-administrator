@@ -36,7 +36,7 @@ const navigasiItem = [
     icon: NotesIcon,
     activeIcon: NotesClick,
     title: 'Notes',
-    path: ''
+    path: '/home/notes'
   }
 ]
 

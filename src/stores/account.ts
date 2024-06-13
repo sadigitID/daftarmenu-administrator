@@ -14,11 +14,11 @@ export const useAccountStore = defineStore('account', () => {
   const password = ref('')
 
   const saveEmail = (email: string) => {
-    writeData('email-user', email)
+    writeData('email', email)
   }
 
   const getEmail = (): string | null => {
-    return readData('email-user')
+    return readData('email')
   }
 
   const getAccountData = (): AccountModel | null => {
@@ -54,6 +54,10 @@ export const useAccountStore = defineStore('account', () => {
     writeDataJson('account', accountData)
   }
 
+  const setAuthenticated = (value: boolean) => {
+    writeData('isAuthenticated', value)
+  }
+
   computed(() => {
     account.value = getAccountData()
     return account.value
@@ -77,6 +81,7 @@ export const useAccountStore = defineStore('account', () => {
 
   return {
     isAuthenticated,
+    setAuthenticated,
     logout,
     account,
     saveAccount,

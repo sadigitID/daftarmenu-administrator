@@ -1,49 +1,33 @@
 <script setup>
-import { WrapperChartDoughnut } from '@/components/wrapper'
-import { WrapperChartBar } from '@/components/wrapper'
-import { Resto } from '@/components'
-import { RestoProfile } from '@/assets/image';
+import { CardDoughnut } from '@/components/card'
 
-const restoList = [
+const chartData = [
   {
-    image: RestoProfile,
-    name: 'Resto Sadigit',
-    memberStatus: 'premium',
-    activeStatus: true,
-    lastTransaction: '8 transaksi pada hari ini'
+    title: 'Jenis User',
+    desc: 'Statistik Pembelian Paket Dipilih',
+    values: [5, 10, 5],
+    labels: ['Free', 'Trial', 'Premium']
   },
   {
-    image: RestoProfile,
-    name: 'Resto Sadigit',
-    memberStatus: 'free',
-    activeStatus: false,
-    lastTransaction: 'Exp:22-08-2024'
-  },
-  {
-    image: RestoProfile,
-    name: 'Resto Sadigit',
-    memberStatus: 'trial',
-    lastTransaction: 'Tidak aktif lebih dari 30 hari'
+    title: 'Metode Bayar',
+    desc: 'Metode Pembayaran',
+    values: [5, 10, 5],
+    labels: ['Bank Transfer', 'Paypal', 'Qris']
   }
 ]
 </script>
 
 <template>
-  <!-- <div class="w-80">
-    <WrapperChartDoughnut :data="[5, 10, 5]" :labels="['1 Bulan', '3 Bulan', '12 Bulan']" />
-  </div>
-
-  <div class="w-[24rem]">
-    <WrapperChartBar :data="[60, 55, 65, 50, 45, 55, 70]" :labels="['Nov 23', 'Dec 23', 'Jan 24', 'Feb 24', 'Mar 24', 'Apr 24', 'May 24']" />
-  </div> -->
-  <section name="resto" id="resto" class="grid grid-cols-4 grid-row-5 gap-x-2 gap-y-3 ">
-    <Resto 
-      v-for="resto in restoList"
-      :image="resto.image"
-      :name="resto.name"
-      :memberStatus="resto.memberStatus"
-      :activeStatus="resto.activeStatus"
-      :lastTransaction="resto.lastTransaction"
-    />
+  <section class="bg-layout">
+    <div class="inline-flex h-[835px] py-12 px-6 items-start gap-5 shrink-0 rounded-3xl">
+      <CardDoughnut
+        v-for="data in chartData"
+        :key="data.title"
+        :title="data.title"
+        :desc="data.desc"
+        :values="data.values"
+        :labels="data.labels"
+      />
+    </div>
   </section>
 </template>

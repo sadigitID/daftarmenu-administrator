@@ -3,8 +3,7 @@ import { useAccountStore } from '@/stores/account'
 import { RouterView } from 'vue-router'
 const account = useAccountStore()
 
-import Navigasi from '@/components/Navigasi.vue'
-import Header from '@/components/Header.vue'
+import { Navigasi, Header } from '@/components'
 </script>
 
 <template>
@@ -21,4 +20,3 @@ import Header from '@/components/Header.vue'
     </div>
   </div>
 </template>
-

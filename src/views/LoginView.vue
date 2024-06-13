@@ -4,6 +4,7 @@ import { useDialogStore } from '@/stores/dialog'
 import { Login } from '@/assets/image'
 import { useAccountStore } from '@/stores/account'
 import { SlideDialog } from '@/components/dialogs'
+import { InputEmail, InputPassword, InputText   } from "@/components";
 const dialog = useDialogStore()
 const account = useAccountStore()
 
@@ -115,7 +116,7 @@ const showSlideDialog = () => {
 <form id="login">
       <div class="items-center justify-center mx-2 mb-2 ">
         <h1 class="mt-4 font-sans text-base text-dark">Email</h1>
-        <InputEmail/>
+        <InputText type="email" placeholder="Masukan Email"/>
 
         <!-- <input
           v-model="account.email"
@@ -128,7 +129,7 @@ const showSlideDialog = () => {
         /> -->
 
         <h1 class="mt-4 font-sans text-base text-dark">Password</h1>
-       <InputPassword/>
+       <InputText type="password" v-model:value="password" placeholder="Masukan Password"/>
         <!-- <input
           v-model="account.password"
           type="password"

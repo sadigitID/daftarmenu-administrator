@@ -1,105 +1,139 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useDialogStore } from '@/stores/dialog'
 import { Login } from '@/assets/image'
 import { useAccountStore } from '@/stores/account'
-import { SlideDialog } from '@/components/dialogs'
+import { ButtonPrimary, InputText } from '@/components'
+import { useDialogStore } from '@/stores/dialog'
 const dialog = useDialogStore()
 const account = useAccountStore()
-
-const slideDialogOpen = ref(false)
-
 const email = ref('')
 const password = ref('')
+const isLoading = ref(false)
 
-const onLogout = () => {
-  alert('Logout')
+const validate = () => {
+  isLoading.value = false
+  if (!email.value) {
+    onEmptyEmail()
+    return false
+  }
+
+  if (!password.value) {
+    onEmptyPassword()
+    return false
+  }
+
+  return true
 }
 
-const onCanceled = () => {
-  alert('Canceled')
+const onLogin = () => {
+  if (!isLoading.value) {
+    isLoading.value = true
+
+    setTimeout(() => {
+      if (validate()) {
+        isLoading.value = false
+        if (email.value == 'demo@demo.com' && password.value == 'demo') {
+          onSuccessfulLogin()
+        } else {
+          onFailedLogin()
+        }
+      }
+    }, 4000)
+  }
 }
 
-const showDialogLogout = () => {
-  dialog.onConfirm = onLogout
-  dialog.onCancel = onCanceled
+const onSuccessfulLogin = () => {
+  account.setAuthenticated(true)
 
-  dialog.title = 'Keluar dari aplikasi?'
-  dialog.content = 'Anda akan keluar dari aplikasi. Apakah Anda yakin?'
-  dialog.confirmText = 'Keluar'
-  dialog.cancelText = 'Batal'
+  dialog.title = 'Login Berhasil'
+  dialog.content = 'Selamat datang di aplikasi admin daftarmenu!'
+  dialog.confirmText = 'Lanjutkan'
+  dialog.type = 'success'
+  dialog.showCancelButton = false
+  dialog.dismissOnAction = false
+  dialog.onConfirm = () => {
+    dialog.open = false
+    location.href = '/home'
+  }
+  dialog.open = true
+}
+
+const onFailedLogin = () => {
+  dialog.title = 'Login Gagal'
+  dialog.content = 'Email atau password Anda salah.'
+  dialog.confirmText = 'Mengerti'
   dialog.type = 'error'
+  dialog.showCancelButton = false
   dialog.open = true
 }
 
-const showDialogForgotPassword = () => {
-  dialog.title = 'Lupa Password?'
-  dialog.content = 'Silahkan masukan email Anda untuk mendapatkan link reset password.'
-  dialog.confirmText = 'Kirim'
-  dialog.cancelText = 'Batal'
-  dialog.type = 'warning'
-  dialog.onConfirm = () => {}
+const onEmptyEmail = () => {
+  dialog.title = 'Email kosong'
+  dialog.content = 'Silahkan masukan email Anda.'
+  dialog.confirmText = 'Mengerti'
+  dialog.type = 'error'
+  dialog.showCancelButton = false
   dialog.open = true
 }
 
-const showSlideDialog = () => {
-  slideDialogOpen.value = true
+const onEmptyPassword = () => {
+  dialog.title = 'Password kosong'
+  dialog.content = 'Silahkan masukan password Anda.'
+  dialog.confirmText = 'Mengerti'
+  dialog.type = 'error'
+  dialog.showCancelButton = false
+  dialog.open = true
 }
+
+// const showSlideDialog = () => {
+//   slideDialogOpen.value = true
+// }
 </script>
 
 <template>
-  <SlideDialog :open="slideDialogOpen" @on-close="slideDialogOpen = false" />
+  <div class="flex items-center justify-center w-full h-full bg-layout">
+    <section class="container flex flex-row items-center p-6 bg-white rounded-2xl">
+      <div class="p-6">
+        <div class="mx-2">
+          <h1 class="font-sans text-3xl text-dark">Selamat Datang</h1>
+          <p class="mb-4 text-gray-800">Silahkan masuk untuk melihat statistik.</p>
+        </div>
 
-  <section class="container flex items-center justify-center m-auto">
-    <div class="p-16 m-auto">
-      <div class="mx-2">
-        <h1 class="font-sans text-3xl text-dark">Selamat Datang</h1>
-        <p class="mb-4 text-gray-800">Silahkan masuk untuk melihat statistik.</p>
-      </div>
+        <form id="login" @submit.prevent="onLogin">
+          <div class="flex flex-col mx-2 mb-2 space-y-4">
+            <div>
+              <h1 class="font-sans text-base text-dark">Email</h1>
+              <InputText type="email" placeholder="Masukan Email" @update:value="email = $event" />
+            </div>
 
-      <div class="items-center justify-center mx-2 mb-8">
-        <h1 class="mt-4 font-sans text-base text-dark">Email</h1>
-        <input
-          v-model="account.email"
-          type="email"
-          id="email"
-          name="email"
-          placeholder="Masukan Email"
-          class="px-16 py-1 border-x-8 border-gray-50 bg-gray-50 text-dark text-start"
-          required
-        />
-        <h1 class="mt-4 font-sans text-base text-dark">Password</h1>
-        <input
-          v-model="account.password"
-          type="password"
-          id="password"
-          name="password"
-          placeholder="Masukan Password"
-          class="px-16 py-1 border-x-8 border-gray-50 bg-gray-50 text-dark text-start"
-          required
-        />
-      </div>
+            <div>
+              <h1 class="font-sans text-base text-dark">Password</h1>
+              <InputText
+                type="password"
+                @update:value="password = $event"
+                placeholder="Masukan Password"
+              />
+            </div>
 
-      <div @click="showDialogForgotPassword" class="mx-4 text-primary-500 text-end">
-        <p>lupa password?</p>
-      </div>
+            <ButtonPrimary
+              type="submit"
+              label="Login"
+              :isLoading="isLoading"
+              :disabled="isLoading"
+            />
+          </div>
+        </form>
 
-      <div class="">
-        <button
-          @click="showSlideDialog"
-          class="justify-start py-1 m-auto text-white border-8 rounded-lg px-36 border-primary-500 bg-primary-500"
-        >
-          Login
-        </button>
+        <div>
+          <h1 class="mt-8 text-sm font-medium text-center text-primary-800">
+            ©2024 - PT.Sawarga Digital Indonesia
+          </h1>
+          <h1 class="text-xs font-medium text-center text-primary-800">V2.0.0</h1>
+        </div>
       </div>
-
-      <div>
-        <h1 class="mt-16 text-center text-primary-800">©2024 - PT.Sawarga Digital Indonesia</h1>
-        <h1 class="text-center text-primary-800">V2.0.0</h1>
+      <div class="flex items-center justify-center flex-1 rounded-lg bg-primary-50">
+        <img class="max-h-[400px]" :src="Login" alt="halaman login" />
       </div>
-    </div>
-    <div class="w-[50%]">
-      <img class="w-[85%]" :src="Login" alt="halaman login" />
-    </div>
-  </section>
+    </section>
+  </div>
 </template>

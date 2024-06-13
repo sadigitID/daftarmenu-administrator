@@ -22,7 +22,7 @@ export { default as HomeClick } from '@/components/icons/HomeClick.vue'
 export { default as LaporanClick } from '@/components/icons/LaporanClick.vue'
 export { default as UpgradeClick } from '@/components/icons/UpgradeClick.vue'
 export { default as NotesClick } from '@/components/icons/NotesClick.vue'
-export { default as ChevronRight } from '@/components/icons/ChevronRightIcon.vue'
+export { default as ChevronRight } from '@/components/icons/IconChevronRight.vue'
 
 // export { default as CommunityIcon } from '@/components/icons/IconCommunity.vue'
 // export { default as DocumentationIcon } from '@/components/icons/IconDocumentation.vue'

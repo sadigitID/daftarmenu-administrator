@@ -9,6 +9,8 @@ const account = useAccountStore()
 <template>
   <div class="flex h-screen">
     <Navigasi />
+  </div>
+  <div>
     <div class="flex flex-col flex-grow">
       <Header />
       <main>

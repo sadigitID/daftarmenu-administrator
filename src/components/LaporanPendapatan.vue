@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { LaporanComponents, PendapatanComponents } from '@/components'
-import { WrapperChartBar } from '@/components/wrapper'
+import { WrapperChartBar } from '@/components/card'
 
 const LaporanItems = [
   {

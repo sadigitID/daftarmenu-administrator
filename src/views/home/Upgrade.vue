@@ -209,7 +209,6 @@ onMounted(() => {
   <SlideDialog :open="resto.resto != null" @on-close="resto.resto = null" />
 
   <div class="flex items-center justify-center w-full h-full p-6 bg-layout">
-  <div class="flex items-center p-6">
     <section
       id="upgrade"
       class="container overflow-hidden w-[1100px] h-[525px] m-auto gap-6 bg-white p-6 rounded-3xl"
@@ -228,7 +227,6 @@ onMounted(() => {
             class="bg-gray-50 m-auto justify-center items-center flex rounded-lg px-2"
           >
             <IconSearch class="w-4 h-4" />
-            <InputText class="text-sm font-sans text-gray-800" placeholder="Cari Menu" />
             <InputText class="text-sm font-sans text-gray-800" placeholder="Cari Menu" />
           </div>
 
@@ -298,7 +296,7 @@ onMounted(() => {
       <div
         name="resto"
         id="resto"
-        class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-4 gap-y-6"
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-x-4 gap-y-6"
       >
         <CardResto v-for="data in dataList" :key="data.resto.resto_id" :data="data" />
       </div>

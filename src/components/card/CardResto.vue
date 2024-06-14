@@ -1,17 +1,11 @@
-<script setup>
+<script setup lang="ts">
 import { ChevronRight } from '@/components/icons'
+import type { RestaurantModel } from '@/utils/types'
 
 defineProps({
-  resto_image: String,
-  resto_name: String,
-  account_subscription: Boolean,
-  account_subscription_id: {
-    type: Number,
-    default: 0
-  },
-  account_subscription_expired: {
-    type: Number,
-    default: 0
+  data: {
+    type: Object as () => RestaurantModel,
+    required: true
   }
 })
 </script>

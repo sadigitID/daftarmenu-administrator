@@ -84,16 +84,14 @@ const onEmptyPassword = () => {
   dialog.showCancelButton = false
   dialog.open = true
 }
-
-// const showSlideDialog = () => {
-//   slideDialogOpen.value = true
-// }
 </script>
 
 <template>
-  <div class="flex items-center justify-center w-full h-full bg-layout">
-    <section class="container flex flex-row items-center p-6 bg-white rounded-2xl">
-      <div class="p-6">
+  <div class="grid h-screen grid-cols-1 p-4 lg:p-6 place-items-center">
+    <section
+      class="container items-center p-4 bg-white lg:p-6 lg:flex lg:flex-row lg:space-x-6 rounded-2xl max-w-80 lg:max-w-screen-lg"
+    >
+      <div>
         <div class="mx-2">
           <h1 class="font-sans text-3xl text-dark">Selamat Datang</h1>
           <p class="mb-4 text-gray-800">Silahkan masuk untuk melihat statistik.</p>
@@ -103,13 +101,19 @@ const onEmptyPassword = () => {
           <div class="flex flex-col mx-2 mb-2 space-y-4">
             <div>
               <h1 class="font-sans text-base text-dark">Email</h1>
-              <InputText type="email" placeholder="Masukan Email" @update:value="email = $event" />
+              <InputText
+                :disabled="isLoading"
+                type="email"
+                placeholder="Masukan Email"
+                @update:value="email = $event"
+              />
             </div>
 
             <div>
               <h1 class="font-sans text-base text-dark">Password</h1>
               <InputText
                 type="password"
+                :disabled="isLoading"
                 @update:value="password = $event"
                 placeholder="Masukan Password"
               />
@@ -131,7 +135,7 @@ const onEmptyPassword = () => {
           <h1 class="text-xs font-medium text-center text-primary-800">V2.0.0</h1>
         </div>
       </div>
-      <div class="flex items-center justify-center flex-1 rounded-lg bg-primary-50">
+      <div class="items-center justify-center hidden rounded-lg lg:flex-1 lg:flex bg-primary-50">
         <img class="max-h-[400px]" :src="Login" alt="halaman login" />
       </div>
     </section>

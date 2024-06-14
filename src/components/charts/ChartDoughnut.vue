@@ -2,62 +2,46 @@
   <Doughnut :data="chartData" :options="chartOptions" />
 </template>
 
-<script>
+<script setup lang="ts">
+import { computed } from 'vue'
 import { Doughnut } from 'vue-chartjs'
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js'
 
 ChartJS.register(ArcElement, Tooltip, Legend)
 
-export default {
-  name: 'ChartDoughnut',
-  components: {
-    Doughnut
-  },
-  props: {
-    chartDataValues: {
-      type: Array,
-      required: true
-    },
-    chartLabels: {
-      type: Array,
-      required: true
+interface Props {
+  chartDataValues: number[]
+  chartLabels: string[]
+}
+
+const props = defineProps<Props>()
+
+const chartData = computed(() => ({
+  labels: props.chartLabels,
+  datasets: [
+    {
+      backgroundColor: ['#d3e8c8', '#70b44e', '#3e632b'],
+      data: props.chartDataValues
     }
-  },
-  computed: {
-    chartData() {
-      return {
-        labels: this.chartLabels,
-        datasets: [
-          {
-            backgroundColor: ['#d3e8c8', '#70b44e', '#3e632b'],
-            data: this.chartDataValues
-          }
-        ]
+  ]
+}))
+
+const chartOptions = {
+  layout: {},
+  responsive: true,
+  plugins: {
+    legend: {
+      position: 'bottom',
+      labels: {
+        padding: 16,
+        usePointStyle: true,
+        pointStyle: 'circle'
       }
     }
   },
-  data() {
-    return {
-      chartOptions: {
-        layout: {},
-        responsive: true,
-        plugins: {
-          legend: {
-            position: 'bottom',
-            labels: {
-              padding: 16,
-              usePointStyle: true,
-              pointStyle: 'circle'
-            }
-          }
-        },
-        //mantainAspectRatio: false,
-        aspectRatio: 1.8,
-        borderWidth: 5,
-        borderColor: 'white',
-        cutout: '62%'
-      }
-    }
-  }
+  aspectRatio: 1.8,
+  borderWidth: 5,
+  borderColor: 'white',
+  cutout: '62%'
 }
 </script>

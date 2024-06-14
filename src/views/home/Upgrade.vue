@@ -9,7 +9,7 @@ import type { RestaurantModel } from '@/utils/types'
 import { onMounted, ref } from 'vue'
 import SlideDialog from '@/components/dialogs/SlideDialog.vue'
 import { useRestoStore } from '@/stores/resto'
-const searchQuery = ref('')
+
 const resto = useRestoStore()
 
 const dataList = ref<RestaurantModel[]>([
@@ -208,11 +208,13 @@ onMounted(() => {
 <template>
   <SlideDialog :open="resto.resto != null" @on-close="resto.resto = null" />
 
-  <div class="flex items-center w-full h-full p-6 bg-layout">
+  <div class="flex items-center justify-center w-full h-full p-6 bg-layout">
     <section
       id="upgrade"
       class="container overflow-hidden w-fixed h-fixed gap-6 bg-white p-6 rounded-2xl"
     >
+      <FilterBtn />
+
       <div class="flex justify-between">
         <div class="">
           <h1 class="text-extrabold text-xl text-primary-900">Daftar Pengguna</h1>
@@ -225,11 +227,7 @@ onMounted(() => {
             class="bg-gray-50 m-auto justify-center items-center flex rounded-lg px-2"
           >
             <IconSearch class="w-4 h-4" />
-            <InputText
-              class="text-sm font-sans text-gray-800"
-              v-model:value="search"
-              placeholder="Cari Menu"
-            />
+            <InputText class="text-sm font-sans text-gray-800" placeholder="Cari Menu" />
           </div>
 
           <ButtonFilter />

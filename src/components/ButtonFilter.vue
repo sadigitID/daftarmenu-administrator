@@ -50,7 +50,7 @@ const selectedFiltersText = computed(() => {
         </button>
         <div
           v-if="dropdowns.filters"
-          class="absolute bg-white border items-center justify-center text-left text-sm self-stretch font-bold py-4 px-6"
+          class="absolute bg-white border items-center justify-center text-left text-sm self-stretch font-bold py-4 px-6 right-0"
         >
           <h1 class="justify-center items-center text-gray-700">Status Berlangganan</h1>
           <label

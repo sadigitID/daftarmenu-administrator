@@ -6,6 +6,7 @@
 import { computed } from 'vue'
 import { Doughnut } from 'vue-chartjs'
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js'
+import type { ChartOptions } from 'chart.js'
 
 ChartJS.register(ArcElement, Tooltip, Legend)
 
@@ -26,7 +27,7 @@ const chartData = computed(() => ({
   ]
 }))
 
-const chartOptions = {
+const chartOptions: ChartOptions<'doughnut'> = {
   layout: {},
   responsive: true,
   plugins: {
@@ -40,7 +41,6 @@ const chartOptions = {
     }
   },
   aspectRatio: 1.8,
-  borderWidth: 5,
   borderColor: 'white',
   cutout: '62%'
 }

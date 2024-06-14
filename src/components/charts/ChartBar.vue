@@ -6,6 +6,7 @@
 import { computed } from 'vue'
 import { Bar } from 'vue-chartjs'
 import { Chart as ChartJS, BarElement, CategoryScale, LinearScale } from 'chart.js'
+import type { ChartOptions } from 'chart.js'
 
 ChartJS.register(BarElement, CategoryScale, LinearScale)
 
@@ -33,7 +34,7 @@ const chartData = computed(() => ({
   ]
 }))
 
-const chartOptions = {
+const chartOptions: ChartOptions<'bar'> = {
   scales: {
     y: {
       beginAtZero: true,

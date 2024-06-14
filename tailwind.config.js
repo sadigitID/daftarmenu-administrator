@@ -24,7 +24,7 @@ export default {
       colors: {
         dark: '#151617',
         superorange: '#F59E0B',
-        layout: '#F3F7F9',
+        layout: '#EEF0ED',
         'vtd-primary': {
           50: '#f1f8ed',
           100: '#d3e8c8',

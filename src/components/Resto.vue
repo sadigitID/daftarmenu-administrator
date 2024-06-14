@@ -1,5 +1,5 @@
 <script setup>
-import { ChevronRight } from '@/components/icons';
+import { ChevronRight } from '@/components/icons'
 
 defineProps({
   image: String,
@@ -10,40 +10,39 @@ defineProps({
   activeStatus: {
     default: true
   },
-  lastTransaction: String,
+  lastTransaction: String
 })
 </script>
 
 <template>
-  <article class="flex p-2 w-[278px] bg-white justify-between items-center shadow-lg rounded-xl font-sans">
+  <article
+    class="flex p-2 w-[278px] bg-white justify-between items-center shadow-lg rounded-xl font-sans"
+  >
     <div class="flex">
-      <img :src="image" class="w-16 h-16 rounded-xl object-cover object-center overflow-hidden" alt="Resto Profile Picture">
+      <img
+        :src="image"
+        class="object-cover object-center w-16 h-16 overflow-hidden rounded-xl"
+        alt="Resto Profile Picture"
+      />
       <div class="px-2">
         <div class="flex">
-          <div 
-          v-if="memberStatus == 'premium'"
-          class="p-1 bg-gradient-to-r from-[#E3FFD3] to-[#FFF59C] rounded-full space-x-1">
-            <p class="text-primary-900 text-xs">Premium</p>
+          <div
+            v-if="memberStatus == 'premium'"
+            class="p-1 bg-gradient-to-r from-[#E3FFD3] to-[#FFF59C] rounded-full space-x-1"
+          >
+            <p class="text-xs text-primary-900">Premium</p>
           </div>
-          <div 
-          v-else-if="memberStatus == 'free'"
-          class="p-1 bg-primary-50 rounded-full space-x-1">
-            <p class="text-primary-800 text-xs">Free</p>
+          <div v-else-if="memberStatus == 'free'" class="p-1 space-x-1 rounded-full bg-primary-50">
+            <p class="text-xs text-primary-800">Free</p>
           </div>
-          <div 
-          v-else-if="memberStatus == 'trial'"
-          class="p-1 bg-primary-50 rounded-full space-x-1">
-            <p class="text-primary-800 text-xs">Trial</p>
+          <div v-else-if="memberStatus == 'trial'" class="p-1 space-x-1 rounded-full bg-primary-50">
+            <p class="text-xs text-primary-800">Trial</p>
           </div>
-          <div 
-          v-if="activeStatus == true"
-          class="p-1">
-            <p class="text-superorange text-xs">Aktif</p>
+          <div v-if="activeStatus == true" class="p-1">
+            <p class="text-xs text-superorange">Aktif</p>
           </div>
-          <div 
-          v-else-if="activeStatus == false"
-          class="p-1">
-            <p class="text-red-500 text-xs">Tidak Aktif</p>
+          <div v-else-if="activeStatus == false" class="p-1">
+            <p class="text-xs text-red-500">Tidak Aktif</p>
           </div>
         </div>
         <div>
@@ -51,7 +50,7 @@ defineProps({
             {{ name }}
           </p>
         </div>
-        <div class="text-gray-700 text-xs">{{ lastTransaction }}</div>
+        <div class="text-xs text-gray-700">{{ lastTransaction }}</div>
       </div>
     </div>
     <div>

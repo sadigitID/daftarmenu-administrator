@@ -1,10 +1,13 @@
 <script setup >
 
-import { Search, Dropdown, UserInvalid, UserValid } from "@/components/icons";
+import { IconSearch, Dropdown, UserInvalid, UserValid } from "@/components/icons";
 import { Food } from '@/assets/image'
 import { useAccountStore } from '@/stores/account'
 import { Resto } from '@/components'
 import { RestoProfile } from '@/assets/image';
+import { InputText } from '@/components/';
+import { PopoverPanel } from "@headlessui/vue";
+
 
 const restoList = [
   {
@@ -39,15 +42,30 @@ const account = useAccountStore()
                 <p class="text-base  text-primary-900">Menampilkan 1350 pengguna</p>
             </div>
         <div class="flex justify-between">
-            <div class="bg-gray-50 m-auto justify-center items-center flex border-1 rounded-lg px-4 pe-16 ">
-                <Search class="w-8 h-6 m-1"/>
-                <h1 class="text-primary-900 font-light text-xs" >Cari menu</h1>
+            <div id="search" class="bg-gray-50 m-auto justify-center items-center flex border-1 rounded-lg px-2 ">
+                <IconSearch class="w-4 h-4 "/>
+                <!-- <input class="text-primary-900 font-light text-sm searchTerm bg-gray-50" placeholder="Cari Menu"> -->
+                 <InputText
+                 v-model:value="searchQuery"
+                 placeholder="Cari Menu"
+                 />
             </div>
 
-            <div class="bg-gray-50 m-auto mx-2  px-1 py-1 justify-center items-center flex border-1 rounded-lg  ">
-                <button class="text-primary-900 font-bold px-4   ">Filter</button>
-                <Dropdown class="w-6 h-6 text-primary-900"/>
-            </div>
+            <Popover placeholder="filter" class="relative bg-gray-50 m-auto mx-2  px-1 py-1 justify-center items-center flex border-1 rounded-lg  ">
+                <!-- <button class="text-primary-900 font-bold px-4   ">Filter</button>
+                <Dropdown class="w-6 h-6 text-primary-900"/> -->
+
+                <PopoverPanel placeholder="Filter" value="filter">
+                    <p>Status Berlangganan</p>
+                    <option type="checkbox" value="free">Free</option>
+                    <option type="checkbox" value="Trial">Trial</option>
+                    <option type="checkbox" value="premium">Premium</option>
+
+                </PopoverPanel>
+
+
+
+            </Popover>
         </div>
     </div>
 

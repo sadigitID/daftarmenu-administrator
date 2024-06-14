@@ -1,37 +1,53 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import LoginView from '@/views/LoginView.vue'
-import HomeView from '@/views/HomeView.vue'
+import DashboardView from '@/views/DashboardView.vue'
+import HomeView from '@/views/home/Home.vue'
+import ReportView from '@/views/home/Report.vue'
+import UpgradeView from '@/views/home/Upgrade.vue'
+import NotFound from '@/views/NotFound.vue'
 import { useAccountStore } from '@/stores/account'
-import ReportHomeView from '@/views/home/Report.vue'
-import UpgradeHomeView from '@/views/home/Upgrade.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '',
+      path: '/',
+      name: 'main',
+      redirect: '/home'
+    },
+    {
+      path: '/home',
       name: 'Dashboard',
-      component: HomeView,
+      component: DashboardView,
       children: [
         {
-          path: 'home',
+          path: '',
           name: 'home',
           component: HomeView
         },
         {
           path: 'report',
-          name: 'report',
-          component: HomeView
+          name: 'Laporan',
+          component: ReportView
         },
         {
           path: 'upgrade',
-          name: 'upgrade',
-          component: HomeView
+          name: 'Upgrade Account',
+          component: UpgradeView
         },
         {
           path: 'notes',
           name: 'notes',
           component: HomeView
+        },
+        {
+          path: '404',
+          name: 'Page Not Found',
+          component: NotFound
+        },
+        {
+          path: ':pathMatch(.*)*',
+          redirect: '/home/404'
         }
       ]
     },
@@ -43,40 +59,30 @@ const router = createRouter({
     {
       path: '/404',
       name: 'not-found',
-      component: HomeView
-    },
-    {
-      path: '/home/report',
-      name: 'report',
-      component: ReportHomeView
-    },
-    {
-      path: '/home/upgrade',
-      name: 'upgrade',
-      component: UpgradeHomeView
-    },
+      component: NotFound
+    }
   ]
 })
 
-// router.beforeEach((to, from, next) => {
-//   const account = useAccountStore()
-//   if (to.matched.length === 0) {
-//     next('/404')
-//   } else {
-//     if (account.isAuthenticated) {
-//       if (to.path === '/login' || to.path === '/') {
-//         next('/home')
-//       } else {
-//         next()
-//       }
-//     } else {
-//       if (to.path !== '/404' && to.path !== '/home') {
-//         next('/login')
-//       } else {
-//         next()
-//       }
-//     }
-//   }
-// })
+router.beforeEach((to, from, next) => {
+  const account = useAccountStore()
+  if (to.matched.length === 0) {
+    next('/404')
+  } else {
+    if (account.isAuthenticated) {
+      if (to.path === '/login' || to.path === '/') {
+        next('/home')
+      } else {
+        next()
+      }
+    } else {
+      if (to.path !== '/login') {
+        next('/login')
+      } else {
+        next()
+      }
+    }
+  }
+})
 
 export default router

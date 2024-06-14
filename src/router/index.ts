@@ -2,8 +2,10 @@ import { createRouter, createWebHistory } from 'vue-router'
 import LoginView from '@/views/LoginView.vue'
 import DashboardView from '@/views/DashboardView.vue'
 import HomeView from '@/views/home/Home.vue'
+import NoteView from '@/views/home/Note.vue'
 import ReportView from '@/views/home/Report.vue'
 import UpgradeView from '@/views/home/Upgrade.vue'
+import NotFound from '@/views/NotFound.vue'
 import { useAccountStore } from '@/stores/account'
 
 const router = createRouter({
@@ -11,7 +13,7 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'root',
+      name: 'main',
       redirect: '/home'
     },
     {
@@ -26,18 +28,27 @@ const router = createRouter({
         },
         {
           path: 'report',
-          name: 'report',
+          name: 'Laporan',
           component: ReportView
         },
         {
           path: 'upgrade',
-          name: 'upgrade',
+          name: 'Upgrade Account',
           component: UpgradeView
         },
         {
           path: 'notes',
           name: 'notes',
-          component: HomeView
+          component: NoteView
+        },
+        {
+          path: '404',
+          name: 'Page Not Found',
+          component: NotFound
+        },
+        {
+          path: ':pathMatch(.*)*',
+          redirect: '/home/404'
         }
       ]
     },
@@ -49,7 +60,7 @@ const router = createRouter({
     {
       path: '/404',
       name: 'not-found',
-      component: HomeView
+      component: NotFound
     }
   ]
 })

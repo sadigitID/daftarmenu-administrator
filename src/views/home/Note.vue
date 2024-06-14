@@ -63,9 +63,9 @@ const noteData = [
 </script>
 <template>
 
-<section class="w-[1440px] h-[1024px] bg-primary-50 pl-36 pt-28 pr-6 pb-20">
-  <div class="flex w-[1272px] h-[891px] p-6 flex-col items-start gap-6 
-              flex-shrink-0 rounded-3xl bg-white">
+<section class="w-full h-full bg-layout p-11">
+  <div class="flex w-[1280px] h-[700px] p-6 flex-col items-start gap-6 
+              flex-shrink-0 rounded-3xl bg-white m-auto">
     <div class="flex justify-between items-start self-stretch">
       <div class="flex flex-col items-start gap-2">
         <h2 class="font-sans font-medium text-xl 

@@ -1,5 +1,6 @@
 <script setup>
-import  {Vec} from "@/components/icons";
+import { Vec } from "@/components/icons/";
+
 defineProps({
   icon: Object,
   title : String,

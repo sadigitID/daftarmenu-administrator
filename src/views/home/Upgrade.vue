@@ -51,21 +51,6 @@ const account = useAccountStore()
                  />
             </div>
 
-            <Popover placeholder="filter" class="relative bg-gray-50 m-auto mx-2  px-1 py-1 justify-center items-center flex border-1 rounded-lg  ">
-                <!-- <button class="text-primary-900 font-bold px-4   ">Filter</button>
-                <Dropdown class="w-6 h-6 text-primary-900"/> -->
-
-                <PopoverPanel placeholder="Filter" value="filter">
-                    <p>Status Berlangganan</p>
-                    <option type="checkbox" value="free">Free</option>
-                    <option type="checkbox" value="Trial">Trial</option>
-                    <option type="checkbox" value="premium">Premium</option>
-
-                </PopoverPanel>
-
-
-
-            </Popover>
         </div>
     </div>
 

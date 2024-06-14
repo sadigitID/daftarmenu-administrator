@@ -997,6 +997,7 @@ video {
 
 .w-\[68px\]{
   width: 68px;
+<<<<<<< HEAD
 }
 
 .w-\[74px\]{
@@ -1009,6 +1010,10 @@ video {
 
 .w-auto{
   width: auto;
+=======
+.w-\[810px\]{
+  width: 810px;
+>>>>>>> c678bb6d4335a6ae2f5635db5ac306953754c951
 }
 
 .w-full{
@@ -1188,6 +1193,13 @@ video {
   gap: 0.625rem;
 }
 
+<<<<<<< HEAD
+=======
+.gap-2{
+  gap: 0.5rem;
+}
+
+>>>>>>> c678bb6d4335a6ae2f5635db5ac306953754c951
 .gap-4{
   gap: 1rem;
 }
@@ -1202,6 +1214,7 @@ video {
 
 .gap-8{
   gap: 2rem;
+<<<<<<< HEAD
 }
 
 .gap-\[10px\]{
@@ -1210,6 +1223,8 @@ video {
 
 .gap-\[11px\]{
   gap: 11px;
+=======
+>>>>>>> c678bb6d4335a6ae2f5635db5ac306953754c951
 }
 
 .gap-x-4{
@@ -1279,6 +1294,10 @@ video {
   --tw-space-y-reverse: 0;
   margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
+}
+
+.self-stretch{
+  align-self: stretch;
 }
 
 .self-stretch{
@@ -1399,6 +1418,7 @@ video {
   background-color: rgb(238 240 237 / var(--tw-bg-opacity));
 }
 
+<<<<<<< HEAD
 .bg-orange-50{
   --tw-bg-opacity: 1;
   background-color: rgb(255 247 237 / var(--tw-bg-opacity));
@@ -1407,6 +1427,11 @@ video {
 .bg-orange-700{
   --tw-bg-opacity: 1;
   background-color: rgb(194 65 12 / var(--tw-bg-opacity));
+=======
+.bg-layout{
+  --tw-bg-opacity: 1;
+  background-color: rgb(238 240 237 / var(--tw-bg-opacity));
+>>>>>>> c678bb6d4335a6ae2f5635db5ac306953754c951
 }
 
 .bg-primary-100{
@@ -1854,12 +1879,15 @@ video {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
+<<<<<<< HEAD
 .shadow-\[1px_1px_8px_rgba\(180\2c 180\2c 180\2c 0\.39\)\]{
   --tw-shadow: 1px 1px 8px rgba(180,180,180,0.39);
   --tw-shadow-colored: 1px 1px 8px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
+=======
+>>>>>>> c678bb6d4335a6ae2f5635db5ac306953754c951
 .shadow-custom-gray{
   --tw-shadow: 1px 1px 8px 0px rgba(180, 180, 180, 0.39);
   --tw-shadow-colored: 1px 1px 8px 0px var(--tw-shadow-color);

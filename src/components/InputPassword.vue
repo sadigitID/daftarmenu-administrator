@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const isPasswordVisible = ref(false)
 const password = ref('')
 

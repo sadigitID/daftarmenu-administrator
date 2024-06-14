@@ -1,13 +1,18 @@
-<script setup>
+<script setup lang="ts">
 import { IconSearch, UserInvalid, UserValid } from '@/components/icons'
 import { Food } from '@/assets/image'
-import { useAccountStore } from '@/stores/account'
 import { CardResto } from '@/components/card'
 import { RestoProfile } from '@/assets/image'
 import { InputText } from '@/components/'
 import { ButtonFilter } from '@/components'
+import type { RestaurantModel } from '@/utils/types'
+import { onMounted, ref } from 'vue'
+import SlideDialog from '@/components/dialogs/SlideDialog.vue'
+import { useRestoStore } from '@/stores/resto'
+const searchQuery = ref('')
+const resto = useRestoStore()
 
-const dataList = [
+const dataList = ref<RestaurantModel[]>([
   {
     account: {
       account_name: 'Holywing Resto',
@@ -191,13 +196,19 @@ const dataList = [
       resto_menu: 5
     }
   }
-]
+])
 
-const account = useAccountStore()
+onMounted(() => {
+  // setTimeout(() => {
+  //   dataList.value = []
+  // }, 5000)
+})
 </script>
 
 <template>
-  <div class="flex items-center justify-center w-full h-full p-6 bg-layout">
+  <SlideDialog :open="resto.resto != null" @on-close="resto.resto = null" />
+
+  <div class="flex items-center w-full h-full p-6 bg-layout">
     <section
       id="upgrade"
       class="container overflow-hidden w-fixed h-fixed gap-6 bg-white p-6 rounded-2xl"
@@ -284,16 +295,12 @@ const account = useAccountStore()
       </div>
 
       <!-- Resto Card Components -->
-      <div name="resto" id="resto" class="grid grid-cols-4 gap-x-4 gap-y-6">
-        <CardResto
-          v-for="data in dataList"
-          :key="data.resto.resto_id"
-          :resto_image="data.resto.resto_image"
-          :resto_name="data.resto.resto_name"
-          :account_subscription="data.account.account_subscription"
-          :account_subscription_id="data.account.account_subscription_id"
-          :account_subscription_expired="data.account.account_subscription_expired"
-        />
+      <div
+        name="resto"
+        id="resto"
+        class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-4 gap-y-6"
+      >
+        <CardResto v-for="data in dataList" :key="data.resto.resto_id" :data="data" />
       </div>
     </section>
   </div>

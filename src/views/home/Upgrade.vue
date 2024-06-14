@@ -1,13 +1,17 @@
-<script setup>
-import { IconSearch, Dropdown, UserInvalid, UserValid } from '@/components/icons'
+<script setup lang="ts">
+import { IconSearch, UserInvalid, UserValid } from '@/components/icons'
 import { Food } from '@/assets/image'
-import { useAccountStore } from '@/stores/account'
 import { CardResto } from '@/components/card'
 import { RestoProfile } from '@/assets/image'
 import { InputText } from '@/components/'
-import { PopoverPanel } from '@headlessui/vue'
+import type { RestaurantModel } from '@/utils/types'
+import { onMounted, ref } from 'vue'
+import SlideDialog from '@/components/dialogs/SlideDialog.vue'
+import { useRestoStore } from '@/stores/resto'
+const searchQuery = ref('')
+const resto = useRestoStore()
 
-const dataList = [
+const dataList = ref<RestaurantModel[]>([
   {
     account: {
       account_name: 'Holywing Resto',
@@ -191,29 +195,35 @@ const dataList = [
       resto_menu: 5
     }
   }
-]
+])
 
-const account = useAccountStore()
+onMounted(() => {
+  // setTimeout(() => {
+  //   dataList.value = []
+  // }, 5000)
+})
 </script>
 
 <template>
-  <section id="upgrade" class="container overflow-hidden m-6 p-6 justify-between">
-    <div class="flex container justify-between">
+  <SlideDialog :open="resto.resto != null" @on-close="resto.resto = null" />
+
+  <section id="upgrade" class="container justify-between p-6 m-6 overflow-hidden">
+    <div class="container flex justify-between">
       <div class="">
-        <h1 class="text-extrabold text-2xl text-primary-900">Daftar Pengguna</h1>
+        <h1 class="text-2xl text-extrabold text-primary-900">Daftar Pengguna</h1>
         <p class="text-base text-primary-900">Menampilkan 1350 pengguna</p>
       </div>
       <div class="flex justify-between">
         <div
           id="search"
-          class="bg-gray-50 m-auto justify-center items-center flex border-1 rounded-lg px-2"
+          class="flex items-center justify-center px-2 m-auto rounded-lg bg-gray-50 border-1"
         >
           <IconSearch class="w-4 h-4" />
-          <!-- <input class="text-primary-900 font-light text-sm searchTerm bg-gray-50" placeholder="Cari Menu"> -->
+          <!-- <input class="text-sm font-light text-primary-900 searchTerm bg-gray-50" placeholder="Cari Menu"> -->
           <InputText v-model:value="searchQuery" placeholder="Cari Menu" />
         </div>
 
-        <!-- <Popover placeholder="filter" class="relative bg-gray-50 m-auto mx-2  px-1 py-1 justify-center items-center flex border-1 rounded-lg  ">
+        <!-- <Popover placeholder="filter" class="relative flex items-center justify-center px-1 py-1 m-auto mx-2 rounded-lg bg-gray-50 border-1 ">
 
                 <PopoverPanel placeholder="Filter" value="filter">
                     <p>Status Berlangganan</p>
@@ -229,7 +239,7 @@ const account = useAccountStore()
       </div>
     </div>
 
-    <div class="container overflow-hidden flex gap-5 w-full m-auto py-6">
+    <div class="container flex w-full gap-5 py-6 m-auto overflow-hidden">
       <div class="relative flex items-center rounded-2xl overflow-hidden w-1/4 h-[115px]">
         <img :src="Food" alt="food" class="object-cover object-center w-full h-full" />
       </div>
@@ -239,8 +249,8 @@ const account = useAccountStore()
       >
         <UserValid class="gap-4 fill-white" />
         <div>
-          <h1 class="text-white text-xs">Hari Ini Bergabung</h1>
-          <h1 class="text-white text-lg font-semibold">800</h1>
+          <h1 class="text-xs text-white">Hari Ini Bergabung</h1>
+          <h1 class="text-lg font-semibold text-white">800</h1>
         </div>
       </div>
 
@@ -248,12 +258,12 @@ const account = useAccountStore()
         <UserInvalid class="gap-4 m-2 fill-primary-900" />
         <div>
           <div class="flex items-center justify-start gap-1">
-            <h1 class="text-primary-900 text-lg font-semibold">800</h1>
-            <h1 class="text-primary-900 text-sm">User Aktif</h1>
+            <h1 class="text-lg font-semibold text-primary-900">800</h1>
+            <h1 class="text-sm text-primary-900">User Aktif</h1>
           </div>
           <div class="flex items-center justify-center gap-1">
-            <h1 class="text-primary-900 text-lg font-semibold">800</h1>
-            <h1 class="text-primary-900 text-sm">User Tidak Aktif</h1>
+            <h1 class="text-lg font-semibold text-primary-900">800</h1>
+            <h1 class="text-sm text-primary-900">User Tidak Aktif</h1>
           </div>
         </div>
       </div>
@@ -261,19 +271,19 @@ const account = useAccountStore()
       <div
         class="bg-primary-50 flex flex-col justify-center items-center rounded-2xl overflow-hidden w-1/4 h-[115px]"
       >
-        <div class="bg-primary-50 flex w-full m-auto justify-center items-center pt-4">
+        <div class="flex items-center justify-center w-full pt-4 m-auto bg-primary-50">
           <UserValid class="gap-4 m-2 fill-primary-900" />
           <div>
-            <h1 class="text-primary-900 text-xs">Premium</h1>
-            <h1 class="text-primary-900 text-lg font-semibold">800</h1>
+            <h1 class="text-xs text-primary-900">Premium</h1>
+            <h1 class="text-lg font-semibold text-primary-900">800</h1>
           </div>
         </div>
-        <div class="bg-primary-900 flex justify-between p-4 w-full">
-          <div class="flex justify-center items-center gap-1 pb-2">
+        <div class="flex justify-between w-full p-4 bg-primary-900">
+          <div class="flex items-center justify-center gap-1 pb-2">
             <h1 class="text-sm text-white">Trial</h1>
             <h1 class="text-xl font-semibold text-white">800</h1>
           </div>
-          <div class="flex justify-center items-center gap-1 pb-2">
+          <div class="flex items-center justify-center gap-1 pb-2">
             <h1 class="text-sm text-white">Free</h1>
             <h1 class="text-xl font-semibold text-white">800</h1>
           </div>
@@ -282,16 +292,12 @@ const account = useAccountStore()
     </div>
 
     <!-- Resto Card Components -->
-    <div name="resto" id="resto" class="grid grid-cols-4 gap-x-4 gap-y-6">
-      <CardResto
-        v-for="data in dataList"
-        :key="data.resto.resto_id"
-        :resto_image="data.resto.resto_image"
-        :resto_name="data.resto.resto_name"
-        :account_subscription="data.account.account_subscription"
-        :account_subscription_id="data.account.account_subscription_id"
-        :account_subscription_expired="data.account.account_subscription_expired"
-      />
+    <div
+      name="resto"
+      id="resto"
+      class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-4 gap-y-6"
+    >
+      <CardResto v-for="data in dataList" :key="data.resto.resto_id" :data="data" />
     </div>
   </section>
 </template>

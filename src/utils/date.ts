@@ -1,4 +1,3 @@
-export const formatDate = (date: Date): string => date.toISOString()
 export const timestampToDate = (timestamp: number): Date => new Date(timestamp)
 export const dateToTimestamp = (date: Date): number => date.getTime()
 export const defferenceInDays = (date1: Date, date2: Date): number => {

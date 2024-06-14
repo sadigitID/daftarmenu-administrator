@@ -135,7 +135,8 @@ const onEmptyPassword = () => {
           <h1 class="text-xs font-medium text-center text-primary-800">V2.0.0</h1>
         </div>
       </div>
-      <div class="items-center justify-center hidden rounded-lg lg:flex-1 lg:flex bg-primary-50">
+
+      <div class="flex items-center justify-center flex-1 rounded-lg bg-primary-50">
         <img class="max-h-[400px]" :src="Login" alt="halaman login" />
       </div>
     </section>

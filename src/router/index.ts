@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import LoginView from '@/views/LoginView.vue'
 import DashboardView from '@/views/DashboardView.vue'
-import { HomeView, ReportView, UpgradeView } from '@/views/home'
+import { HomeView, ReportView, UpgradeView, NoteView } from '@/views/home'
 import NotFound from '@/views/NotFound.vue'
 import { useAccountStore } from '@/stores/account'
 
@@ -36,7 +36,7 @@ const router = createRouter({
         {
           path: 'notes',
           name: 'notes',
-          component: HomeView
+          component: NoteView
         },
         {
           path: '404',

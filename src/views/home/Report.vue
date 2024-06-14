@@ -1,5 +1,6 @@
 <script setup>
 import { CardDoughnut } from '@/components/card'
+import { LaporanPendapatan } from '@/components'
 
 // Data belum dari API
 const chartData = [
@@ -20,6 +21,7 @@ const chartData = [
 
 <template>
   <section class="bg-layout">
+    <LaporanPendapatan />
     <div class="inline-flex h-[835px] py-12 px-6 items-start gap-5 shrink-0 rounded-3xl">
       <CardDoughnut
         v-for="data in chartData"

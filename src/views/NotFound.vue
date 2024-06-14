@@ -1,4 +1,4 @@
-<script setup></script>
+<script setup lang="ts"></script>
 <template>
   <div>
     <h1>Halaman Tidak Ditemukan</h1>

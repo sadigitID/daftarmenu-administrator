@@ -52,9 +52,8 @@ watch(route, (to, _) => {
     class="h-full w-[120px] bg-primary-900 text-primary-50 flex flex-col justify-center items-center"
   >
     <div class="flex flex-col items-center space-y-6">
-      <RouterLink v-for="(item, index) in navigasiItem" :to="item.path">
+      <RouterLink v-for="(item, index) in navigasiItem" :to="item.path" :key="index">
         <NavComponents
-          :key="index"
           :icon="item.icon"
           :activeIcon="item.activeIcon"
           :title="item.title"

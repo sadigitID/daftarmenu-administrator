@@ -11,3 +11,8 @@ export { default as PendapatanComponents } from '@/components/PendapatanComponen
 export { default as InputText } from '@/components/InputText.vue'
 export { default as ButtonPrimary } from '@/components/ButtonPrimary.vue'
 export { default as ButtonFilter } from '@/components/ButtonFilter.vue'
+
+export { default as User } from '@/components/UserProfile.vue'
+export { default as Info } from '@/components/Information.vue'
+export { default as Note } from '@/components/Notes.vue'
+export { default as ButtonFilter } from '@/components/ButtonFilter.vue'

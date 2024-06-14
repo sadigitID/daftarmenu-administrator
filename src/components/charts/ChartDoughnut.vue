@@ -3,10 +3,10 @@
 </template>
 
 <script>
-import { Doughnut } from 'vue-chartjs';
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Doughnut } from 'vue-chartjs'
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js'
 
-ChartJS.register(ArcElement, Tooltip, Legend);
+ChartJS.register(ArcElement, Tooltip, Legend)
 
 export default {
   name: 'ChartDoughnut',
@@ -33,36 +33,31 @@ export default {
             data: this.chartDataValues
           }
         ]
-      };
+      }
     }
   },
   data() {
     return {
       chartOptions: {
-        layout: {
-          padding: {
-            top: 10,
-            bottom: 10
-          }
-        },
+        layout: {},
         responsive: true,
         plugins: {
           legend: {
             position: 'bottom',
             labels: {
-              padding: 10,
+              padding: 16,
               usePointStyle: true,
               pointStyle: 'circle'
             }
           }
         },
         //mantainAspectRatio: false,
-        aspectRatio: 2,
-        borderWidth: 4,
+        aspectRatio: 1.8,
+        borderWidth: 5,
         borderColor: 'white',
-        cutout: '60%'
-      },
-    };
+        cutout: '62%'
+      }
+    }
   }
-};
+}
 </script>

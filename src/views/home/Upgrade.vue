@@ -2,33 +2,197 @@
 import { IconSearch, UserInvalid, UserValid } from '@/components/icons'
 import { Food } from '@/assets/image'
 import { useAccountStore } from '@/stores/account'
-import { Resto } from '@/components'
+import { CardResto } from '@/components/card'
 import { RestoProfile } from '@/assets/image'
 import { InputText } from '@/components/'
 import { ButtonFilter } from '@/components'
 
-const restoList = [
+const dataList = [
   {
-    image: RestoProfile,
-    name: 'Resto Sadigit',
-    memberStatus: 'premium',
-    activeStatus: true,
-    lastTransaction: '8 transaksi pada hari ini'
+    account: {
+      account_name: 'Holywing Resto',
+      account_email: 'restoholywing@gmail.com',
+      account_access: 'Super Admin',
+      account_subscription: true,
+      account_subscription_name: 'Paket 3 bulan',
+      account_subscription_expired: 1726444800000,
+      //dummy
+      account_subscription_id: 3
+    },
+    resto: {
+      resto_id: 2689,
+      resto_image:
+        'https://api.daftarmenu.com/dashboard/file/img_cover_resto/a6dd5313e1de71ab50d34ecf505c5b40.jpg',
+      resto_name: 'Holywing Resto',
+      resto_address: 'Street Nº 203,\r\nPreah Sihanoukville, KPS',
+      resto_contact: '628996221104',
+      resto_country: 'ID',
+      resto_currency: 'USD',
+      resto_slug: 'holywing-resto',
+      resto_order_method: 0,
+      // dummy
+      resto_transaction_today: 20,
+      resto_menu: 17
+    }
   },
   {
-    image: RestoProfile,
-    name: 'Resto Sadigit',
-    memberStatus: 'free',
-    activeStatus: false,
-    lastTransaction: 'Exp:22-08-2024'
+    account: {
+      account_name: 'Kedai Dsella',
+      account_email: 'restoholywing@gmail.com',
+      account_access: 'Super Admin',
+      account_subscription: true,
+      account_subscription_name: 'Paket 1 bulan',
+      account_subscription_expired: 1,
+      //dummy
+      account_subscription_id: 2
+    },
+    resto: {
+      resto_id: 1,
+      resto_image: RestoProfile,
+      resto_name: 'Kedai Dsella',
+      resto_address: 'Street Nº 203,\r\nPreah Sihanoukville, KPS',
+      resto_contact: '628996221104',
+      resto_country: 'ID',
+      resto_currency: 'USD',
+      resto_slug: 'holywing-resto',
+      resto_order_method: 0,
+      // dummy
+      resto_transaction_today: 200,
+      resto_menu: 5
+    }
   },
   {
-    image: RestoProfile,
-    name: 'Resto Sadigit',
-    memberStatus: 'trial',
-    lastTransaction: 'Tidak aktif lebih dari 30 hari'
+    account: {
+      account_name: 'Kedai Pak Bagus',
+      account_email: 'restoholywing@gmail.com',
+      account_access: 'Super Admin',
+      account_subscription: false,
+      account_subscription_name: 'Tidak ada paket dipilih',
+      account_subscription_expired: 1,
+      //dummy
+      account_subscription_id: 0
+    },
+    resto: {
+      resto_id: 2,
+      resto_image: RestoProfile,
+      resto_name: 'Kedai Pak Bagus',
+      resto_address: 'Street Nº 203,\r\nPreah Sihanoukville, KPS',
+      resto_contact: '628996221104',
+      resto_country: 'ID',
+      resto_currency: 'USD',
+      resto_slug: 'holywing-resto',
+      resto_order_method: 0,
+      // dummy
+      resto_transaction_today: 200,
+      resto_menu: 5
+    }
+  },
+  {
+    account: {
+      account_name: 'Kedai Pak Bagus',
+      account_email: 'restoholywing@gmail.com',
+      account_access: 'Super Admin',
+      account_subscription: false,
+      account_subscription_name: 'Tidak ada paket dipilih',
+      account_subscription_expired: 1,
+      //dummy
+      account_subscription_id: 0
+    },
+    resto: {
+      resto_id: 2,
+      resto_image: RestoProfile,
+      resto_name: 'Kedai Pak Bagus',
+      resto_address: 'Street Nº 203,\r\nPreah Sihanoukville, KPS',
+      resto_contact: '628996221104',
+      resto_country: 'ID',
+      resto_currency: 'USD',
+      resto_slug: 'holywing-resto',
+      resto_order_method: 0,
+      // dummy
+      resto_transaction_today: 200,
+      resto_menu: 5
+    }
+  },
+  {
+    account: {
+      account_name: 'Kedai Pak Bagus',
+      account_email: 'restoholywing@gmail.com',
+      account_access: 'Super Admin',
+      account_subscription: true,
+      account_subscription_name: 'Trial',
+      account_subscription_expired: 1,
+      //dummy
+      account_subscription_id: 1
+    },
+    resto: {
+      resto_id: 2,
+      resto_image: RestoProfile,
+      resto_name: 'Kedai Pak Bagus',
+      resto_address: 'Street Nº 203,\r\nPreah Sihanoukville, KPS',
+      resto_contact: '628996221104',
+      resto_country: 'ID',
+      resto_currency: 'USD',
+      resto_slug: 'holywing-resto',
+      resto_order_method: 0,
+      // dummy
+      resto_transaction_today: 200,
+      resto_menu: 5
+    }
+  },
+  {
+    account: {
+      account_name: 'Kedai Pak Bagus',
+      account_email: 'restoholywing@gmail.com',
+      account_access: 'Super Admin',
+      account_subscription: true,
+      account_subscription_name: 'Paket 12 bulan',
+      account_subscription_expired: 1,
+      //dummy
+      account_subscription_id: 4
+    },
+    resto: {
+      resto_id: 2,
+      resto_image: RestoProfile,
+      resto_name: 'Kedai Pak Bagus',
+      resto_address: 'Street Nº 203,\r\nPreah Sihanoukville, KPS',
+      resto_contact: '628996221104',
+      resto_country: 'ID',
+      resto_currency: 'USD',
+      resto_slug: 'holywing-resto',
+      resto_order_method: 0,
+      // dummy
+      resto_transaction_today: 200,
+      resto_menu: 5
+    }
+  },
+  {
+    account: {
+      account_name: 'Kedai Pak Bagus',
+      account_email: 'restoholywing@gmail.com',
+      account_access: 'Super Admin',
+      account_subscription: true,
+      account_subscription_name: 'Paket 3 Bulan',
+      account_subscription_expired: 1,
+      //dummy
+      account_subscription_id: 3
+    },
+    resto: {
+      resto_id: 2,
+      resto_image: RestoProfile,
+      resto_name: 'Kedai Pak Bagus',
+      resto_address: 'Street Nº 203,\r\nPreah Sihanoukville, KPS',
+      resto_contact: '628996221104',
+      resto_country: 'ID',
+      resto_currency: 'USD',
+      resto_slug: 'holywing-resto',
+      resto_order_method: 0,
+      // dummy
+      resto_transaction_today: 200,
+      resto_menu: 5
+    }
   }
 ]
+
 const account = useAccountStore()
 </script>
 
@@ -119,14 +283,16 @@ const account = useAccountStore()
         </div>
       </div>
 
-      <div name="resto" id="resto" class="grid grid-cols-4 grid-row-5 gap-x-2 gap-y-3">
-        <Resto
-          v-for="resto in restoList"
-          :image="resto.image"
-          :name="resto.name"
-          :memberStatus="resto.memberStatus"
-          :activeStatus="resto.activeStatus"
-          :lastTransaction="resto.lastTransaction"
+      <!-- Resto Card Components -->
+      <div name="resto" id="resto" class="grid grid-cols-4 gap-x-4 gap-y-6">
+        <CardResto
+          v-for="data in dataList"
+          :key="data.resto.resto_id"
+          :resto_image="data.resto.resto_image"
+          :resto_name="data.resto.resto_name"
+          :account_subscription="data.account.account_subscription"
+          :account_subscription_id="data.account.account_subscription_id"
+          :account_subscription_expired="data.account.account_subscription_expired"
         />
       </div>
     </section>

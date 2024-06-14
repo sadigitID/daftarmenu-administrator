@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { IconSearch, UserInvalid, UserValid } from '@/components/icons'
 import { Food } from '@/assets/image'
 import { CardResto } from '@/components/card'
@@ -6,7 +6,7 @@ import { RestoProfile } from '@/assets/image'
 import { InputText } from '@/components/'
 import type { RestaurantModel } from '@/utils/types'
 import { onMounted, ref } from 'vue'
-// import SlideDialog from '@/components/dialogs/SlideDialog.vue'
+import PopUpResto from '@/components/dialogs/PopUpResto.vue'
 import { useRestoStore } from '@/stores/resto'
 const searchQuery = ref('')
 const resto = useRestoStore()
@@ -205,7 +205,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <SlideDialog :open="resto.resto != null" @on-close="resto.resto = null" />
+  <PopUpResto :open="resto.resto != null" @on-close="resto.resto = null" :data="resto.resto" />
 
   <section id="upgrade" class="container justify-between p-6 m-6 overflow-hidden">
     <div class="container flex justify-between">
@@ -293,15 +293,7 @@ onMounted(() => {
 
     <!-- Resto Card Components -->
     <div name="resto" id="resto" class="grid grid-cols-4 gap-x-4 gap-y-6">
-      <CardResto
-        v-for="data in dataList"
-        :key="data.resto.resto_id"
-        :resto_image="data.resto.resto_image"
-        :resto_name="data.resto.resto_name"
-        :account_subscription="data.account.account_subscription"
-        :account_subscription_id="data.account.account_subscription_id"
-        :account_subscription_expired="data.account.account_subscription_expired"
-      />
+      <CardResto v-for="data in dataList" :key="data.resto.resto_id" :data="data" />
     </div>
   </section>
 </template>

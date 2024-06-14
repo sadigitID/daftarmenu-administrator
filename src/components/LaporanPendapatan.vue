@@ -51,7 +51,7 @@ const PendapatanItems = [
         </div>
       </div>
     </div>
-    <div class="flex">
+    <div class="flex gap-4">
       <PendapatanComponents
         v-for="PendapatanComponents in PendapatanItems"
         :month="PendapatanComponents.month"

@@ -1,6 +1,9 @@
 <script setup>
 import { RouterView } from 'vue-router'
+import { useAccountStore } from '@/stores/account'
 import { Navigasi, Header } from '@/components'
+
+const account = useAccountStore()
 </script>
 
 <template>

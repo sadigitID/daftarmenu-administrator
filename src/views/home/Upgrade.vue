@@ -7,7 +7,7 @@ import { InputText } from '@/components/'
 import { ButtonFilter } from '@/components'
 import type { RestaurantModel } from '@/utils/types'
 import { onMounted, ref } from 'vue'
-import SlideDialog from '@/components/dialogs/SlideDialog.vue'
+import PopUpResto from '@/components/dialogs/PopUpResto.vue'
 import { useRestoStore } from '@/stores/resto'
 
 const resto = useRestoStore()
@@ -206,7 +206,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <SlideDialog :open="resto.resto != null" @on-close="resto.resto = null" />
+  <PopUpResto :open="resto.resto != null" @on-close="resto.resto = null" :data="resto.resto" />
 
   <div class="flex items-center justify-center w-full h-full p-6 bg-layout">
     <section
@@ -216,6 +216,30 @@ onMounted(() => {
       <FilterBtn />
 
       <div class="flex justify-between">
+        <div
+          id="search"
+          class="flex items-center justify-center px-2 m-auto rounded-lg bg-gray-50 border-1"
+        >
+          <IconSearch class="w-4 h-4" />
+          <!-- <input class="text-sm font-light text-primary-900 searchTerm bg-gray-50" placeholder="Cari Menu"> -->
+          <InputText v-model:value="searchQuery" placeholder="Cari Menu" />
+        </div>
+
+        <!-- <Popover placeholder="filter" class="relative bg-gray-50 m-auto mx-2  px-1 py-1 justify-center items-center flex border-1 rounded-lg  ">
+
+                <PopoverPanel placeholder="Filter" value="filter">
+                    <p>Status Berlangganan</p>
+                    <option type="checkbox" value="free">Free</option>
+                    <option type="checkbox" value="Trial">Trial</option>
+                    <option type="checkbox" value="premium">Premium</option>
+
+                </PopoverPanel>
+
+
+
+            </Popover> -->
+      </div>
+    </div>
         <div class="">
           <h1 class="text-extrabold text-xl text-primary-900">Daftar Pengguna</h1>
           <p class="text-xs text-primary-900">Menampilkan 1350 pengguna</p>
@@ -292,6 +316,11 @@ onMounted(() => {
         </div>
       </div>
 
+    <!-- Resto Card Components -->
+    <div name="resto" id="resto" class="grid grid-cols-4 gap-x-4 gap-y-6">
+      <CardResto v-for="data in dataList" :key="data.resto.resto_id" :data="data" />
+    </div>
+  </section>
       <!-- Resto Card Components -->
       <div
         name="resto"

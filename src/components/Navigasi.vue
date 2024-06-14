@@ -11,7 +11,7 @@ import {
   NotesClick
 } from '@/components/icons'
 import NavComponents from '@/components/NavComponents.vue'
-import { useRoute } from 'vue-router'
+import { RouterLink, useRoute } from 'vue-router'
 
 const navigasiItem = [
   {

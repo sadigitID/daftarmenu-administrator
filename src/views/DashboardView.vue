@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { RouterView } from 'vue-router'
 import { useAccountStore } from '@/stores/account'
 import { Navigasi, Header } from '@/components'

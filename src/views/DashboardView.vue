@@ -7,13 +7,13 @@ const account = useAccountStore()
 </script>
 
 <template>
-  <div class="flex h-screen">
+  <div class="flex">
     <Navigasi />
   </div>
   <div>
     <div class="flex flex-col flex-grow">
       <Header />
-      <main>
+      <main class="pt-20 pl-24">
         <RouterView />
       </main>
     </div>

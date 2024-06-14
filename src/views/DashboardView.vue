@@ -1,20 +1,14 @@
 <script setup>
-import { useAccountStore } from '@/stores/account'
 import { RouterView } from 'vue-router'
-const account = useAccountStore()
-
 import { Navigasi, Header } from '@/components'
 </script>
 
 <template>
-  <!-- <h1 class="">
-    {{ account.getEmail() }}
-  </h1> -->
   <div class="flex h-screen">
     <Navigasi />
     <div class="flex flex-col flex-grow">
       <Header />
-      <main class="">
+      <main>
         <RouterView />
       </main>
     </div>

@@ -197,7 +197,7 @@ const account = useAccountStore()
 </script>
 
 <template>
-  <section id="upgrade" class="container overflow-hidden m-6 p-6 justify-between">
+  <section id="upgrade" class="overflow-hidden m-6 p-6 justify-between">
     <div class="flex container justify-between">
       <div class="">
         <h1 class="text-extrabold text-2xl text-primary-900">Daftar Pengguna</h1>
@@ -282,7 +282,11 @@ const account = useAccountStore()
     </div>
 
     <!-- Resto Card Components -->
-    <div name="resto" id="resto" class="grid grid-cols-4 gap-x-4 gap-y-6">
+    <div
+      name="resto"
+      id="resto"
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-6"
+    >
       <CardResto
         v-for="data in dataList"
         :key="data.resto.resto_id"

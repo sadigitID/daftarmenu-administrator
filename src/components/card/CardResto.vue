@@ -18,7 +18,7 @@ defineProps({
 
 <template>
   <button
-    class="flex flex-[1_0_0] p-2 w-[278px] bg-white justify-between items-center rounded-2xl font-sans shadow-[1px_1px_8px_0px_rgba(180,180,180,0.39)]"
+    class="flex flex-1 p-2 bg-white justify-between items-center rounded-2xl font-sans shadow-[1px_1px_8px_0px_rgba(180,180,180,0.39)]"
   >
     <div class="flex items-center gap-2">
       <img
@@ -55,11 +55,9 @@ defineProps({
               <p class="text-xs text-red-500">Tidak Aktif</p>
             </div>
           </div>
-          <div>
-            <p class="font-bold text-dark">
-              {{ resto_name }}
-            </p>
-          </div>
+          <p class="font-bold text-dark text-left">
+            {{ resto_name }}
+          </p>
         </div>
         <div class="text-xs text-gray-700">{{ account_subscription_expired }}</div>
       </div>

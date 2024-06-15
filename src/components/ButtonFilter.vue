@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { reactive, computed } from 'vue'
 import { Dropdown } from './icons'
 

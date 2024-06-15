@@ -11,7 +11,7 @@ const props = defineProps({
   data: Object as () => RestaurantModel | null
 })
 
-const currentPackageClass = ref('');
+const currentPackageClass = ref('')
 
 const emits = defineEmits(['onClose', 'onSelected'])
 const open = ref(computed(() => props.open))
@@ -96,7 +96,12 @@ function close() {
                                   <p class="text-xs text-primary-800">Trial</p>
                                 </div>
                                 <div
-                                  v-else-if="data && data.account && data.account.account_subscription_id && data.account.account_subscription_id > 1"
+                                  v-else-if="
+                                    data &&
+                                    data.account &&
+                                    data.account.account_subscription_id &&
+                                    data.account.account_subscription_id > 1
+                                  "
                                   class="flex p-1 items-start bg-gradient-to-r from-[#E3FFD3] to-[#FFF59C] rounded-full space-x-1"
                                 >
                                   <p class="text-xs text-primary-900">Premium</p>

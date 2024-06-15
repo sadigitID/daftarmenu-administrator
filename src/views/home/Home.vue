@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { CardDoughnut } from '@/components/card'
 import { defferenceInDays } from '@/utils/date'
 import { onMounted } from 'vue'

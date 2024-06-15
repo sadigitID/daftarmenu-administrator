@@ -1,12 +1,12 @@
-<script setup>
-import { Vec } from "@/components/icons/";
+<script setup lang="ts">
+import { Vec } from '@/components/icons/'
 
 defineProps({
   icon: Object,
-  title : String,
+  title: String,
   desc: String,
   value: String,
-  title2 : String,
+  title2: String,
   desc2: String,
   value2: String,
   type: {
@@ -16,7 +16,7 @@ defineProps({
 })
 </script>
 <template>
-<div
+  <div
     v-if="type === 'green'"
     class="flex p-4 flex-col justify-center items-center gap-2 flex-1 bottom-0 self-stretch rounded-2xl bg-gray-50"
   >

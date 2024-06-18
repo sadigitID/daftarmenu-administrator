@@ -6,7 +6,7 @@ const LaporanItems = [
   {
     month: 'Mei ',
     year: '2024',
-    monthlyIncome: ' 2.000.000',
+    monthlyIncome: '2.000.000',
     lastUpdated: '5 menit yang lalu'
   }
 ]
@@ -15,7 +15,7 @@ const PendapatanItems = [
   {
     month: 'April',
     year: '2024',
-    monthlyIncome: 'Rp 2. 500.000'
+    monthlyIncome: 'Rp 2.500.000'
   },
   {
     month: 'Est. Tahun',

@@ -1,8 +1,8 @@
 <script setup lang="ts">
 defineProps({
   month: String,
-  year: Number,
-  monthlyIncome: Number,
+  year: String,
+  monthlyIncome: String,
   type: {
     default: 'white'
   }

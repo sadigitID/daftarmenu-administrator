@@ -1,8 +1,8 @@
 <script setup lang="ts">
 defineProps({
   month: String,
-  year: Number,
-  monthlyIncome: Number,
+  year: String,
+  monthlyIncome: String,
   lastUpdated: String
 })
 </script>
@@ -14,9 +14,7 @@ defineProps({
       Pendapatan Bulan Ini
       <span class="highlight text-primary-500 font-medium">{{ month }} {{ year }}</span>
     </p>
-    <h2 class="text-2xl font-bold mt-6 leading-8 text-primary-800">
-      Rp {{ monthlyIncome.toLocaleString() }}
-    </h2>
+    <h2 class="text-2xl font-bold mt-6 leading-8 text-primary-800">Rp {{ monthlyIncome }}</h2>
     <p class="update-info text-xs font-normal leading-5">*Diupdate {{ lastUpdated }}</p>
   </div>
 </template>

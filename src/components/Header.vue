@@ -1,6 +1,28 @@
 <script setup lang="ts">
 import { Logo, Profil } from '@/components/icons'
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
+import { useAccountStore } from '@/stores/account'
+import { useDialogStore } from '@/stores/dialog'
+
+const dialog = useDialogStore()
+const { logout } = useAccountStore()
+
+const confirmLogout = () => {
+  dialog.title = 'Logout'
+  dialog.content = 'Apakah anda yakin ingin keluar?'
+  dialog.type = 'warning'
+  dialog.showCancelButton = true
+  dialog.dismissOnAction = true
+  dialog.confirmText = 'Ya'
+  dialog.cancelText = 'Tidak'
+  dialog.open = true
+
+  dialog.onConfirm = onSuccessfulLogout
+}
+
+const onSuccessfulLogout = () => {
+  logout()
+}
 </script>
 
 <template>
@@ -62,19 +84,17 @@ import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
                   >License</a
                 >
               </MenuItem>
-              <form method="POST" action="#">
-                <MenuItem v-slot="{ active }">
-                  <button
-                    type="submit"
-                    :class="[
-                      active ? 'bg-gray-100 text-red-700' : 'text-red-600',
-                      'block w-full px-4 py-2 text-left text-sm font-semibold'
-                    ]"
-                  >
-                    Sign out
-                  </button>
-                </MenuItem>
-              </form>
+              <MenuItem v-slot="{ active }">
+                <button
+                  @click="confirmLogout"
+                  :class="[
+                    active ? 'bg-gray-100 text-red-700' : 'text-red-600',
+                    'block w-full px-4 py-2 text-left text-sm font-semibold'
+                  ]"
+                >
+                  Sign out
+                </button>
+              </MenuItem>
             </div>
           </MenuItems>
         </transition>

@@ -47,7 +47,7 @@ const dataList = ref<RestaurantModel[]>([
       account_access: 'Super Admin',
       account_subscription: true,
       account_subscription_name: 'Paket 1 bulan',
-      account_subscription_expired: 1,
+      account_subscription_expired: 1718601151000,
       //dummy
       account_subscription_id: 2
     },
@@ -73,7 +73,7 @@ const dataList = ref<RestaurantModel[]>([
       account_access: 'Super Admin',
       account_subscription: false,
       account_subscription_name: 'Tidak ada paket dipilih',
-      account_subscription_expired: 1,
+      account_subscription_expired: 1718860351000,
       //dummy
       account_subscription_id: 0
     },

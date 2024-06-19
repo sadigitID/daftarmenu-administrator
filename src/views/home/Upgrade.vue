@@ -10,6 +10,7 @@ import { onMounted, ref } from 'vue'
 import PopUpResto from '@/components/dialogs/PopUpResto.vue'
 import { useRestoStore } from '@/stores/resto'
 import newNote from '@/components/dialogs/newNote.vue'
+import previewNote from '@/components/dialogs/previewNote.vue'
 
 const resto = useRestoStore()
 
@@ -214,7 +215,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <PopUpResto :open="resto.resto != null" @on-close="resto.resto = null" :data="resto.resto" />
+  <previewNote :open="resto.resto != null" @on-close="resto.resto = null" :data="resto.resto" />
 
   <div class="flex items-center justify-center w-full h-full p-6 bg-layout">
     <section

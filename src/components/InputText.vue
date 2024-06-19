@@ -62,7 +62,7 @@ const togglePasswordVisibility = () => {
 </script>
 
 <template>
-  <div class="relative">
+  <div>
     <input
       :maxlength="maxlength"
       :id="id"

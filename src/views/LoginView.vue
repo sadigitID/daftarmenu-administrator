@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Login } from '@/assets/image'
-import { useAccountStore } from '@/stores/account'
 import { ButtonPrimary, InputText } from '@/components'
 import { useDialogStore } from '@/stores/dialog'
+import { createAuth } from '@/api'
+import { useAccountStore } from '@/stores/account'
+import { Login } from '@/assets/image'
 const dialog = useDialogStore()
 const account = useAccountStore()
 const email = ref('')
@@ -31,12 +32,22 @@ const onLogin = () => {
 
     setTimeout(() => {
       if (validate()) {
-        isLoading.value = false
-        if (email.value == 'demo@demo.com' && password.value == 'demo') {
-          onSuccessfulLogin()
-        } else {
-          onFailedLogin()
+        const data = {
+          email: email.value,
+          password: password.value
         }
+        createAuth(data)
+          .then((res) => {
+            const result = res.data
+            if (result.status) {
+              onSuccessfulLogin()
+            } else {
+              onFailedLogin()
+            }
+          })
+          .catch(() => {
+            onFailedLogin()
+          })
       }
     }, 4000)
   }

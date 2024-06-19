@@ -1,0 +1,9 @@
+{
+  "status": true,
+  "data": {
+    "retention_rate": 70,
+    "total_users": 100,
+    "active_user": 30,
+    "inactive_user": 70
+  }
+}

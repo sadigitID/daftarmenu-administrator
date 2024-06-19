@@ -15,29 +15,29 @@ const data = [
   <div class="container py-[3%] px-[3%]">
     <div class="p-6 bg-white rounded-[24px]">
       <div class="flex flex-col items-start gap-[46px]">
-        <div class="log-transaction flex flex-col items-start gap-6 overflow-auto">
+        <div class="flex flex-col items-start gap-6 overflow-auto log-transaction">
           <h1 class="text-xl font-medium leading-6">Log Transaksi</h1>
-          <div class="table-heading flex justify-between w-full">
+          <div class="flex justify-between w-full table-heading">
             <Menu as="div" class="relative inline-block text-left">
               <div>
                 <MenuButton
                   class="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-gray-50 px-3 py-2 text-sm font-normal text-gray-900 shadow-sm hover:bg-gray-50"
                 >
                   Eksport
-                  <ChevronDownIcon class="-mr-1 h-5 w-5 text-gray-400" aria-hidden="true" />
+                  <ChevronDownIcon class="w-5 h-5 -mr-1 text-gray-400" aria-hidden="true" />
                 </MenuButton>
               </div>
 
               <transition
-                enter-active-class="transition ease-out duration-100"
-                enter-from-class="transform opacity-0 scale-95"
-                enter-to-class="transform opacity-100 scale-100"
-                leave-active-class="transition ease-in duration-75"
-                leave-from-class="transform opacity-100 scale-100"
-                leave-to-class="transform opacity-0 scale-95"
+                enter-active-class="transition duration-100 ease-out"
+                enter-from-class="transform scale-95 opacity-0"
+                enter-to-class="transform scale-100 opacity-100"
+                leave-active-class="transition duration-75 ease-in"
+                leave-from-class="transform scale-100 opacity-100"
+                leave-to-class="transform scale-95 opacity-0"
               >
                 <MenuItems
-                  class="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                  class="absolute right-0 z-10 w-56 mt-2 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
                 >
                   <div class="py-1">
                     <MenuItem v-slot="{ active }">
@@ -74,7 +74,7 @@ const data = [
                 </MenuItems>
               </transition>
             </Menu>
-            <div class="search-bar flex items-center gap-4">
+            <div class="flex items-center gap-4 search-bar">
               <span class="text-sm text-gray-800"> Search </span>
               <input
                 type="text"
@@ -83,7 +83,7 @@ const data = [
               />
             </div>
           </div>
-          <div class="table-body w-full overflow-auto">
+          <div class="w-full overflow-auto table-body">
             <TableComponents />
           </div>
         </div>

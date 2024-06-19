@@ -1,5 +1,6 @@
-<script setup>
+<script setup lang="ts">
 import { CardDoughnut } from '@/components/card'
+import { HomePageNegara, LaporanPendapatan, LoyalUser, PenilaianUser } from '@/components/'
 import { defferenceInDays } from '@/utils/date'
 import { onMounted } from 'vue'
 
@@ -13,14 +14,28 @@ onMounted(() => {
 </script>
 
 <template>
-  <section>
-    <div class="inline-flex h-[835px] py-12 px-6 items-start gap-5 shrink-0 rounded-3xl">
-      <CardDoughnut
-        title="Paket"
-        desc="Statistik Pembelian Paket Dipilih"
-        :values="[5, 10, 5]"
-        :labels="['1 Bulan', '3 Bulan', '12 Bulan']"
-      />
-    </div>
-  </section>
+  <div class="flex items-center justify-center w-full h-full p-6 bg-layout">
+    <section
+      id="upgrade"
+      class="flex overflow-hidden w-auto h-fixed py-12 gap-5 bg-white rounded-3xl"
+    >
+      <div class="flex-col">
+        <LaporanPendapatan />
+
+        <div class="flex p-6 items-start gap-4 shrink-0 rounded-3xl">
+          <CardDoughnut
+            title="Paket"
+            desc="Statistik Pembelian Paket Dipilih"
+            :values="[5, 10, 5]"
+            :labels="['1 Bulan', '3 Bulan', '12 Bulan']"
+          />
+          <LoyalUser />
+        </div>
+      </div>
+      <div class="px-6">
+        <PenilaianUser />
+        <HomePageNegara />
+      </div>
+    </section>
+  </div>
 </template>

@@ -1,7 +1,3 @@
-<script setup>
-import { ChartDoughnut } from '@/components/charts'
-</script>
-
 <template>
   <div
     class="flex w-[347px] p-6 items-center gap-4 rounded-2xl bg-white shadow-[1px_1px_8px_0px_rgba(180,180,180,0.39)] font-sans"
@@ -18,37 +14,21 @@ import { ChartDoughnut } from '@/components/charts'
   </div>
 </template>
 
-<script>
-export default {
-  name: 'App',
-  components: {
-    ChartDoughnut
-  },
-  props: {
-    title: {
-      type: String,
-      required: true
-    },
-    desc: {
-      type: String,
-      required: true
-    },
-    values: {
-      type: Array,
-      required: true
-    },
-    labels: {
-      type: Array,
-      required: true
-    }
-  },
-  data() {
-    return {
-      title: this.title,
-      desc: this.desc,
-      chartData: this.values,
-      chartLabels: this.labels
-    }
-  }
+<script setup lang="ts">
+import { ref } from 'vue'
+import { ChartDoughnut } from '@/components/charts'
+
+interface Props {
+  title: string;
+  desc: string;
+  values: number[];
+  labels: string[];
 }
+
+const props = defineProps<Props>()
+
+const title = ref(props.title)
+const desc = ref(props.desc)
+const chartData = ref(props.values)
+const chartLabels = ref(props.labels)
 </script>

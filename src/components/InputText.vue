@@ -86,8 +86,8 @@ const togglePasswordVisibility = () => {
       @click="togglePasswordVisibility"
       class="absolute inset-y-0 right-0 flex items-center px-4 text-gray-600"
     >
-      <EyesClose v-if="isPasswordVisible" />
-      <EyesOpen class="text-primary-500" v-else />
+      <EyesOpen v-if="isPasswordVisible" class="text-primary-500" />
+      <EyesClose v-else />
     </button>
   </div>
 </template>

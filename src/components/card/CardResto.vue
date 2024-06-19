@@ -2,10 +2,11 @@
 import { ChevronRight } from '@/components/icons'
 import { useRestoStore } from '@/stores/resto'
 import type { RestaurantModel } from '@/utils/types'
+import { timestampToDateFormated, daysSinceNow } from '@/utils/date'
 
 const resto = useRestoStore()
 
-defineProps({
+const props = defineProps({
   data: {
     type: Object as () => RestaurantModel,
     required: true
@@ -15,6 +16,11 @@ defineProps({
 const onSelected = (data: RestaurantModel) => {
   resto.resto = data
 }
+
+const accountExpired = props.data.account.account_subscription_expired
+const isExpired = new Date().getTime() > accountExpired
+const accountStatus = isExpired ? 'inactive' : 'active'
+const daysPassed = isExpired ? daysSinceNow(accountExpired) : 0
 </script>
 
 <template>
@@ -35,44 +41,50 @@ const onSelected = (data: RestaurantModel) => {
               v-if="data.account.account_subscription_id == 0"
               class="flex p-1 items-start gap-2.5 rounded-full bg-primary-50"
             >
-              <p class="text-xs text-primary-800">Free</p>
+              <p class="text-xs font-medium text-primary-800">Free</p>
             </div>
             <div
               v-else-if="data.account.account_subscription_id == 1"
               class="flex p-1 items-start gap-2.5 rounded-full bg-primary-50"
             >
-              <p class="text-xs text-primary-800">Trial</p>
+              <p class="text-xs font-medium text-primary-800">Trial</p>
             </div>
             <div
               v-else-if="data.account.account_subscription_id > 1"
               class="flex p-1 items-start bg-gradient-to-r from-[#E3FFD3] to-[#FFF59C] rounded-full space-x-1"
             >
-              <p class="text-xs text-primary-900">Premium</p>
+              <p class="text-xs font-medium text-primary-900">Premium</p>
             </div>
 
-            <div
-              v-if="data.account.account_subscription == true"
-              class="flex p-1 items-center gap-2.5"
-            >
-              <p class="text-xs text-superorange">Aktif</p>
+            <div v-if="accountStatus == 'active'" class="flex p-1 items-center gap-2.5">
+              <p class="text-xs font-medium text-superorange">Aktif</p>
             </div>
-            <div
-              v-else-if="data.account.account_subscription == false"
-              class="flex p-1 items-center gap-2.5"
-            >
-              <p class="text-xs text-red-500">Tidak Aktif</p>
+            <div v-else-if="accountStatus == 'inactive'" class="flex p-1 items-center gap-2.5">
+              <p class="text-xs font-medium text-red-500">Tidak Aktif</p>
             </div>
           </div>
-          <div>
-            <p class="font-bold text-dark">
+          <div class="flex items-start gap-2.5 self-stretch">
+            <p class="text-base font-bold text-dark text-left">
               {{ data.resto.resto_name }}
             </p>
           </div>
         </div>
-        <div class="text-xs text-gray-700">{{ data.account.account_subscription_expired }}</div>
+        <div v-if="daysPassed > 1 && daysPassed <= 30" class="flex items-start gap-2.5">
+          <p class="text-xs font-medium text-gray-700 text-left">
+            Tidak aktif {{ daysPassed }} hari yang lalu
+          </p>
+        </div>
+        <div v-else-if="daysPassed > 30" class="flex items-start gap-2.5">
+          <p class="text-xs font-medium text-gray-700 text-left">Tidak aktif lebih dari 30 hari</p>
+        </div>
+        <div v-else class="flex items-start gap-2.5">
+          <p class="text-xs font-medium text-gray-700 text-left">
+            Exp: {{ timestampToDateFormated(accountExpired) }}
+          </p>
+        </div>
       </div>
     </div>
-    <div class="flex items-center justify-center">
+    <div>
       <ChevronRight class="w-6 h-6 fill-dark" />
     </div>
   </button>

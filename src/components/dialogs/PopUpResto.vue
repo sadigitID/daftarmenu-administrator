@@ -13,7 +13,12 @@ const daysPassed = computed(() => (isExpired.value ? daysSinceNow(accountExpired
 
 const joinDate = computed(() => {
   const date = data.value?.account.account_subscription_expired
-  return date ? formatDate(date) : ''
+  if (date) {
+    const currentDate = new Date(date)
+    currentDate.setMonth(currentDate.getMonth() - 1)
+    return formatDate(currentDate)
+  }
+  return ''
 })
 
 function formatDate(date: string | number | Date) {

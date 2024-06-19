@@ -6,10 +6,24 @@ import type { RestaurantModel } from '@/utils/types'
 import { UpDownIcon } from '@/components/icons'
 import { timestampToDateFormated, daysSinceNow } from '@/utils/date'
 
-const accountExpired = computed(() => props.data?.account.account_subscription_expired ?? 0)
+const accountExpired = computed(() => data.value?.account.account_subscription_expired ?? 0)
 const isExpired = computed(() => new Date().getTime() > accountExpired.value)
 const accountStatus = computed(() => (isExpired.value ? 'inactive' : 'active'))
 const daysPassed = computed(() => (isExpired.value ? daysSinceNow(accountExpired.value) : 0))
+
+const joinDate = computed(() => {
+  const date = data.value?.account.account_subscription_expired
+  return date ? formatDate(date) : ''
+})
+
+function formatDate(date: string | number | Date) {
+  const options: Intl.DateTimeFormatOptions = {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric'
+  }
+  return new Date(date).toLocaleDateString('id-ID', options)
+}
 
 const props = defineProps({
   open: Boolean,
@@ -128,7 +142,7 @@ function close() {
                               <div class="space-y-1">
                                 <h2 class="text-2xl font-bold">{{ data?.resto.resto_name }}</h2>
                                 <p class="text-xs text-gray-600 font-medium">
-                                  {{ data?.resto.resto_id }}
+                                  Bergabung {{ joinDate }}
                                 </p>
                               </div>
                             </div>

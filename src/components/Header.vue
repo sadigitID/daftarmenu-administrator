@@ -8,9 +8,9 @@ const dialog = useDialogStore()
 const { logout } = useAccountStore()
 
 const confirmLogout = () => {
-  dialog.title = 'Logout'
-  dialog.content = 'Apakah anda yakin ingin keluar?'
-  dialog.type = 'warning'
+  dialog.title = 'Keluar'
+  dialog.content = 'Apakah anda yakin ingin keluar dari akun ini?'
+  dialog.type = 'error'
   dialog.showCancelButton = true
   dialog.dismissOnAction = true
   dialog.confirmText = 'Ya'

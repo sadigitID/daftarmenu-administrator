@@ -19,6 +19,7 @@ export { default as UpgradeClick } from '@/components/icons/UpgradeClick.vue'
 export { default as NotesClick } from '@/components/icons/NotesClick.vue'
 export { default as ChevronRight } from '@/components/icons/IconChevronRight.vue'
 export { default as UpDownIcon } from '@/components/icons/ArrowUpDownIcon.vue'
+export { default as ChevronDown } from '@/components/icons/ChevronDown.vue'
 
 // export { default as CommunityIcon } from '@/components/icons/IconCommunity.vue'
 // export { default as DocumentationIcon } from '@/components/icons/IconDocumentation.vue'

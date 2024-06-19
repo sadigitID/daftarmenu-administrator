@@ -211,7 +211,7 @@ onMounted(() => {
   <div class="flex items-center justify-center w-full h-full p-6 bg-layout">
     <section
       id="upgrade"
-      class="container overflow-hidden w-[1100px] h-[525px] m-auto gap-6 bg-white p-6 rounded-3xl"
+      class="container overflow-hidden w-full h-full m-auto gap-6 bg-white p-6 rounded-3xl"
     >
       <div class="flex justify-between">
         <div class="">

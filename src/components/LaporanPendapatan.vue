@@ -32,7 +32,7 @@ const PendapatanItems = [
 </script>
 <template>
   <div
-    class="flex w-[810px] px-6 py-6 mt-6 ml-6 flex-col gap-6 bg-whites shadow-custom-gray rounded-2xl bg-white"
+    class="flex px-6 py-6 flex-col gap-6 bg-white rounded-2xl shadow-[1px_1px_8px_0px_rgba(180,180,180,0.39)]"
   >
     <div class="flex justify-between items-center self-stretch">
       <div>

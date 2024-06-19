@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 defineProps({
   title: String,
   note1: String,
@@ -14,7 +14,7 @@ defineProps({
 <template>
   <div
     v-if="type === 'jenis'"
-    class="flex flex-col items-start gap-2 p-4 flex-1 rounded-2xl bg-white shadow-[1px_1px_8px_rgba(180,180,180,0.39)] w-[288px] h-[241px]"
+    class="flex flex-col items-start gap-2 p-4 flex-1 rounded-2xl bg-white shadow-custom-gray"
   >
     <div class="flex flex-col items-start gap-1 self-stretch">
       <p
@@ -33,21 +33,24 @@ defineProps({
     </div>
     <div class="flex flex-col items-start gap-[11px] self-stretch">
       <p
-        class="text-gray-800 whitespace-nowrap overflow-ellipsis webkit-line-clamp-2 overflow-hidden font-sans text-sm font-normal leading-[22.4px] h-11 self-stretch"
+        class="text-gray-800 overflow-ellipsis overflow-hidden font-sans text-sm font-normal leading-[22.4px] h-11 self-stretch"
       >
         {{ desc }}
       </p>
-      <img
-        :src="img"
-        alt=""
-        class="self-strech object-cover object-center w-[256px] h-[96px] rounded-2xl"
-      />
+      <div v-if="img">
+        <img
+          :src="img"
+          alt=""
+          class="self-strech object-cover object-center w-[256px] h-[96px] rounded-2xl"
+        />
+      </div>
+      <div v-else></div>
     </div>
   </div>
 
   <div
     v-else-if="type === 'status'"
-    class="flex flex-col items-start gap-2 p-4 flex-1 rounded-2xl bg-white shadow-[1px_1px_8px_rgba(180,180,180,0.39)] w-[288px] h-[241px]"
+    class="flex flex-col items-start gap-2 p-4 flex-1 rounded-2xl bg-white shadow-custom-gray"
   >
     <div class="flex flex-col items-start gap-1 self-stretch">
       <p
@@ -66,7 +69,7 @@ defineProps({
     </div>
     <div class="flex flex-col items-start gap-[11px] self-stretch">
       <p
-        class="text-gray-800 whitespace-nowrap overflow-ellipsis webkit-line-clamp-2 overflow-hidden font-sans text-sm font-normal leading-[22.4px] h-11 self-stretch"
+        class="text-gray-800 overflow-ellipsis webkit-line-clamp-2 overflow-hidden font-sans text-sm font-normal leading-[22.4px] h-11 self-stretch"
       >
         {{ desc }}
       </p>

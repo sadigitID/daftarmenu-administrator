@@ -1,35 +1,20 @@
-<script setup>
-import { ChartBar } from '@/components/charts'
-
-</script>
-
 <template>
-  <div id="app">
+  <div>
     <ChartBar :chartDataValues="chartData" :chartLabels="chartLabels" />
   </div>
 </template>
 
-<script>
-export default {
-  name: 'App',
-  components: {
-    ChartBar
-  },
-  props: {
-    data: {
-      type: Array,
-      required: true
-    },
-    labels: {
-      type: Array,
-      required: true
-    }
-  },
-  data() {
-    return {
-      chartData: this.data,
-      chartLabels: this.labels
-    };
-  }
-};
+<script setup lang="ts">
+import { ref } from 'vue'
+import { ChartBar } from '@/components/charts'
+
+interface Props {
+  data: number[];
+  labels: string[];
+}
+
+const props = defineProps<Props>()
+
+const chartData = ref(props.data)
+const chartLabels = ref(props.labels)
 </script>

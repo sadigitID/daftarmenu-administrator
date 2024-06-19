@@ -64,12 +64,14 @@ const onSelected = (data: RestaurantModel) => {
             </div>
           </div>
           <div>
-            <p class="font-bold text-dark">
+            <p class="font-bold text-dark text-left">
               {{ data.resto.resto_name }}
             </p>
           </div>
         </div>
-        <div class="text-xs text-gray-700">{{ data.account.account_subscription_expired }}</div>
+        <div class="text-xs text-gray-700">
+          {{ data.account.account_subscription_expired }}
+        </div>
       </div>
     </div>
     <div class="flex items-center justify-center">

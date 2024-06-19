@@ -1,9 +1,11 @@
-<script setup>
+<script setup lang="ts">
+import { ref } from 'vue'
+
 const isPasswordVisible = ref(false)
 const password = ref('')
 
 const togglePasswordVisibility = () => {
-  isPasswordVisible.value = !isPasswordVisible
+  isPasswordVisible.value = !isPasswordVisible.value
 }
 </script>
 

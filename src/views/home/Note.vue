@@ -103,7 +103,7 @@ const noteData = [
           :type="item.type"
         />
       </div>
-      <div class="flex w-[1224px] items-start gap-6">
+      <div class="flex items-start gap-6">
         <Note
           v-for="(item, index) in noteData"
           :key="index"

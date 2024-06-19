@@ -11,7 +11,6 @@ export default {
   ],
   theme: {
     extend: {
-
       display: ['-webkit-box'],
       webkitBoxOrient: {
         vertical: 'vertical'
@@ -20,6 +19,9 @@ export default {
         1: '1'
       },
 
+      boxShadow: {
+        'custom-gray': '1px 1px 8px 0px rgba(180, 180, 180, 0.39)'
+      },
       backgroundImage: {
         device: "url('/assets/image/device.png')",
         menu: "url('/assets/image/menu.jpg')"
@@ -78,18 +80,18 @@ export default {
     function ({ addUtilities }) {
       addUtilities({
         '.webkit-box': {
-          display: '-webkit-box',
+          display: '-webkit-box'
         },
         '.webkit-box-orient-vertical': {
-          '-webkit-box-orient': 'vertical',
+          '-webkit-box-orient': 'vertical'
         },
         '.webkit-line-clamp-1': {
-          '-webkit-line-clamp': '1',
+          '-webkit-line-clamp': '1'
         },
         '.webkit-line-clamp-2': {
-          '-webkit-line-clamp': '2',
-        },
+          '-webkit-line-clamp': '2'
+        }
       })
-    },
+    }
   ]
 }

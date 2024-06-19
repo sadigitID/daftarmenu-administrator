@@ -7,9 +7,9 @@ import { InputText } from '@/components/'
 import { ButtonFilter } from '@/components'
 import type { RestaurantModel } from '@/utils/types'
 import { onMounted, ref } from 'vue'
-import SlideDialog from '@/components/dialogs/SlideDialog.vue'
+import PopUpResto from '@/components/dialogs/PopUpResto.vue'
 import { useRestoStore } from '@/stores/resto'
-const searchQuery = ref('')
+
 const resto = useRestoStore()
 
 const dataList = ref<RestaurantModel[]>([
@@ -206,9 +206,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <SlideDialog :open="resto.resto != null" @on-close="resto.resto = null" />
+  <PopUpResto :open="resto.resto != null" @on-close="resto.resto = null" :data="resto.resto" />
 
-  <div class="flex items-center p-6">
+  <div class="flex items-center justify-center w-full h-full p-6 bg-layout">
     <section
       id="upgrade"
       class="container overflow-hidden w-[1100px] h-[525px] m-auto gap-6 bg-white p-6 rounded-3xl"
@@ -294,7 +294,7 @@ onMounted(() => {
       <div
         name="resto"
         id="resto"
-        class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-4 gap-y-6"
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-x-4 gap-y-6"
       >
         <CardResto v-for="data in dataList" :key="data.resto.resto_id" :data="data" />
       </div>

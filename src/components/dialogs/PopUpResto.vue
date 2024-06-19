@@ -190,7 +190,7 @@ function close() {
                           </div>
                           <div class="mb-4 space-y-1">
                             <label class="block text-sm font-medium text-gray-700"
-                              >Perpanjang Paket</label
+                              >Beli Paket</label
                             >
                             <select
                               class="mt-1 font-medium text-sm block w-full rounded-md border-gray-300 bg-gray-50 py-2 px-4 text-[#5C5C5C]"

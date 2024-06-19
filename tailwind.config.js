@@ -1,3 +1,5 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -9,18 +11,31 @@ export default {
   ],
   theme: {
     extend: {
+      display: ['-webkit-box'],
+      webkitBoxOrient: {
+        vertical: 'vertical'
+      },
+      webkitLineClamp: {
+        1: '1'
+      },
+
+      boxShadow: {
+        'custom-gray': '1px 1px 8px 0px rgba(180, 180, 180, 0.39)'
+      },
       backgroundImage: {
-        device: "url('/assets/images/device.png')"
+        device: "url('/assets/image/device.png')",
+        menu: "url('/assets/image/menu.jpg')"
       },
       aspectRatio: {
         '9/16': '9 / 16'
       },
       fontFamily: {
-        sans: ['Plus Jakarta Sans', 'sans-serif']
+        sans: ['Plus Jakarta Sans', 'sans-serif', ...defaultTheme.fontFamily.sans]
       },
       colors: {
         dark: '#151617',
-        layout: '#F3F7F9',
+        superorange: '#F59E0B',
+        layout: '#EEF0ED',
         'vtd-primary': {
           50: '#f1f8ed',
           100: '#d3e8c8',
@@ -63,5 +78,23 @@ export default {
       }
     }
   },
-  plugins: []
+  plugins: [
+    require('@tailwindcss/typography'),
+    function ({ addUtilities }) {
+      addUtilities({
+        '.webkit-box': {
+          display: '-webkit-box'
+        },
+        '.webkit-box-orient-vertical': {
+          '-webkit-box-orient': 'vertical'
+        },
+        '.webkit-line-clamp-1': {
+          '-webkit-line-clamp': '1'
+        },
+        '.webkit-line-clamp-2': {
+          '-webkit-line-clamp': '2'
+        }
+      })
+    }
+  ]
 }

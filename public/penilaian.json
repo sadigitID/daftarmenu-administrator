@@ -4,6 +4,10 @@
     "retention_rate": 70,
     "total_users": 100,
     "active_user": 30,
-    "inactive_user": 70
+    "inactive_user": 70,
+    "join_today": 1200,
+    "premium": 600,
+    "free": 900,
+    "trial": 700
   }
 }

@@ -219,11 +219,8 @@ onMounted(() => {
 <template>
   <popUpResto :open="resto.resto != null" @on-close="resto.resto = null" :data="resto.resto" />
 
-  <div class="flex items-center justify-center w-full h-full p-6 bg-layout">
-    <section
-      id="upgrade"
-      class="container overflow-hidden w-full h-full m-auto gap-6 bg-white p-6 rounded-3xl"
-    >
+  <div class="flex items-center justify-center w-full h-full px-12 py-4 bg-layout">
+    <section id="upgrade" class="container w-full h-full m-auto gap-6 bg-white p-6 rounded-3xl">
       <div class="flex justify-between">
         <div class="">
           <h1 class="text-extrabold text-xl text-primary-900">Daftar Pengguna</h1>
@@ -251,17 +248,17 @@ onMounted(() => {
         </div>
 
         <div
-          class="bg-primary-900 gap-4 flex justify-center items-center rounded-xl py-4 px-6 w-auto h-[100%]"
+          class="bg-primary-900 gap-4 flex justify-center items-center rounded-xl py-6 px-6 w-auto h-auto"
         >
           <UserValid class="w-12 h-12 text-white" />
           <div class="flex flex-col">
             <h1 class="text-white text-xs">Hari Ini Bergabung</h1>
-            <h1 class="text-white text-xl font-bold">800</h1>
+            <h1 class="text-white text-xl font-bold">{{ stores.getUserData().join_today }}</h1>
           </div>
         </div>
 
         <div
-          class="bg-primary-50 flex gap-4 justify-center items-center rounded-xl py-4 px-6 w-auto h-[100%]"
+          class="bg-primary-50 flex gap-4 justify-center items-center rounded-xl py-6 px-6 w-auto h-[100%]"
         >
           <UserInvalid class="fill-primary-900" />
           <div>
@@ -289,19 +286,19 @@ onMounted(() => {
             <UserValid class="fill-primary-900" />
             <div>
               <h1 class="text-primary-900 text-xs">Premium</h1>
-              <h1 class="text-primary-900 text-xl font-bold">800</h1>
+              <h1 class="text-primary-900 text-xl font-bold">{{ stores.getUserData().premium }}</h1>
             </div>
           </div>
 
           <div class="bg-primary-900 flex items-center justify-between px-6 py-2 w-[100%] h-auto">
             <div class="flex justify-center items-center gap-1">
               <h1 class="text-sm text-white">Trial</h1>
-              <h1 class="text-xl font-bold text-white">800</h1>
+              <h1 class="text-xl font-bold text-white">{{ stores.getUserData().trial }}</h1>
             </div>
 
             <div class="flex justify-center items-center gap-1">
               <h1 class="text-sm text-white">Free</h1>
-              <h1 class="text-xl font-bold text-white">800</h1>
+              <h1 class="text-xl font-bold text-white">{{ stores.getUserData().free }}</h1>
             </div>
           </div>
         </div>

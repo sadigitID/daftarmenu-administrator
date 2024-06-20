@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { LaporanComponents, PendapatanComponents } from '@/components'
-import { WrapperChartBar } from '@/components/card'
+import { ChartBar } from '@/components/charts'
 
 const LaporanItems = [
   {
@@ -44,9 +44,9 @@ const PendapatanItems = [
       </div>
       <div>
         <div class="md:w-[22rem] lg:w-[24rem]">
-          <WrapperChartBar
-            :data="[60, 55, 65, 50, 45, 55, 70]"
-            :labels="['Nov 23', 'Dec 23', 'Jan 24', 'Feb 24', 'Mar 24', 'Apr 24', 'May 24']"
+          <ChartBar
+            :chartDataValues="[60, 55, 65, 50, 45, 55, 70]"
+            :chartLabels="['Nov 23', 'Dec 23', 'Jan 24', 'Feb 24', 'Mar 24', 'Apr 24', 'May 24']"
           />
         </div>
       </div>

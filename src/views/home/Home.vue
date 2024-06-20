@@ -18,7 +18,7 @@ onMounted(() => {
 <template>
   <div class="w-full h-full md:p-8 md:ms-4 mt-2 md:mt-0 flex items-center justify-center">
     <section
-      class="container flex flex-col gap-6 mb-[100px] md:mb-0 lg:bg-white md:ms-6 rounded-3xl lg:items-start lg:justify-between lg:w-screen lg:flex-row overflow-hidden h-fixed lg:p-8"
+      class="container flex flex-col gap-6 mb-[100px] md:mb-0 lg:bg-white md:ms-6 rounded-3xl xl:items-start lg:justify-between lg:w-screen xl:flex-row overflow-hidden h-fixed lg:p-8"
     >
       <div class="flex flex-col gap-6">
         <LaporanPendapatan />

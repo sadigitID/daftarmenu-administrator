@@ -27,7 +27,7 @@ const stores = useHomeStore()
           </p>
         </div>
 
-        <div class="flex py-4 px-6 mt-4 bg-white gap-2 w-full lg:w-[346px] h-[87px] rounded-2xl">
+        <div class="flex py-4 px-6 mt-4 bg-white gap-2 w-full 2xl:w-[346px] h-[87px] rounded-2xl">
           <Double class="size-12"></Double>
           <div class="flex flex-col items-start justify-center gap-1">
             <p class="font-sans text-sm leading-[22.4px] font-normal text-primary-800">

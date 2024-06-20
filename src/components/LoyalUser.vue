@@ -22,7 +22,7 @@ const user = [
 </script>
 <template>
   <div
-    class="lg:w-[394px] w-full h-auto p-6 gap-4 bg-white rounded-2xl flex items-center shadow-[1px_1px_8px_rgba(180,180,180,0.39)]"
+    class="w-full h-auto p-6 gap-4 bg-white rounded-2xl flex items-center shadow-[1px_1px_8px_rgba(180,180,180,0.39)]"
   >
     <div class="flex flex-col justify-center items-start gap-8 flex-1 bottom-0">
       <div class="flex flex-col items-start gap-1">

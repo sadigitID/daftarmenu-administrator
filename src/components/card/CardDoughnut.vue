@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex lg:w-[347px] w-full p-6 items-center gap-4 rounded-2xl bg-white shadow-[1px_1px_8px_0px_rgba(180,180,180,0.39)] font-sans"
+    class="flex w-full p-6 items-center gap-4 rounded-2xl bg-white shadow-[1px_1px_8px_0px_rgba(180,180,180,0.39)] font-sans"
   >
     <div class="flex flex-col justify-center items-start gap-8 flex-[1_0_0]">
       <div class="flex flex-col items-start gap-1 self-stretch">

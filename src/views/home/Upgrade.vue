@@ -215,7 +215,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <previewNote :open="resto.resto != null" @on-close="resto.resto = null" :data="resto.resto" />
+  <popUpResto :open="resto.resto != null" @on-close="resto.resto = null" :data="resto.resto" />
 
   <div class="flex items-center justify-center w-full h-full p-6 bg-layout">
     <section

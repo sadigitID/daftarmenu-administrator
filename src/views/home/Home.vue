@@ -59,5 +59,3 @@ onMounted(() => {
       </div>
     </section>
     -->
-  </div>
-</template>

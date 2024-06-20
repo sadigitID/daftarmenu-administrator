@@ -6,7 +6,6 @@ import { onMounted, ref } from 'vue'
 export const useHomeStore = defineStore('homeStore', () => {
   const laporanPendapatanItem = ref([])
   const users = ref({
-    retention_rate: 0,
     total_users: 0,
     active_user: 0,
     inactive_user: 0
@@ -15,7 +14,7 @@ export const useHomeStore = defineStore('homeStore', () => {
   const user_data = ref<RestaurantModel[]>([])
 
   const getRetentionRateStatus = () => {
-    const rate = users.value.retention_rate
+    const rate = (users.value.active_user / users.value.total_users) * 100
     if (rate >= 70) {
       return 'baik'
     } else if (rate >= 50 && rate < 70) {

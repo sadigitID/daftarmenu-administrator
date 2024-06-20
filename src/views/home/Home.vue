@@ -5,11 +5,10 @@ import { defferenceInDays } from '@/utils/date'
 import { onMounted } from 'vue'
 
 onMounted(() => {
-  var currentDay = new Date()
-  var lastTimeStamp = 1717984603000
-
-  var date = new Date(lastTimeStamp)
-  console.log('defferenceInDays', defferenceInDays(currentDay, date))
+  // var currentDay = new Date()
+  // var lastTimeStamp = 1717984603000
+  // var date = new Date(lastTimeStamp)
+  // console.log('defferenceInDays', defferenceInDays(currentDay, date))
 })
 </script>
 

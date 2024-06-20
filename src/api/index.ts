@@ -38,4 +38,8 @@ const createAuth2 = async (username: string, passowrd: string) => {
   })
 }
 
-export { fetchPendapatanItem, fetchPenilaianUser, createAuth }
+const fetchUserData = async () => {
+  return instance.get('/user_data.json')
+}
+
+export { fetchPendapatanItem, fetchPenilaianUser, createAuth, fetchUserData }

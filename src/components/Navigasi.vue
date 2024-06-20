@@ -47,11 +47,12 @@ watch(route, (to, _) => {
 })
 </script>
 
+<!-- fixed left-0 top-0 bottom-0 h-screen w-[120px] bg-primary-900 text-primary-50 flex flex-col justify-center items-center z-10 -->
 <template>
-  <nav
-    class="fixed left-0 top-0 bottom-0 h-screen w-[120px] bg-primary-900 text-primary-50 flex flex-col justify-center items-center z-10"
-  >
-    <div class="flex flex-col items-center space-y-6">
+  <nav class="bg-primary-900 fixed left-0 bottom-0 w-full text-white z-10 md:h-screen md:w-[120px]">
+    <div
+      class="flex w-full justify-between items-center px-6 h-20 md:px-0 md:h-full md:flex-col md:justify-center md:gap-6"
+    >
       <RouterLink v-for="(item, index) in navigasiItem" :to="item.path" :key="index">
         <NavComponents
           :icon="item.icon"

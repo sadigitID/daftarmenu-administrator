@@ -17,7 +17,7 @@ const NegaraItem = [
 </script>
 
 <template>
-  <section class="w-[394px] bg-white shadow-md p-4 rounded-xl">
+  <section class="w-full bg-white shadow-sdw p-4 rounded-xl">
     <div class="mb-8">
       <h1 class="text-xl pb-0.5 font-medium">Negara</h1>
       <p class="text-sm">Sebaran negara pengguna daftarmenu</p>

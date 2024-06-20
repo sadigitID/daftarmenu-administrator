@@ -1,4 +1,5 @@
-import { fetchPendapatanItem, fetchPenilaianUser } from '@/api'
+import { fetchPendapatanItem, fetchPenilaianUser, fetchUserData } from '@/api'
+import type { RestaurantModel } from '@/utils/types'
 import { defineStore } from 'pinia'
 import { onMounted, ref } from 'vue'
 
@@ -10,6 +11,8 @@ export const useHomeStore = defineStore('homeStore', () => {
     active_user: 0,
     inactive_user: 0
   })
+
+  const user_data = ref<RestaurantModel[]>([])
 
   const getRetentionRateStatus = () => {
     const rate = users.value.retention_rate
@@ -26,8 +29,30 @@ export const useHomeStore = defineStore('homeStore', () => {
     return users.value
   }
 
+  const getAccountData = () => {
+    return user_data.value
+  }
+
   const getLaporanPendapatanItem = () => {
     return laporanPendapatanItem.value
+  }
+
+  const fetchAccountData = async () => {
+    fetchUserData()
+      .then((response) => {
+        const result = response.data
+        if (result.status) {
+          user_data.value = result.data
+        } else {
+          console.log(result.message)
+        }
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+      .finally(() => {
+        console.log('fetch user done')
+      })
   }
 
   const fetchLaporanPendapatanItem = async () => {
@@ -63,13 +88,16 @@ export const useHomeStore = defineStore('homeStore', () => {
   onMounted(() => {
     fetchLaporanPendapatanItem()
     fetchDataPenilaianUser()
+    fetchAccountData()
   })
 
   return {
     fetchLaporanPendapatanItem,
     getLaporanPendapatanItem,
     getUserData,
+    getAccountData,
     getRetentionRateStatus,
-    fetchDataPenilaianUser
+    fetchDataPenilaianUser,
+    fetchAccountData
   }
 })

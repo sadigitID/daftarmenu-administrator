@@ -1,5 +1,6 @@
 interface RestaurantModel {
   account: {
+    account_id: number
     account_name: string
     account_email: string
     account_access: string

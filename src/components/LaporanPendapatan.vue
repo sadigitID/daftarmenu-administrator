@@ -31,10 +31,8 @@ const PendapatanItems = [
 ]
 </script>
 <template>
-  <div
-    class="flex w-full px-6 py-6 ml-6 flex-col gap-6 bg-whites shadow-custom-gray rounded-2xl bg-white"
-  >
-    <div class="flex justify-between items-center self-stretch">
+  <div class="flex w-full flex-col gap-8 md:gap-6 bg-white shadow-sdw rounded-2xl p-6">
+    <div class="flex flex-col md:flex-row gap-6 md:justify-between md:items-center self-stretch">
       <div>
         <LaporanComponents
           v-for="LaporanComponents in LaporanItems"
@@ -45,7 +43,7 @@ const PendapatanItems = [
         />
       </div>
       <div>
-        <div class="w-[24rem]">
+        <div class="md:w-[22rem] lg:w-[24rem]">
           <WrapperChartBar
             :data="[60, 55, 65, 50, 45, 55, 70]"
             :labels="['Nov 23', 'Dec 23', 'Jan 24', 'Feb 24', 'Mar 24', 'Apr 24', 'May 24']"
@@ -53,7 +51,7 @@ const PendapatanItems = [
         </div>
       </div>
     </div>
-    <div class="flex gap-4">
+    <div class="flex flex-col lg:flex-row gap-4">
       <PendapatanComponents
         v-for="PendapatanComponents in PendapatanItems"
         :month="PendapatanComponents.month"

@@ -16,11 +16,32 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="flex items-center justify-center w-full h-full p-6 bg-layout">
+  <div class="w-full h-full md:p-8 md:ms-4 mt-2 md:mt-0 flex items-center justify-center">
     <section
-      id="upgrade"
-      class="flex w-auto gap-5 py-12 overflow-hidden bg-white h-fixed rounded-3xl"
+      class="container flex flex-col gap-6 mb-[100px] md:mb-0 lg:bg-white md:ms-6 rounded-3xl lg:items-start lg:justify-between lg:w-screen lg:flex-row overflow-hidden h-fixed lg:p-8"
     >
+      <div class="flex flex-col gap-6">
+        <LaporanPendapatan />
+
+        <div class="flex flex-col lg:flex-row items-start gap-4 shrink-0 rounded-3xl">
+          <CardDoughnut
+            title="Paket"
+            desc="Statistik Pembelian Paket Dipilih"
+            :values="[5, 10, 5]"
+            :labels="['1 Bulan', '3 Bulan', '12 Bulan']"
+          />
+          <LoyalUser />
+        </div>
+      </div>
+      <div class="flex flex-col gap-4">
+        <PenilaianUser />
+        <HomePageNegara />
+      </div>
+    </section>
+  </div>
+</template>
+
+<!-- <section id="upgrade" class="flex w-auto gap-5 py-12 overflow-hidden bg-white h-fixed rounded-3xl">
       <div class="flex-col">
         <LaporanPendapatan />
 
@@ -38,6 +59,4 @@ onMounted(() => {
         <PenilaianUser />
         <HomePageNegara />
       </div>
-    </section>
-  </div>
-</template>
+    </section> -->

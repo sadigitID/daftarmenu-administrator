@@ -15,7 +15,7 @@ defineProps({
     class="bg-gray-50 flex flex-col justify-center items-start gap-2 p-4 flex-1 rounded-2xl"
   >
     <h4 class="flex">{{ month }} {{ year }}</h4>
-    <p class="text-primary-800 text-2xl font-bold leading-snug">{{ monthlyIncome }}</p>
+    <p class="text-primary-800 md:text-2xl font-bold leading-snug">{{ monthlyIncome }}</p>
   </div>
 
   <div
@@ -23,6 +23,6 @@ defineProps({
     class="bg-primary-800 text-white flex flex-col justify-center items-start gap-2 p-4 flex-1 rounded-2xl"
   >
     <h4 class="flex">{{ month }} {{ year }}</h4>
-    <p class="text-white text-2xl font-bold leading-snug">{{ monthlyIncome }}</p>
+    <p class="text-white md:text-2xl font-bold leading-snug">{{ monthlyIncome }}</p>
   </div>
 </template>

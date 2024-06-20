@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { LaporanComponents, PendapatanComponents } from '@/components'
+import { LaporanKomponen, PendapatanComponents } from '@/components'
 import { WrapperChartBar } from '@/components/card'
 
 const LaporanItems = [

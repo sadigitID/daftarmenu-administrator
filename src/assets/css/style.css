@@ -690,6 +690,11 @@ video {
   margin-bottom: 1.5rem;
 }
 
+.my-\[8px\]{
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
 .-ml-1{
   margin-left: -0.25rem;
 }
@@ -726,12 +731,20 @@ video {
   margin-left: 1.5rem;
 }
 
+.ml-\[16px\]{
+  margin-left: 16px;
+}
+
 .mr-2{
   margin-right: 0.5rem;
 }
 
 .mr-3{
   margin-right: 0.75rem;
+}
+
+.mr-\[16px\]{
+  margin-right: 16px;
 }
 
 .mr-\[25px\]{
@@ -866,6 +879,10 @@ video {
   height: 20px;
 }
 
+.h-\[241px\]{
+  height: 241px;
+}
+
 .h-\[525px\]{
   height: 525px;
 }
@@ -970,6 +987,10 @@ video {
   width: 120px;
 }
 
+.w-\[1224px\]{
+  width: 1224px;
+}
+
 .w-\[1272px\]{
   width: 1272px;
 }
@@ -992,6 +1013,10 @@ video {
 
 .w-\[256px\]{
   width: 256px;
+}
+
+.w-\[288px\]{
+  width: 288px;
 }
 
 .w-\[328px\]{
@@ -1354,6 +1379,10 @@ video {
 
 .overflow-ellipsis{
   text-overflow: ellipsis;
+}
+
+.whitespace-nowrap{
+  white-space: nowrap;
 }
 
 .rounded{
@@ -2200,6 +2229,10 @@ video {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .md\:grid-cols-3{
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
   .md\:px-6{
     padding-left: 1.5rem;
     padding-right: 1.5rem;
@@ -2245,6 +2278,10 @@ video {
 @media (min-width: 1280px){
   .xl\:grid-cols-4{
     grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .xl\:grid-cols-5{
+    grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 }
 

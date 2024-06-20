@@ -3,10 +3,8 @@ import { CardDoughnut } from '@/components/card'
 import { HomePageNegara, LaporanPendapatan, LoyalUser, PenilaianUser } from '@/components/'
 import { defferenceInDays } from '@/utils/date'
 import { onMounted } from 'vue'
-import { useHomeStore } from '@/stores/home'
 
 onMounted(() => {
-  const store = useHomeStore()
   var currentDay = new Date()
   var lastTimeStamp = 1717984603000
 
@@ -17,14 +15,11 @@ onMounted(() => {
 
 <template>
   <div class="flex items-center justify-center w-full h-full p-6 bg-layout">
-    <section
-      id="upgrade"
-      class="flex w-auto gap-5 py-12 overflow-hidden bg-white h-fixed rounded-3xl"
-    >
+    <section id="home">
       <div class="flex-col">
         <LaporanPendapatan />
 
-        <div class="flex items-start gap-4 p-6 shrink-0 rounded-3xl">
+        <div class="flex p-6 items-start gap-4 shrink-0 rounded-3xl">
           <CardDoughnut
             title="Paket"
             desc="Statistik Pembelian Paket Dipilih"

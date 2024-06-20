@@ -47,7 +47,7 @@ const dataList = ref<RestaurantModel[]>([
       account_access: 'Super Admin',
       account_subscription: true,
       account_subscription_name: 'Paket 1 bulan',
-      account_subscription_expired: 1,
+      account_subscription_expired: 1718601151000,
       //dummy
       account_subscription_id: 2
     },
@@ -73,7 +73,7 @@ const dataList = ref<RestaurantModel[]>([
       account_access: 'Super Admin',
       account_subscription: false,
       account_subscription_name: 'Tidak ada paket dipilih',
-      account_subscription_expired: 1,
+      account_subscription_expired: 1718860351000,
       //dummy
       account_subscription_id: 0
     },
@@ -211,7 +211,7 @@ onMounted(() => {
   <div class="flex items-center justify-center w-full h-full p-6 bg-layout">
     <section
       id="upgrade"
-      class="container overflow-hidden w-[1100px] h-[525px] m-auto gap-6 bg-white p-6 rounded-3xl"
+      class="container overflow-hidden w-full h-full m-auto gap-6 bg-white p-6 rounded-3xl"
     >
       <div class="flex justify-between">
         <div class="">

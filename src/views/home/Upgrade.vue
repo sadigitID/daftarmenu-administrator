@@ -9,6 +9,8 @@ import type { RestaurantModel } from '@/utils/types'
 import { onMounted, ref } from 'vue'
 import PopUpResto from '@/components/dialogs/PopUpResto.vue'
 import { useRestoStore } from '@/stores/resto'
+import newNote from '@/components/dialogs/newNote.vue'
+import previewNote from '@/components/dialogs/previewNote.vue'
 
 const resto = useRestoStore()
 
@@ -22,7 +24,8 @@ const dataList = ref<RestaurantModel[]>([
       account_subscription_name: 'Paket 3 bulan',
       account_subscription_expired: 1726444800000,
       //dummy
-      account_subscription_id: 3
+      account_subscription_id: 3,
+      account_payment_method: 'Bank Transfer'
     },
     resto: {
       resto_id: 2689,
@@ -49,7 +52,8 @@ const dataList = ref<RestaurantModel[]>([
       account_subscription_name: 'Paket 1 bulan',
       account_subscription_expired: 1718601151000,
       //dummy
-      account_subscription_id: 2
+      account_subscription_id: 2,
+      account_payment_method: 'Bank Transfer'
     },
     resto: {
       resto_id: 1,
@@ -75,7 +79,8 @@ const dataList = ref<RestaurantModel[]>([
       account_subscription_name: 'Tidak ada paket dipilih',
       account_subscription_expired: 1718860351000,
       //dummy
-      account_subscription_id: 0
+      account_subscription_id: 0,
+      account_payment_method: 'Bank Transfer'
     },
     resto: {
       resto_id: 2,
@@ -101,7 +106,8 @@ const dataList = ref<RestaurantModel[]>([
       account_subscription_name: 'Tidak ada paket dipilih',
       account_subscription_expired: 1,
       //dummy
-      account_subscription_id: 0
+      account_subscription_id: 0,
+      account_payment_method: 'Bank Transfer'
     },
     resto: {
       resto_id: 2,
@@ -127,7 +133,8 @@ const dataList = ref<RestaurantModel[]>([
       account_subscription_name: 'Trial',
       account_subscription_expired: 1,
       //dummy
-      account_subscription_id: 1
+      account_subscription_id: 1,
+      account_payment_method: 'Bank Transfer'
     },
     resto: {
       resto_id: 2,
@@ -153,7 +160,8 @@ const dataList = ref<RestaurantModel[]>([
       account_subscription_name: 'Paket 12 bulan',
       account_subscription_expired: 1,
       //dummy
-      account_subscription_id: 4
+      account_subscription_id: 4,
+      account_payment_method: 'Bank Transfer'
     },
     resto: {
       resto_id: 2,
@@ -179,7 +187,8 @@ const dataList = ref<RestaurantModel[]>([
       account_subscription_name: 'Paket 3 Bulan',
       account_subscription_expired: 1,
       //dummy
-      account_subscription_id: 3
+      account_subscription_id: 3,
+      account_payment_method: 'Bank Transfer'
     },
     resto: {
       resto_id: 2,
@@ -206,7 +215,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <PopUpResto :open="resto.resto != null" @on-close="resto.resto = null" :data="resto.resto" />
+  <previewNote :open="resto.resto != null" @on-close="resto.resto = null" :data="resto.resto" />
 
   <div class="flex items-center justify-center w-full h-full p-6 bg-layout">
     <section

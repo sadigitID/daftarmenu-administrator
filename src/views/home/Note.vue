@@ -23,7 +23,6 @@ const infoData = [
     type: 'gray'
   }
 ]
-
 const noteData = [
   {
     title: 'Fitur Pencarian',
@@ -59,6 +58,7 @@ const noteData = [
   }
 ]
 </script>
+
 <template>
   <div class="flex items-center p-6">
     <section

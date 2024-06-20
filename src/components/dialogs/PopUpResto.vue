@@ -2,9 +2,14 @@
 import { Dialog, DialogPanel, TransitionChild, TransitionRoot } from '@headlessui/vue'
 import { computed, ref } from 'vue'
 import { XMarkIcon } from '@heroicons/vue/24/outline'
-// import { useRestoStore } from '@/stores/resto'
 import type { RestaurantModel } from '@/utils/types'
 import { UpDownIcon } from '@/components/icons'
+import { timestampToDateFormated, daysSinceNow } from '@/utils/date'
+
+const accountExpired = computed(() => props.data?.account.account_subscription_expired ?? 0)
+const isExpired = computed(() => new Date().getTime() > accountExpired.value)
+const accountStatus = computed(() => (isExpired.value ? 'inactive' : 'active'))
+const daysPassed = computed(() => (isExpired.value ? daysSinceNow(accountExpired.value) : 0))
 
 const props = defineProps({
   open: Boolean,
@@ -107,16 +112,16 @@ function close() {
                                   <p class="text-xs text-primary-900">Premium</p>
                                 </div>
                                 <div
-                                  v-if="data?.account.account_subscription == true"
+                                  v-if="accountStatus == 'active'"
                                   class="flex p-1 items-center gap-2.5"
                                 >
-                                  <p class="text-xs text-superorange">Aktif</p>
+                                  <p class="text-xs font-medium text-superorange">Aktif</p>
                                 </div>
                                 <div
-                                  v-else-if="data?.account.account_subscription == false"
+                                  v-else-if="accountStatus == 'inactive'"
                                   class="flex p-1 items-center gap-2.5"
                                 >
-                                  <p class="text-xs text-red-500">Tidak Aktif</p>
+                                  <p class="text-xs font-medium text-red-500">Tidak Aktif</p>
                                 </div>
                               </div>
 
@@ -180,13 +185,30 @@ function close() {
                             <label class="block text-sm font-medium text-gray-700"
                               >Paket Saat Ini</label
                             >
-                            <p
-                              class="text-xs py-1 px-2 bg-gradient-to-r from-[#E3FFD3] to-[#FFF59C] rounded-full space-x-1 w-max font-bold"
+                            <div
+                              class="flex text-xs py-1 px-2 bg-gradient-to-r from-[#E3FFD3] to-[#FFF59C] rounded-full space-x-1 w-max font-bold"
                               :class="currentPackageClass"
                             >
-                              {{ data.account.account_subscription_name }} |
-                              {{ data.account.account_subscription_expired }}
-                            </p>
+                              <div>{{ data.account.account_subscription_name }} |</div>
+                              <div
+                                v-if="daysPassed > 1 && daysPassed <= 30"
+                                class="flex items-start"
+                              >
+                                <p class="text-xs font-bold text-left">
+                                  Tidak aktif {{ daysPassed }} hari yang lalu
+                                </p>
+                              </div>
+                              <div v-else-if="daysPassed > 30" class="flex items-start gap-2.5">
+                                <p class="text-xs font-bold text-left">
+                                  Tidak aktif lebih dari 30 hari
+                                </p>
+                              </div>
+                              <div v-else class="flex items-start gap-2.5">
+                                <p class="text-xs font-bold text-left">
+                                  Exp: {{ timestampToDateFormated(accountExpired) }}
+                                </p>
+                              </div>
+                            </div>
                           </div>
                           <div class="mb-4 space-y-1">
                             <label class="block text-sm font-medium text-gray-700"

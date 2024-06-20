@@ -7,6 +7,7 @@ interface RestaurantModel {
     account_subscription_name: string
     account_subscription_expired: number
     account_subscription_id: number
+    account_payment_method: string
   }
   resto: {
     resto_id: number

@@ -1642,8 +1642,16 @@ video {
   fill: #151617;
 }
 
+.fill-orange-800{
+  fill: #9a3412;
+}
+
 .fill-primary-900{
   fill: #2f4c21;
+}
+
+.fill-primary-800{
+  fill: #3e632b;
 }
 
 .stroke-2{

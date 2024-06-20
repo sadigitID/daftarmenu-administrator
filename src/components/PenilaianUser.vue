@@ -27,7 +27,7 @@ const stores = useHomeStore()
           </p>
         </div>
         <div class="flex py-4 px-6 bg-white gap-2 w-[346px] h-[87px] rounded-2xl">
-          <Double class="size-12"></Double>
+          <Double class="size-12 fill-primary-800" />
           <div class="flex flex-col items-start justify-center gap-1">
             <p class="font-sans text-sm leading-[22.4px] font-normal text-primary-800">
               Total Pengguna
@@ -42,7 +42,7 @@ const stores = useHomeStore()
           <div
             class="flex flex-col items-start self-stretch justify-center flex-1 gap-1 p-4 rounded-lg basis-0 bg-primary-50"
           >
-            <Green class="size-6"></Green>
+            <Green class="size-6 fill-primary-800" />
             <p class="font-sans font-normal leading-[22.4px] text-sm text-primary-800">Aktif</p>
             <h1 class="font-sasns font-bold leading-[28.8px] text-2xl text-primary-800">
               {{ stores.getUserData().active_user }}
@@ -51,11 +51,11 @@ const stores = useHomeStore()
           <div
             class="flex flex-col items-start self-stretch justify-center flex-1 gap-1 p-4 rounded-lg basis-0 bg-orange-50"
           >
-            <Red class="size-6"></Red>
-            <p class="font-sans font-normal leading-[22.4px] text-sm text-primary-800">
+            <Red class="size-6 fill-orange-800" />
+            <p class="font-sans font-normal leading-[22.4px] text-sm text-orange-800">
               Tidak Aktif
             </p>
-            <h1 class="font-sasns font-bold leading-[28.8px] text-2xl text-primary-800">
+            <h1 class="font-sasns font-bold leading-[28.8px] text-2xl text-orange-800">
               {{ stores.getUserData().inactive_user }}
             </h1>
           </div>

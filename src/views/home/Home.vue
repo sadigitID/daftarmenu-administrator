@@ -16,11 +16,11 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="w-full h-full md:p-8 md:ms-4 mt-2 md:mt-0 flex items-center justify-center">
+  <div class="md:p-6 md:ms-4 md:mt-0 flex justify-center items-start">
     <section
-      class="container flex flex-col gap-6 mb-[100px] md:mb-0 lg:bg-white md:ms-6 rounded-3xl xl:items-start lg:justify-between lg:w-screen xl:flex-row overflow-hidden h-fixed lg:p-8"
+      class="container xl:w-full flex flex-col gap-6 mb-[100px] md:mb-0 lg:bg-white md:ms-6 rounded-3xl xl:items-start lg:justify-between xl:flex-row overflow-hidden h-fixed lg:p-8"
     >
-      <div class="flex flex-col gap-6">
+      <div class="flex flex-col gap-6 xl:w-[70%]">
         <LaporanPendapatan />
 
         <div class="flex flex-col lg:flex-row items-start gap-4 shrink-0 rounded-3xl">
@@ -33,7 +33,7 @@ onMounted(() => {
           <LoyalUser />
         </div>
       </div>
-      <div class="flex flex-col gap-4">
+      <div class="flex flex-col gap-6">
         <PenilaianUser />
         <HomePageNegara />
       </div>

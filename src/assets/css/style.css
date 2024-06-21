@@ -765,14 +765,6 @@ video {
   margin-top: 70px;
 }
 
-.mt-\[76px\]{
-  margin-top: 76px;
-}
-
-.mt-\[70px\]{
-  margin-top: 70px;
-}
-
 .block{
   display: block;
 }
@@ -2423,10 +2415,6 @@ video {
 
   .md\:mt-0{
     margin-top: 0px;
-  }
-
-  .md\:ml-\[120px\]{
-    margin-left: 120px;
   }
 
   .md\:h-8{

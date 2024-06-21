@@ -29,7 +29,7 @@ const onSuccessfulLogout = () => {
 
 <template>
   <header
-    class="bg-white fixed top-0 w-screen flex items-center px-6 justify-between py-4 md:px-4 md:py-2"
+    class="bg-white fixed top-0 w-full flex items-center px-6 justify-between py-4 md:px-4 md:py-2"
   >
     <div class="flex items-center md:ml-4">
       <Logo class="w-[110px] h-[52px] md:ml-28" />

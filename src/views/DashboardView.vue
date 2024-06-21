@@ -10,7 +10,7 @@ const account = useAccountStore()
   <div class="flex">
     <Navigasi />
   </div>
-  <div>
+  <div class="flex flex-col flex-1 flex-grow md:ml-[120px]">
     <div class="flex flex-col flex-grow">
       <Header />
       <main class="md:pt-20 md:pl-20 p-4 mt-[80px] md:mt-0">

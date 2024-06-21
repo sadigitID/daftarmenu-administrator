@@ -1760,11 +1760,6 @@ video {
   padding-bottom: 3%;
 }
 
-.py-\[50px\]{
-  padding-top: 50px;
-  padding-bottom: 50px;
-}
-
 .pb-0{
   padding-bottom: 0px;
 }
@@ -1791,14 +1786,6 @@ video {
 
 .pe-32{
   padding-inline-end: 8rem;
-}
-
-.pe-\[3\%\]{
-  padding-inline-end: 3%;
-}
-
-.ps-\[6\%\]{
-  padding-inline-start: 6%;
 }
 
 .pt-2{
@@ -2484,6 +2471,10 @@ video {
 
   .md\:gap-6{
     gap: 1.5rem;
+  }
+
+  .md\:rounded-3xl{
+    border-radius: 1.5rem;
   }
 
   .md\:p-6{

@@ -21,11 +21,13 @@ const chartData = [
 </script>
 
 <template>
-  <section class="md:p-6 md:ms-4 md:mt-0 flex justify-center items-start">
+  <section
+    class="flex items-start justify-center w-full rounded-lg md:p-6 lg:bg-white md:rounded-3xl"
+  >
     <div
-      class="container xl:w-full flex flex-col gap-6 mb-[100px] md:mb-0 lg:bg-white md:ms-6 rounded-3xl xl:items-start lg:justify-between xl:flex-row overflow-hidden h-fixed lg:p-8"
+      class="flex flex-col gap-6 mb-[100px] md:mb-0 xl:items-start lg:justify-between xl:flex-row w-full"
     >
-      <section class="report-cost flex flex-col gap-[46px]">
+      <section class="flex flex-col gap-6 xl:w-[70%]">
         <LaporanPendapatan />
         <TableComponents />
       </section>

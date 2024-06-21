@@ -31,8 +31,10 @@ const PendapatanItems = [
 ]
 </script>
 <template>
-  <div class="flex w-full flex-col gap-8 md:gap-6 bg-white shadow-custom-gray rounded-2xl p-6">
-    <div class="flex flex-col md:flex-row gap-6 md:justify-between md:items-center self-stretch">
+  <div
+    class="flex w-full flex-col gap-8 md:gap-6 bg-white shadow-[1px_1px_8px_rgba(180,180,180,0.39)] rounded-2xl p-6"
+  >
+    <div class="flex flex-col self-stretch gap-6 md:flex-row md:justify-between md:items-center">
       <div>
         <LaporanComponents
           v-for="LaporanComponents in LaporanItems"
@@ -51,7 +53,7 @@ const PendapatanItems = [
         </div>
       </div>
     </div>
-    <div class="flex flex-col lg:flex-row gap-4">
+    <div class="flex flex-col gap-4 lg:flex-row">
       <PendapatanComponents
         v-for="PendapatanComponents in PendapatanItems"
         :month="PendapatanComponents.month"

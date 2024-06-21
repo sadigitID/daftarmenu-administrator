@@ -29,7 +29,7 @@ const onSuccessfulLogout = () => {
 
 <template>
   <header
-    class="bg-white fixed top-0 w-full flex items-center px-6 justify-between py-4 md:px-4 md:py-2"
+    class="fixed top-0 flex items-center justify-between w-full px-6 py-4 bg-white md:px-4 md:py-2"
   >
     <div class="flex items-center md:ml-4">
       <Logo class="w-[110px] h-[52px] md:ml-28" />
@@ -45,15 +45,15 @@ const onSuccessfulLogout = () => {
         </div>
 
         <transition
-          enter-active-class="transition ease-out duration-100"
-          enter-from-class="transform opacity-0 scale-95"
-          enter-to-class="transform opacity-100 scale-100"
-          leave-active-class="transition ease-in duration-75"
-          leave-from-class="transform opacity-100 scale-100"
-          leave-to-class="transform opacity-0 scale-95"
+          enter-active-class="transition duration-100 ease-out"
+          enter-from-class="transform scale-95 opacity-0"
+          enter-to-class="transform scale-100 opacity-100"
+          leave-active-class="transition duration-75 ease-in"
+          leave-from-class="transform scale-100 opacity-100"
+          leave-to-class="transform scale-95 opacity-0"
         >
           <MenuItems
-            class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+            class="absolute right-0 z-10 w-56 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
           >
             <div class="py-1">
               <MenuItem v-slot="{ active }">

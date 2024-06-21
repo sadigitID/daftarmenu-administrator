@@ -13,7 +13,7 @@ const account = useAccountStore()
   <div>
     <div class="flex flex-col flex-grow">
       <Header />
-      <main class="pt-20 pl-24">
+      <main class="md:pt-20 md:pl-20 p-4 mt-[80px] md:mt-0">
         <RouterView />
       </main>
     </div>

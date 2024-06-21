@@ -1,5 +1,6 @@
 interface RestaurantModel {
   account: {
+    account_id: number
     account_name: string
     account_email: string
     account_access: string
@@ -7,6 +8,7 @@ interface RestaurantModel {
     account_subscription_name: string
     account_subscription_expired: number
     account_subscription_id: number
+    account_payment_method: string
   }
   resto: {
     resto_id: number

@@ -18,7 +18,6 @@ export default {
       webkitLineClamp: {
         1: '1'
       },
-
       boxShadow: {
         'custom-gray': '1px 1px 8px 0px rgba(180, 180, 180, 0.39)'
       },
@@ -72,9 +71,6 @@ export default {
           800: '#5c5c5c',
           900: '#474747'
         }
-      },
-      boxShadow: {
-        sdw: '1px 1px 8px 0px rgba(180, 180, 180, 0.39)'
       }
     }
   },

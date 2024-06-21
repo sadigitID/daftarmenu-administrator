@@ -84,6 +84,22 @@ export const useHomeStore = defineStore('homeStore', () => {
     })
   }
 
+  const countPaketBulan = (data: string): number => {
+    return user_data.value.filter(
+      (user_data) => user_data.account.account_subscription_name === data
+    ).length
+  }
+
+  const countJenisLanggananUser = (data: number): number => {
+    return user_data.value.filter((user_data) => user_data.account.account_subscription_id === data)
+      .length
+  }
+
+  const countMetodePembayaran = (data: string): number => {
+    return user_data.value.filter((user_data) => user_data.account.account_payment_method === data)
+      .length
+  }
+
   onMounted(() => {
     fetchLaporanPendapatanItem()
     fetchDataPenilaianUser()
@@ -97,6 +113,9 @@ export const useHomeStore = defineStore('homeStore', () => {
     getAccountData,
     getRetentionRateStatus,
     fetchDataPenilaianUser,
-    fetchAccountData
+    fetchAccountData,
+    countPaketBulan,
+    countJenisLanggananUser,
+    countMetodePembayaran
   }
 })

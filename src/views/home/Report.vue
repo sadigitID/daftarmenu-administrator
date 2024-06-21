@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { CardDoughnut } from '@/components/card'
+import { CardJenisUser, CardMetodeBayar } from '@/components/card'
 import { LaporanPendapatan } from '@/components'
 import { TableComponents } from '@/components'
 
@@ -28,14 +28,8 @@ const chartData = [
         <TableComponents />
       </section>
       <div class="inline-flex flex-col items-start gap-6 shrink-0 rounded-3xl">
-        <CardDoughnut
-          v-for="data in chartData"
-          :key="data.title"
-          :title="data.title"
-          :desc="data.desc"
-          :values="data.values"
-          :labels="data.labels"
-        />
+        <CardJenisUser />
+        <CardMetodeBayar />
       </div>
     </div>
   </section>

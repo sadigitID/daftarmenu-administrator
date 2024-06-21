@@ -1,3 +1,22 @@
+<script setup lang="ts">
+import { computed, ref } from 'vue'
+import { ChartDoughnut } from '@/components/charts'
+import { useHomeStore } from '@/stores/home'
+
+const stores = useHomeStore()
+
+const metodePembayaran = computed(() => [
+  stores.countMetodePembayaran('Bank Transfer'),
+  stores.countMetodePembayaran('Paypal'),
+  stores.countMetodePembayaran('Qris')
+])
+
+const title = ref('Metode Bayar')
+const desc = ref('Metode Pembayaran')
+const chartData = ref(metodePembayaran)
+const chartLabels = ref(['Bank Transfer', 'Paypal', 'Qris'])
+</script>
+
 <template>
   <div
     class="flex w-full p-6 items-center gap-4 rounded-2xl bg-white shadow-[1px_1px_8px_0px_rgba(180,180,180,0.39)] font-sans"
@@ -13,22 +32,3 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-import { ref } from 'vue'
-import { ChartDoughnut } from '@/components/charts'
-
-interface Props {
-  title: string
-  desc: string
-  values: number[]
-  labels: string[]
-}
-
-const props = defineProps<Props>()
-
-const title = ref(props.title)
-const desc = ref(props.desc)
-const chartData = ref(props.values)
-const chartLabels = ref(props.labels)
-</script>

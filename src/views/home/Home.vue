@@ -1,8 +1,11 @@
 <script setup lang="ts">
-import { CardDoughnut } from '@/components/card'
+import { CardPaket } from '@/components/card'
 import { HomePageNegara, LaporanPendapatan, LoyalUser, PenilaianUser } from '@/components/'
 import { defferenceInDays } from '@/utils/date'
-import { onMounted } from 'vue'
+import { computed, onMounted } from 'vue'
+import { useHomeStore } from '@/stores/home'
+
+const stores = useHomeStore()
 
 onMounted(() => {
   // var currentDay = new Date()
@@ -21,12 +24,7 @@ onMounted(() => {
         <LaporanPendapatan />
 
         <div class="flex flex-col lg:flex-row items-start gap-4 shrink-0 rounded-3xl">
-          <CardDoughnut
-            title="Paket"
-            desc="Statistik Pembelian Paket Dipilih"
-            :values="[5, 10, 5]"
-            :labels="['1 Bulan', '3 Bulan', '12 Bulan']"
-          />
+          <CardPaket />
           <LoyalUser />
         </div>
       </div>

@@ -14,7 +14,11 @@ const stores = useHomeStore()
         <div class="flex flex-col items-center justify-center gap-2">
           <div class="flex items-start gap-2">
             <p class="font-sans text-3xl font-bold leading-9 text-white">
-              {{ formatPercentage(stores.getUserData().retention_rate) }}
+              {{
+                formatPercentage(
+                  (stores.getUserData().active_user / stores.getUserData().total_users) * 100
+                )
+              }}
             </p>
             <div class="flex bg-white rounded-full px-2 py-1 gap-[10px]">
               <p class="font-sans text-xs font-medium text-primary-800">

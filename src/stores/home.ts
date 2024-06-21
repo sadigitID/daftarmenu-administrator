@@ -6,16 +6,19 @@ import { onMounted, ref } from 'vue'
 export const useHomeStore = defineStore('homeStore', () => {
   const laporanPendapatanItem = ref([])
   const users = ref({
-    retention_rate: 0,
     total_users: 0,
     active_user: 0,
-    inactive_user: 0
+    inactive_user: 0,
+    join_today: 0,
+    premium: 0,
+    free: 0,
+    trial: 0
   })
 
   const user_data = ref<RestaurantModel[]>([])
 
   const getRetentionRateStatus = () => {
-    const rate = users.value.retention_rate
+    const rate = (users.value.active_user / users.value.total_users) * 100
     if (rate >= 70) {
       return 'baik'
     } else if (rate >= 50 && rate < 70) {
@@ -85,6 +88,22 @@ export const useHomeStore = defineStore('homeStore', () => {
     })
   }
 
+  const countPaketBulan = (data: string): number => {
+    return user_data.value.filter(
+      (user_data) => user_data.account.account_subscription_name === data
+    ).length
+  }
+
+  const countJenisLanggananUser = (data: number): number => {
+    return user_data.value.filter((user_data) => user_data.account.account_subscription_id === data)
+      .length
+  }
+
+  const countMetodePembayaran = (data: string): number => {
+    return user_data.value.filter((user_data) => user_data.account.account_payment_method === data)
+      .length
+  }
+
   onMounted(() => {
     fetchLaporanPendapatanItem()
     fetchDataPenilaianUser()
@@ -98,6 +117,9 @@ export const useHomeStore = defineStore('homeStore', () => {
     getAccountData,
     getRetentionRateStatus,
     fetchDataPenilaianUser,
-    fetchAccountData
+    fetchAccountData,
+    countPaketBulan,
+    countJenisLanggananUser,
+    countMetodePembayaran
   }
 })

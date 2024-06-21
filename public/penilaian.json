@@ -3,6 +3,10 @@
   "data": {
     "total_users": 2000,
     "active_user": 1425,
-    "inactive_user": 575
+    "inactive_user": 575,
+    "join_today": 1200,
+    "premium": 600,
+    "free": 900,
+    "trial": 700
   }
 }

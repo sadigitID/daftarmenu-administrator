@@ -8,7 +8,11 @@ export const useHomeStore = defineStore('homeStore', () => {
   const users = ref({
     total_users: 0,
     active_user: 0,
-    inactive_user: 0
+    inactive_user: 0,
+    join_today: 0,
+    premium: 0,
+    free: 0,
+    trial: 0
   })
 
   const user_data = ref<RestaurantModel[]>([])

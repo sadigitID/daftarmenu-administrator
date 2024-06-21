@@ -37,7 +37,7 @@
         "account_subscription_name": "Paket 3 bulan",
         "account_subscription_expired": 1726444800000,
         "account_subscription_id": 3,
-        "account_payment_method": "Bank Transfer"
+        "account_payment_method": "Paypal"
       },
       "resto": {
         "resto_id": 1,
@@ -63,7 +63,7 @@
         "account_subscription_name": "Paket 1 bulan",
         "account_subscription_expired": 1726444800000,
         "account_subscription_id": 2,
-        "account_payment_method": "Paypal"
+        "account_payment_method": "Qris"
       },
       "resto": {
         "resto_id": 2,

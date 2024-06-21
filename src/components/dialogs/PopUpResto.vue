@@ -36,10 +36,28 @@ const props = defineProps({
 })
 
 const currentPackageClass = ref('')
+const currentPaketMethod = ref('')
+const currentPaymentMethod = ref('')
 
 const emits = defineEmits(['onClose', 'onSelected'])
 const open = ref(computed(() => props.open))
 const data = ref(computed(() => props.data))
+
+const paymentMethods = computed(() => {
+  const payment = []
+  if (data.value?.account.account_payment_method) {
+    payment.push('Bank Transfer', 'Paypal', 'Qris')
+  }
+  return payment
+})
+
+const paketMethods = computed(() => {
+  const paket = []
+  if (data.value?.account.account_subscription_name) {
+    paket.push('Paket 1 Bulan', 'Paket 3 Bulan', 'Paket 12 Bulan')
+  }
+  return paket
+})
 
 function close() {
   emits('onClose', false)
@@ -234,9 +252,13 @@ function close() {
                               >Beli Paket</label
                             >
                             <select
+                              v-model="currentPaketMethod"
                               class="mt-1 font-medium text-sm block w-full rounded-md border-gray-300 bg-gray-50 py-2 px-4 text-[#5C5C5C]"
                             >
-                              <option value="">Pilih Paket</option>
+                              <option value="" disabled hidden>Pilih Paket</option>
+                              <option v-for="paket in paketMethods" :key="paket" :value="paket">
+                                {{ paket }}
+                              </option>
                             </select>
                           </div>
 
@@ -245,9 +267,17 @@ function close() {
                               >Metode Bayar</label
                             >
                             <select
+                              v-model="currentPaymentMethod"
                               class="mt-1 font-medium text-sm block w-full rounded-md border-gray-300 bg-gray-50 py-2 px-4 text-[#5C5C5C]"
                             >
-                              <option value="">Pilih Metode Bayar</option>
+                              <option value="" disabled hidden>Pilih Metode Bayar</option>
+                              <option
+                                v-for="payment in paymentMethods"
+                                :key="payment"
+                                :value="payment"
+                              >
+                                {{ payment }}
+                              </option>
                             </select>
                           </div>
 

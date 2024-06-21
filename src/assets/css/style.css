@@ -765,6 +765,14 @@ video {
   margin-top: 80px;
 }
 
+.mt-\[76px\]{
+  margin-top: 76px;
+}
+
+.mt-\[70px\]{
+  margin-top: 70px;
+}
+
 .block{
   display: block;
 }
@@ -2413,6 +2421,10 @@ video {
     margin-top: 0px;
   }
 
+  .md\:ml-\[120px\]{
+    margin-left: 120px;
+  }
+
   .md\:h-8{
     height: 2rem;
   }
@@ -2480,6 +2492,10 @@ video {
 
   .md\:gap-6{
     gap: 1.5rem;
+  }
+
+  .md\:rounded-3xl{
+    border-radius: 1.5rem;
   }
 
   .md\:p-6{

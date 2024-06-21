@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { CardPaket } from '@/components/card'
 import { HomePageNegara, LaporanPendapatan, LoyalUser, PenilaianUser } from '@/components/'
-import { defferenceInDays } from '@/utils/date'
 import { onMounted } from 'vue'
 import { useHomeStore } from '@/stores/home'
 
@@ -16,14 +15,16 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="md:p-6 md:ms-4 md:mt-0 flex justify-center items-start">
-    <section
-      class="container xl:w-full flex flex-col gap-6 mb-[100px] md:mb-0 lg:bg-white md:ms-6 rounded-3xl xl:items-start lg:justify-between xl:flex-row overflow-hidden h-fixed lg:p-8"
+  <section
+    class="flex items-start justify-center w-full rounded-lg md:p-6 lg:bg-white md:rounded-3xl"
+  >
+    <div
+      class="flex flex-col gap-6 mb-[100px] md:mb-0 xl:items-start lg:justify-between xl:flex-row w-full"
     >
       <div class="flex flex-col gap-6 xl:w-[70%]">
         <LaporanPendapatan />
 
-        <div class="flex flex-col lg:flex-row items-start gap-4 shrink-0 rounded-3xl">
+        <div class="flex flex-col items-start gap-4 lg:flex-row shrink-0 rounded-3xl">
           <CardPaket />
           <LoyalUser />
         </div>
@@ -32,15 +33,15 @@ onMounted(() => {
         <PenilaianUser />
         <HomePageNegara />
       </div>
-    </section>
-  </div>
+    </div>
+  </section>
 </template>
 
 <!-- <section id="upgrade" class="flex w-auto gap-5 py-12 overflow-hidden bg-white h-fixed rounded-3xl">
       <div class="flex-col">
         <LaporanPendapatan />
 
-        <div class="flex p-6 items-start gap-4 shrink-0 rounded-3xl">
+        <div class="flex items-start gap-4 p-6 shrink-0 rounded-3xl">
           <CardDoughnut
             title="Paket"
             desc="Statistik Pembelian Paket Dipilih"

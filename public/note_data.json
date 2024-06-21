@@ -1,0 +1,40 @@
+{
+    "status" : true, 
+    "data" : [
+        {
+            "note_id": 1,
+            "title": "Fitur Pencarian",
+            "note1": "Bug",
+            "note2": "Selesai",
+            "desc": "Ada user yang membutuhkan fitur pencarian dengan filter yang lebih beragam",
+            "img": "Phone",
+            "type": "jenis"
+          },
+          {
+            "note_id": 2,
+            "title": "Fitur Pencarian",
+            "note1": "Bug",
+            "note2": "Selesai",
+            "desc": "Ada user yang membutuhkan fitur pencarian dengan filter yang lebih beragam",
+            "type": "jenis"
+          },
+          {
+            "note_id": 3,
+            "title": "Fitur Pencarian",
+            "note1": "Request Feature",
+            "note2": "Belum Selesai",
+            "desc": "Ada user yang membutuhkan fitur pencarian dengan filter yang lebih beragam",
+            "img": "Phone",
+            "type": "status"
+          },
+          {
+            "note_id": 4,
+            "title": "Fitur Pencarian",
+            "note1": "Request Feature",
+            "note2": "Belum Selesai",
+            "desc": "Ada user yang membutuhkan fitur pencarian dengan filter yang lebih beragam",
+            "img": "Phone",
+            "type": "status"
+          }
+    ]
+}

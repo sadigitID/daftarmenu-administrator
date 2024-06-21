@@ -3,12 +3,15 @@ import { ref } from 'vue';
 import { Search, Add, Red } from '@/components/icons';
 import { Info, ButtonFilter, InputText } from '@/components';
 import { CardNote } from '@/components/card';
-import { Menu, Phone } from '@/assets/image';
-import { NewNote, PreviewNote } from '@/components/dialogs';
-import type { NoteModel } from '@/utils/types';
+import { Menu } from '@/assets/image';
+import  PreviewNote  from '@/components/dialogs/previewNote.vue';
+import  NewNote  from '@/components/dialogs/newNote.vue';
 import { useNoteStore } from '@/stores/note';
+import { useHomeStore } from '@/stores/home';
 
 
+const note = useNoteStore();
+const stores = useHomeStore();
 const infoData = [
   {
     icon: Red,
@@ -30,40 +33,6 @@ const infoData = [
   },
 ];
 
-const noteData = ref<NoteModel[]>([
-  {
-    title: 'Fitur Pencarian',
-    note1: 'Bug',
-    note2: 'Selesai',
-    desc: 'Ada user yang membutuhkan fitur pencarian dengan filter yang lebih beragam',
-    img: Phone,
-    type: 'jenis',
-  },
-  {
-    title: 'Fitur Pencarian',
-    note1: 'Bug',
-    note2: 'Selesai',
-    desc: 'Ada user yang membutuhkan fitur pencarian dengan filter yang lebih beragam',
-    type: 'jenis',
-  },
-  {
-    title: 'Fitur Pencarian',
-    note1: 'Request Feature',
-    note2: 'Belum Selesai',
-    desc: 'Ada user yang membutuhkan fitur pencarian dengan filter yang lebih beragam',
-    img: Phone,
-    type: 'status',
-  },
-  {
-    title: 'Fitur Pencarian',
-    note1: 'Request Feature',
-    note2: 'Belum Selesai',
-    desc: 'Ada user yang membutuhkan fitur pencarian dengan filter yang lebih beragam',
-    img: Phone,
-    type: 'status',
-  },
-]);
-
 const showNewNotePopup = ref(false);
 
 const openNewNote = () => {
@@ -73,8 +42,6 @@ const openNewNote = () => {
 const closeNewNote = () => {
   showNewNotePopup.value = false;
 };
-
-const note = useNoteStore();
 
 </script>
 
@@ -118,12 +85,11 @@ const note = useNoteStore();
         />
       </div>
       <div name="note" id="note" class="flex items-start gap-6">
-        <CardNote v-for="data in noteData" :data="data" />
+        <CardNote 
+          v-for="data in stores.getNoteData()" 
+          :key="data.note.note_id"
+          :data="data" />
       </div>
     </section>
   </div>
 </template>
-
-<style scoped>
-/* Tambahkan gaya tambahan jika perlu */
-</style>

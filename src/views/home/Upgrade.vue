@@ -7,8 +7,6 @@ import { ButtonFilter } from '@/components'
 import { onMounted, ref } from 'vue'
 import PopUpResto from '@/components/dialogs/PopUpResto.vue'
 import { useRestoStore } from '@/stores/resto'
-import newNote from '@/components/dialogs/newNote.vue'
-import previewNote from '@/components/dialogs/previewNote.vue'
 import { useHomeStore } from '@/stores/home'
 
 const resto = useRestoStore()

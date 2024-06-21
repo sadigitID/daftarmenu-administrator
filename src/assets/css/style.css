@@ -1765,6 +1765,21 @@ video {
   padding-bottom: 50px;
 }
 
+.px-16{
+  padding-left: 4rem;
+  padding-right: 4rem;
+}
+
+.px-8{
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.px-10{
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+}
+
 .pb-0{
   padding-bottom: 0px;
 }

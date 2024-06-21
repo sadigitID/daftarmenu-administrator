@@ -2,7 +2,7 @@
 import { CardPaket } from '@/components/card'
 import { HomePageNegara, LaporanPendapatan, LoyalUser, PenilaianUser } from '@/components/'
 import { defferenceInDays } from '@/utils/date'
-import { computed, onMounted } from 'vue'
+import { onMounted } from 'vue'
 import { useHomeStore } from '@/stores/home'
 
 const stores = useHomeStore()

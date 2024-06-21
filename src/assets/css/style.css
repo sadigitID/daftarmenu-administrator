@@ -761,10 +761,13 @@ video {
   margin-top: 1.5rem;
 }
 
+<<<<<<< HEAD
 .mt-\[80px\]{
   margin-top: 80px;
 }
 
+=======
+>>>>>>> 21acfd2fb8d0d64a1d90249db9a8d9b22bcdbf54
 .block{
   display: block;
 }
@@ -1792,6 +1795,13 @@ video {
   padding-inline-end: 3%;
 }
 
+<<<<<<< HEAD
+=======
+.pl-24{
+  padding-left: 6rem;
+}
+
+>>>>>>> 21acfd2fb8d0d64a1d90249db9a8d9b22bcdbf54
 .ps-\[6\%\]{
   padding-inline-start: 6%;
 }
@@ -2213,10 +2223,6 @@ video {
   -webkit-line-clamp: 1;
 }
 
-.webkit-line-clamp-2{
-  -webkit-line-clamp: 2;
-}
-
 .placeholder\:text-gray-400::-moz-placeholder{
   --tw-text-opacity: 1;
   color: rgb(185 185 185 / var(--tw-text-opacity));
@@ -2384,6 +2390,7 @@ video {
     visibility: visible;
   }
 
+<<<<<<< HEAD
   .md\:mb-0{
     margin-bottom: 0px;
   }
@@ -2436,6 +2443,8 @@ video {
     width: 22rem;
   }
 
+=======
+>>>>>>> 21acfd2fb8d0d64a1d90249db9a8d9b22bcdbf54
   .md\:w-\[540px\]{
     width: 540px;
   }

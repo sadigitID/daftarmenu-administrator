@@ -4,11 +4,8 @@ import { Food } from '@/assets/image'
 import { CardResto } from '@/components/card'
 import { InputText } from '@/components/'
 import { ButtonFilter } from '@/components'
-import { onMounted, ref } from 'vue'
 import PopUpResto from '@/components/dialogs/PopUpResto.vue'
 import { useRestoStore } from '@/stores/resto'
-import newNote from '@/components/dialogs/newNote.vue'
-import previewNote from '@/components/dialogs/previewNote.vue'
 import { useHomeStore } from '@/stores/home'
 
 const resto = useRestoStore()
@@ -18,7 +15,7 @@ const stores = useHomeStore()
 <template>
   <popUpResto :open="resto.resto != null" @on-close="resto.resto = null" :data="resto.resto" />
 
-  <div class="flex items-center justify-center w-full h-full px-12 py-4 bg-layout">
+  <div class="flex items-center justify-center w-full h-full px-16 py-4 bg-layout">
     <section id="upgrade" class="container w-full h-full m-auto gap-6 bg-white p-6 rounded-3xl">
       <div class="flex justify-between">
         <div class="">

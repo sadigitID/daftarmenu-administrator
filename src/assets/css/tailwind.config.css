@@ -3,4 +3,8 @@
 @tailwind components;
 @tailwind utilities;
 
-
+@layer components {
+  .main-content {
+    @apply flex items-start justify-center w-full rounded-lg md:p-6 lg:bg-white md:rounded-3xl;
+  }
+}

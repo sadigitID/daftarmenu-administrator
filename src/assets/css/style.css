@@ -793,6 +793,10 @@ video {
   display: grid;
 }
 
+.hidden{
+  display: none;
+}
+
 .size-12{
   width: 3rem;
   height: 3rem;
@@ -1215,6 +1219,10 @@ video {
 
 .justify-between{
   justify-content: space-between;
+}
+
+.justify-around{
+  justify-content: space-around;
 }
 
 .gap-0{
@@ -1665,6 +1673,11 @@ video {
 .px-0{
   padding-left: 0px;
   padding-right: 0px;
+}
+
+.px-12{
+  padding-left: 3rem;
+  padding-right: 3rem;
 }
 
 .px-2{
@@ -2203,10 +2216,6 @@ video {
 
 .webkit-line-clamp-1{
   -webkit-line-clamp: 1;
-}
-
-.webkit-line-clamp-2{
-  -webkit-line-clamp: 2;
 }
 
 .placeholder\:text-gray-400::-moz-placeholder{

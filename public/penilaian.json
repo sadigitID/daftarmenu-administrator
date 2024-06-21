@@ -1,9 +1,12 @@
 {
   "status": true,
   "data": {
-    "retention_rate": 70,
-    "total_users": 100,
-    "active_user": 30,
-    "inactive_user": 70
+    "total_users": 2000,
+    "active_user": 1425,
+    "inactive_user": 575,
+    "join_today": 1200,
+    "premium": 600,
+    "free": 900,
+    "trial": 700
   }
 }

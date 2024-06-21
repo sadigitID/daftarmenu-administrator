@@ -25,4 +25,14 @@ interface RestaurantModel {
   }
 }
 
-export type { RestaurantModel }
+
+interface NoteModel {
+  title: string
+  note1: string
+  note2: string
+  desc: string
+  img?: string
+  type: string
+}
+
+export type { NoteModel, RestaurantModel }

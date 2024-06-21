@@ -6,10 +6,29 @@ import type { RestaurantModel } from '@/utils/types'
 import { UpDownIcon } from '@/components/icons'
 import { timestampToDateFormated, daysSinceNow } from '@/utils/date'
 
-const accountExpired = computed(() => props.data?.account.account_subscription_expired ?? 0)
+const accountExpired = computed(() => data.value?.account.account_subscription_expired ?? 0)
 const isExpired = computed(() => new Date().getTime() > accountExpired.value)
 const accountStatus = computed(() => (isExpired.value ? 'inactive' : 'active'))
 const daysPassed = computed(() => (isExpired.value ? daysSinceNow(accountExpired.value) : 0))
+
+const joinDate = computed(() => {
+  const date = data.value?.account.account_subscription_expired
+  if (date) {
+    const currentDate = new Date(date)
+    currentDate.setMonth(currentDate.getMonth() - 1)
+    return formatDate(currentDate)
+  }
+  return ''
+})
+
+function formatDate(date: string | number | Date) {
+  const options: Intl.DateTimeFormatOptions = {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric'
+  }
+  return new Date(date).toLocaleDateString('id-ID', options)
+}
 
 const props = defineProps({
   open: Boolean,
@@ -17,10 +36,28 @@ const props = defineProps({
 })
 
 const currentPackageClass = ref('')
+const currentPaketMethod = ref('')
+const currentPaymentMethod = ref('')
 
 const emits = defineEmits(['onClose', 'onSelected'])
 const open = ref(computed(() => props.open))
 const data = ref(computed(() => props.data))
+
+const paymentMethods = computed(() => {
+  const payment = []
+  if (data.value?.account.account_payment_method) {
+    payment.push('Bank Transfer', 'Paypal', 'Qris')
+  }
+  return payment
+})
+
+const paketMethods = computed(() => {
+  const paket = []
+  if (data.value?.account.account_subscription_name) {
+    paket.push('Paket 1 Bulan', 'Paket 3 Bulan', 'Paket 12 Bulan')
+  }
+  return paket
+})
 
 function close() {
   emits('onClose', false)
@@ -128,7 +165,7 @@ function close() {
                               <div class="space-y-1">
                                 <h2 class="text-2xl font-bold">{{ data?.resto.resto_name }}</h2>
                                 <p class="text-xs text-gray-600 font-medium">
-                                  {{ data?.resto.resto_id }}
+                                  Bergabung {{ joinDate }}
                                 </p>
                               </div>
                             </div>
@@ -215,9 +252,13 @@ function close() {
                               >Beli Paket</label
                             >
                             <select
+                              v-model="currentPaketMethod"
                               class="mt-1 font-medium text-sm block w-full rounded-md border-gray-300 bg-gray-50 py-2 px-4 text-[#5C5C5C]"
                             >
-                              <option value="">Pilih Paket</option>
+                              <option value="" disabled hidden>Pilih Paket</option>
+                              <option v-for="paket in paketMethods" :key="paket" :value="paket">
+                                {{ paket }}
+                              </option>
                             </select>
                           </div>
 
@@ -226,9 +267,17 @@ function close() {
                               >Metode Bayar</label
                             >
                             <select
+                              v-model="currentPaymentMethod"
                               class="mt-1 font-medium text-sm block w-full rounded-md border-gray-300 bg-gray-50 py-2 px-4 text-[#5C5C5C]"
                             >
-                              <option value="">Pilih Metode Bayar</option>
+                              <option value="" disabled hidden>Pilih Metode Bayar</option>
+                              <option
+                                v-for="payment in paymentMethods"
+                                :key="payment"
+                                :value="payment"
+                              >
+                                {{ payment }}
+                              </option>
                             </select>
                           </div>
 

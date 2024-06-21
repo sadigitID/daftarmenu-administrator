@@ -7,15 +7,12 @@ const account = useAccountStore()
 </script>
 
 <template>
-  <div class="flex">
+  <div class="flex flex-col justify-between md:flex-row">
     <Navigasi />
-  </div>
-  <div>
-    <div class="flex flex-col flex-grow">
-      <Header />
-      <main class="md:pt-20 md:pl-20 p-4 mt-[80px] md:mt-0">
-        <RouterView />
-      </main>
-    </div>
+    <Header />
+
+    <main class="flex flex-col flex-1 flex-grow md:ml-[120px] mt-[70px] p-4 md:p-6">
+      <RouterView />
+    </main>
   </div>
 </template>

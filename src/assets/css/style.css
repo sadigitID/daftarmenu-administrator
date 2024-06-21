@@ -761,8 +761,8 @@ video {
   margin-top: 1.5rem;
 }
 
-.mt-\[80px\]{
-  margin-top: 80px;
+.mt-\[70px\]{
+  margin-top: 70px;
 }
 
 .block{
@@ -2397,6 +2397,10 @@ video {
     margin-left: 1rem;
   }
 
+  .md\:ml-\[120px\]{
+    margin-left: 120px;
+  }
+
   .md\:mr-\[25px\]{
     margin-right: 25px;
   }
@@ -2504,14 +2508,6 @@ video {
   .md\:py-2{
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
-  }
-
-  .md\:pl-20{
-    padding-left: 5rem;
-  }
-
-  .md\:pt-20{
-    padding-top: 5rem;
   }
 
   .md\:text-sm{

@@ -31,7 +31,7 @@ const PendapatanItems = [
 ]
 </script>
 <template>
-  <div class="flex w-full flex-col gap-8 md:gap-6 bg-white shadow-sdw rounded-2xl p-6">
+  <div class="flex w-full flex-col gap-8 md:gap-6 bg-white shadow-custom-gray rounded-2xl p-6">
     <div class="flex flex-col md:flex-row gap-6 md:justify-between md:items-center self-stretch">
       <div>
         <LaporanComponents

@@ -21,8 +21,10 @@ const chartData = [
 </script>
 
 <template>
-  <section class="bg-layout ps-[6%] pe-[3%] py-[50px]">
-    <div class="bg-white rounded-2xl p-6 flex items-start justify-between">
+  <section class="md:p-6 md:ms-4 md:mt-0 flex justify-center items-start">
+    <div
+      class="container xl:w-full flex flex-col gap-6 mb-[100px] md:mb-0 lg:bg-white md:ms-6 rounded-3xl xl:items-start lg:justify-between xl:flex-row overflow-hidden h-fixed lg:p-8"
+    >
       <section class="report-cost flex flex-col gap-[46px]">
         <LaporanPendapatan />
         <TableComponents />

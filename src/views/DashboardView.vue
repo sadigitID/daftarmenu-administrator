@@ -7,6 +7,7 @@ import { Navigasi, Header } from '@/components'
   <div class="flex flex-col justify-between md:flex-row">
     <Navigasi />
     <Header />
+
     <main class="flex flex-col flex-1 flex-grow md:ml-[120px] mt-[70px] p-4 md:p-6">
       <RouterView />
     </main>

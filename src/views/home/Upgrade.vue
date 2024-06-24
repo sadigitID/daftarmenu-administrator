@@ -15,8 +15,8 @@ const stores = useHomeStore()
 <template>
   <popUpResto :open="resto.resto != null" @on-close="resto.resto = null" :data="resto.resto" />
 
-  <div class="flex items-center justify-center w-full h-full px-16 py-4 bg-layout">
-    <section id="upgrade" class="container w-full h-full m-auto gap-6 bg-white p-6 rounded-3xl">
+  <section class="custom-spacing">
+    <div id="upgrade" class="container w-full h-full m-auto gap-6 bg-white rounded-3xl">
       <div class="flex justify-between">
         <div class="">
           <h1 class="text-extrabold text-xl text-primary-900">Daftar Pengguna</h1>
@@ -112,6 +112,6 @@ const stores = useHomeStore()
           :data="data"
         />
       </div>
-    </section>
-  </div>
+    </div>
+  </section>
 </template>

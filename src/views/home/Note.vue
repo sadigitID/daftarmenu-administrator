@@ -80,10 +80,8 @@ const note = useNoteStore()
   <PreviewNote :open="note.note != null" @on-close="note.note = null" :data="note.note" />
   <NewNote :open="showNewNotePopup" @on-close="closeNewNote" />
 
-  <div class="flex items-center p-6">
-    <section
-      class="flex w-[1100px] h-[525px] p-6 flex-col items-start gap-6 flex-shrink-0 rounded-3xl bg-white m-auto"
-    >
+  <section class="custom-spacing">
+    <div class="flex w-full h-full flex-col items-start gap-6 flex-shrink-0 rounded-3xl bg-white">
       <div class="flex justify-between items-start self-stretch">
         <div class="flex flex-col items-start gap-2">
           <h2 class="font-sans font-medium text-xl leading-6 text-primary-900">Daftar Catatan</h2>
@@ -130,8 +128,8 @@ const note = useNoteStore()
       <div name="note" id="note" class="flex items-start gap-6">
         <CardNote v-for="data in noteData" :data="data" />
       </div>
-    </section>
-  </div>
+    </div>
+  </section>
 </template>
 
 <style scoped>

@@ -15,36 +15,42 @@ const stores = useHomeStore()
 <template>
   <popUpResto :open="resto.resto != null" @on-close="resto.resto = null" :data="resto.resto" />
 
-  <div class="flex items-center justify-center w-full h-full px-16 py-4 bg-layout">
-    <section id="upgrade" class="container w-full h-full m-auto gap-6 bg-white p-6 rounded-3xl">
+  <section class="flex items-center justify-center w-full h-full bg-layout">
+    <div
+      id="upgrade"
+      class="w-full h-full m-auto gap-3 md:gap-4 lg:gap-5 xl:gap-6 bg-white p-6 rounded-xl md:rounded-2xl lg:rounded-3xl"
+    >
       <div class="flex justify-between">
-        <div class="">
-          <h1 class="text-extrabold text-xl text-primary-900">Daftar Pengguna</h1>
+        <div>
+          <h1 class="text-extrabold text-md md:text-lg lg:text-xl text-primary-900">
+            Daftar Pengguna
+          </h1>
           <p class="text-xs text-primary-900">
             Menampilkan {{ stores.getUserData().total_users }} pengguna
           </p>
         </div>
 
-        <div class="flex gap-4">
+        <div class="flex justify-center items-center gap-1 xl:gap-4 lg:gap-3 md:gap-2">
           <div
             id="search"
-            class="bg-gray-50 m-auto justify-center items-center flex rounded-lg px-2"
+            class="bg-transparent lg:bg-gray-50 m-auto justify-center items-center flex rounded-lg px-2"
           >
-            <IconSearch class="w-4 h-4" />
+            <IconSearch class="md:block hidden xl:w-4 h-4" />
             <InputText class="text-sm font-sans text-gray-800" placeholder="Cari Menu" />
           </div>
-
           <ButtonFilter />
         </div>
       </div>
 
-      <div class="justify-center items-center flex gap-5 py-6">
-        <div class="flex items-center rounded-xl overflow-hidden w-[340px] h-[104px] self-stretch">
-          <img :src="Food" alt="food" class="object-cover object-center" />
-        </div>
+      <div class="flex flex-wrap justify-between items-center gap-5 py-6">
+        <img
+          :src="Food"
+          alt="food"
+          class="object-cover object-center items-center rounded-xl overflow-hidden md:block hidden w-[340px] h-[104px] self-stretch"
+        />
 
         <div
-          class="bg-primary-900 gap-4 flex justify-center items-center rounded-xl py-6 px-6 w-auto h-auto"
+          class="bg-primary-900 gap-4 flex justify-center items-center rounded-xl py-4 px-6 w-full md:w-auto h-auto"
         >
           <UserValid class="w-12 h-12 text-white" />
           <div class="flex flex-col">
@@ -54,7 +60,7 @@ const stores = useHomeStore()
         </div>
 
         <div
-          class="bg-primary-50 flex gap-4 justify-center items-center rounded-xl py-6 px-6 w-auto h-[100%]"
+          class="bg-primary-50 flex gap-4 justify-center items-center rounded-xl py-4 px-6 w-full md:w-auto h-auto"
         >
           <UserInvalid class="fill-primary-900" />
           <div>
@@ -74,19 +80,17 @@ const stores = useHomeStore()
         </div>
 
         <div
-          class="bg-primary-50 flex flex-col justify-center items-center rounded-2xl overflow-hidden w-auto h-[100%]"
+          class="flex flex-col justify-center items-center rounded-2xl overflow-hidden h-auto w-full md:w-auto"
         >
-          <div
-            class="bg-primary-50 gap-2 flex py-2 px-6 items-center justify-center w-[328px] h-[64px]"
-          >
+          <div class="bg-primary-50 gap-2 flex py-1 px-2 items-center justify-center w-full h-auto">
             <UserValid class="fill-primary-900" />
-            <div>
+            <div class="text-center md:text-left">
               <h1 class="text-primary-900 text-xs">Premium</h1>
               <h1 class="text-primary-900 text-xl font-bold">{{ stores.getUserData().premium }}</h1>
             </div>
           </div>
 
-          <div class="bg-primary-900 flex items-center justify-between px-6 py-2 w-[100%] h-auto">
+          <div class="bg-primary-900 flex items-center justify-between py-1 px-6 w-full h-auto">
             <div class="flex justify-center items-center gap-1">
               <h1 class="text-sm text-white">Trial</h1>
               <h1 class="text-xl font-bold text-white">{{ stores.getUserData().trial }}</h1>
@@ -112,6 +116,6 @@ const stores = useHomeStore()
           :data="data"
         />
       </div>
-    </section>
-  </div>
+    </div>
+  </section>
 </template>

@@ -47,7 +47,7 @@ const selectedRadio = reactive({
         </button>
         <div
           v-if="dropdowns.filters"
-          class="absolute bg-white border items-center justify-center text-left text-sm self-stretch font-bold py-4 px-6 right-20"
+          class="absolute bg-white border items-center justify-center text-left text-sm self-stretch font-bold xl:py-4 px-6 lg:py-4 px-6 md:py-2 px-4 sm:py-1 px-2 right-20"
         >
           <h1 class="justify-center items-center text-gray-700">Status Berlangganan</h1>
           <label

@@ -86,7 +86,7 @@ const closeNewNote = () => {
       </div>
       <div name="note" id="note" class="flex items-start gap-6">
         <CardNote 
-          v-for="data in stores.getNoteData()" 
+          v-for="data in note.getNoteData()" 
           :key="data.note.note_id"
           :data="data" />
       </div>

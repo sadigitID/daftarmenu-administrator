@@ -1,5 +1,5 @@
 import { fetchPendapatanItem, fetchPenilaianUser, fetchUserData } from '@/api'
-import type { RestaurantModel, NoteModel } from '@/utils/types'
+import type {NoteModel, RestaurantModel } from '@/utils/types'
 import { defineStore } from 'pinia'
 import { onMounted, ref } from 'vue'
 
@@ -16,7 +16,6 @@ export const useHomeStore = defineStore('homeStore', () => {
   })
 
   const user_data = ref<RestaurantModel[]>([])
-  const note_data = ref<NoteModel[]>([])
 
   const getRetentionRateStatus = () => {
     const rate = (users.value.active_user / users.value.total_users) * 100
@@ -37,9 +36,7 @@ export const useHomeStore = defineStore('homeStore', () => {
     return user_data.value
   }
 
-  const getNoteData = () => {
-    return note_data.value
-  }
+
   const getLaporanPendapatanItem = () => {
     return laporanPendapatanItem.value
   }
@@ -119,7 +116,6 @@ export const useHomeStore = defineStore('homeStore', () => {
     getLaporanPendapatanItem,
     getUserData,
     getAccountData,
-    getNoteData,
     getRetentionRateStatus,
     fetchDataPenilaianUser,
     fetchAccountData,

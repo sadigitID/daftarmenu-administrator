@@ -1,13 +1,12 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import { Search, Add, Red } from '@/components/icons';
-import { Info, ButtonFilter, InputText } from '@/components';
-import { CardNote } from '@/components/card';
-import { Menu, Phone } from '@/assets/image';
-import { NewNote, PreviewNote } from '@/components/dialogs';
-import type { NoteModel } from '@/utils/types';
-import { useNoteStore } from '@/stores/note';
-
+import { ref } from 'vue'
+import { Search, Add, Red } from '@/components/icons'
+import { Info, ButtonFilter, InputText } from '@/components'
+import { CardNote } from '@/components/card'
+import { Menu, Phone } from '@/assets/image'
+import { NewNote, PreviewNote } from '@/components/dialogs'
+import type { NoteModel } from '@/utils/types'
+import { useNoteStore } from '@/stores/note'
 
 const infoData = [
   {
@@ -17,7 +16,7 @@ const infoData = [
     value: '800',
     desc2: 'Bug',
     value2: '800',
-    type: 'green',
+    type: 'green'
   },
   {
     icon: Red,
@@ -26,9 +25,9 @@ const infoData = [
     value: '800',
     desc2: 'Belum Selesai',
     value2: '800',
-    type: 'gray',
-  },
-];
+    type: 'gray'
+  }
+]
 
 const noteData = ref<NoteModel[]>([
   {
@@ -37,14 +36,14 @@ const noteData = ref<NoteModel[]>([
     note2: 'Selesai',
     desc: 'Ada user yang membutuhkan fitur pencarian dengan filter yang lebih beragam',
     img: Phone,
-    type: 'jenis',
+    type: 'jenis'
   },
   {
     title: 'Fitur Pencarian',
     note1: 'Bug',
     note2: 'Selesai',
     desc: 'Ada user yang membutuhkan fitur pencarian dengan filter yang lebih beragam',
-    type: 'jenis',
+    type: 'jenis'
   },
   {
     title: 'Fitur Pencarian',
@@ -52,7 +51,7 @@ const noteData = ref<NoteModel[]>([
     note2: 'Belum Selesai',
     desc: 'Ada user yang membutuhkan fitur pencarian dengan filter yang lebih beragam',
     img: Phone,
-    type: 'status',
+    type: 'status'
   },
   {
     title: 'Fitur Pencarian',
@@ -60,30 +59,29 @@ const noteData = ref<NoteModel[]>([
     note2: 'Belum Selesai',
     desc: 'Ada user yang membutuhkan fitur pencarian dengan filter yang lebih beragam',
     img: Phone,
-    type: 'status',
-  },
-]);
+    type: 'status'
+  }
+])
 
-const showNewNotePopup = ref(false);
+const showNewNotePopup = ref(false)
 
 const openNewNote = () => {
-  showNewNotePopup.value = true;
-};
+  showNewNotePopup.value = true
+}
 
 const closeNewNote = () => {
-  showNewNotePopup.value = false;
-};
+  showNewNotePopup.value = false
+}
 
-const note = useNoteStore();
-
+const note = useNoteStore()
 </script>
 
 <template>
   <PreviewNote :open="note.note != null" @on-close="note.note = null" :data="note.note" />
   <NewNote :open="showNewNotePopup" @on-close="closeNewNote" />
 
-  <div class="flex items-center p-6">
-    <section class="flex w-[1100px] h-[525px] p-6 flex-col items-start gap-6 flex-shrink-0 rounded-3xl bg-white m-auto">
+  <section class="custom-spacing">
+    <div class="flex w-full h-full flex-col items-start gap-6 flex-shrink-0 rounded-3xl bg-white">
       <div class="flex justify-between items-start self-stretch">
         <div class="flex flex-col items-start gap-2">
           <h2 class="font-sans font-medium text-xl leading-6 text-primary-900">Daftar Catatan</h2>
@@ -92,19 +90,29 @@ const note = useNoteStore();
         <div class="flex items-center gap-4 self-stretch">
           <div class="flex w-[200px] px-2 items-center gap-2 bg-gray-50 rounded-lg">
             <Search class="flex-shrink size-6"></Search>
-            <InputText class="font-sans font-normal text-sm leading-[22.4px]" placeholder="Cari Menu" />
+            <InputText
+              class="font-sans font-normal text-sm leading-[22.4px]"
+              placeholder="Cari Menu"
+            />
           </div>
           <div class="flex items-center gap-2 bg-gray-50 rounded-lg">
             <ButtonFilter />
           </div>
-          <button @click="openNewNote" class="flex p-2 items-center gap-2 bg-primary-500 rounded-lg">
+          <button
+            @click="openNewNote"
+            class="flex p-2 items-center gap-2 bg-primary-500 rounded-lg"
+          >
             <Add class="flex-shrink size-6"></Add>
             <p class="font-sans text-sm font-bold leading-[22.4px] text-white">Tambah Catatan</p>
           </button>
         </div>
       </div>
       <div class="flex h-[115px] items-center gap-5 flex-shrink-0 self-stretch">
-        <img :src="Menu" alt="" class="object-cover object-center w-[396px] h-[115px] rounded-2xl" />
+        <img
+          :src="Menu"
+          alt=""
+          class="object-cover object-center w-[396px] h-[115px] rounded-2xl"
+        />
         <Info
           v-for="(item, index) in infoData"
           :key="index"
@@ -120,8 +128,8 @@ const note = useNoteStore();
       <div name="note" id="note" class="flex items-start gap-6">
         <CardNote v-for="data in noteData" :data="data" />
       </div>
-    </section>
-  </div>
+    </div>
+  </section>
 </template>
 
 <style scoped>

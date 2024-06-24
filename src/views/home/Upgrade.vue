@@ -15,10 +15,10 @@ const stores = useHomeStore()
 <template>
   <popUpResto :open="resto.resto != null" @on-close="resto.resto = null" :data="resto.resto" />
 
-  <section class="flex items-center justify-center w-full h-full bg-layout">
+  <section class="custom-spacing">
     <div
       id="upgrade"
-      class="w-full h-full m-auto gap-3 md:gap-4 lg:gap-5 xl:gap-6 bg-white p-6 rounded-xl md:rounded-2xl lg:rounded-3xl"
+      class="w-full h-full gap-3 md:gap-4 lg:gap-5 xl:gap-6 bg-white rounded-xl md:rounded-2xl lg:rounded-3xl"
     >
       <div class="flex justify-between">
         <div>
@@ -42,15 +42,13 @@ const stores = useHomeStore()
         </div>
       </div>
 
-      <div class="flex flex-wrap justify-between items-center gap-5 py-6">
-        <img
-          :src="Food"
-          alt="food"
-          class="object-cover object-center items-center rounded-xl overflow-hidden md:block hidden w-[340px] h-[104px] self-stretch"
-        />
+      <div
+        class="flex md:flex-row flex-col justify-between items-center space-y-4 space-x-5 md:space-y-0 py-5"
+      >
+        <img :src="Food" alt="food" class="object-cover object-center rounded-xl w-full h-20" />
 
         <div
-          class="bg-primary-900 gap-4 flex justify-center items-center rounded-xl py-4 px-6 w-full md:w-auto h-auto"
+          class="bg-primary-900 gap-4 flex justify-center items-center rounded-xl py-4 px-6 w-full h-auto"
         >
           <UserValid class="w-12 h-12 text-white" />
           <div class="flex flex-col">
@@ -60,7 +58,7 @@ const stores = useHomeStore()
         </div>
 
         <div
-          class="bg-primary-50 flex gap-4 justify-center items-center rounded-xl py-4 px-6 w-full md:w-auto h-auto"
+          class="bg-primary-50 flex gap-4 justify-center items-center rounded-xl py-4 px-6 w-full h-auto"
         >
           <UserInvalid class="fill-primary-900" />
           <div>
@@ -80,7 +78,7 @@ const stores = useHomeStore()
         </div>
 
         <div
-          class="flex flex-col justify-center items-center rounded-2xl overflow-hidden h-auto w-full md:w-auto"
+          class="flex flex-col justify-center items-center rounded-2xl overflow-hidden h-auto w-full"
         >
           <div class="bg-primary-50 gap-2 flex py-1 px-2 items-center justify-center w-full h-auto">
             <UserValid class="fill-primary-900" />

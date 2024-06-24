@@ -80,7 +80,7 @@ const note = useNoteStore()
   <PreviewNote :open="note.note != null" @on-close="note.note = null" :data="note.note" />
   <NewNote :open="showNewNotePopup" @on-close="closeNewNote" />
 
-  <section class="custom-spacing">
+  <section class="custom-spacing mb-20 lg:mb-0 md:mb-0">
     <div class="flex w-full h-full flex-col items-start gap-2 flex-shrink-0">
       <!-- flex justify-between items-start self-stretch -->
       <div class="flex flex-col md:flex-row justify-center md:justify-between gap-6 w-full">
@@ -113,16 +113,14 @@ const note = useNoteStore()
         </div>
       </div>
 
-      <div
-        class="flex md:h-[115px] md:flex-row flex-col mt-8 lg:mt-20 items-center gap-5 pb-20 self-stretch"
-      >
+      <div class="flex flex-col lg:flex-row mt-6 items-center gap-5 self-stretch">
         <img
           :src="Menu"
           alt=""
           class="object-cover object-center w-full lg:w-[30%] h-[140px] lg:h-[115px] rounded-2xl"
         />
         <div
-          class="flex lg:w-[70%] w-full flex-col lg:flex-row space-y-5 lg:space-x-5 lg:space-y-0"
+          class="flex lg:w-[70%] w-full flex-col md:flex-row space-y-5 lg:space-x-5 md:space-y-0 md:space-x-2"
         >
           <Info
             v-for="(item, index) in infoData"
@@ -138,9 +136,13 @@ const note = useNoteStore()
         </div>
       </div>
 
-      <!-- <div name="note" id="note" class="flex items-start gap-6">
+      <div
+        name="note"
+        id="note"
+        class="grid mt-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-x-4 gap-y-6"
+      >
         <CardNote v-for="data in noteData" :data="data" />
-      </div> -->
+      </div>
     </div>
   </section>
 </template>

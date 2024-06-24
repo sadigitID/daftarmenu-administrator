@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import { Negara1, Negara2 } from '@/components/icons/'
+import CountryFlag from 'vue-country-flag-next'
 
 // Array data pengguna dari berbagai negara
 const NegaraItem = [
   {
-    icon: Negara1,
+    code: 'ID',
     title: 'Indonesia',
     jmlpengguna: '1K Pengguna'
   },
   {
-    icon: Negara2,
+    code: 'PS',
     title: 'Palestine',
     jmlpengguna: '200 Pengguna'
   }
@@ -27,8 +27,8 @@ const NegaraItem = [
       :key="index"
       class="flex items-center justify-between mb-4 rounded-lg"
     >
-      <div class="flex items-center">
-        <component :is="negara.icon" class="w-6 h-6 mr-2" />
+      <div class="flex items-center space-x-2">
+        <CountryFlag :country="negara.code" size="normal" :title="negara.title" rounded="true" />
         <span class="text-base">{{ negara.title }}</span>
       </div>
       <p class="text-sm font-medium">{{ negara.jmlpengguna }}</p>

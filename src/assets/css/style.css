@@ -1756,11 +1756,6 @@ video {
   padding-bottom: 3%;
 }
 
-.py-\[50px\]{
-  padding-top: 50px;
-  padding-bottom: 50px;
-}
-
 .pb-0{
   padding-bottom: 0px;
 }
@@ -1787,14 +1782,6 @@ video {
 
 .pe-32{
   padding-inline-end: 8rem;
-}
-
-.pe-\[3\%\]{
-  padding-inline-end: 3%;
-}
-
-.ps-\[6\%\]{
-  padding-inline-start: 6%;
 }
 
 .pt-2{

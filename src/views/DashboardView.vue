@@ -8,7 +8,7 @@ import { Navigasi, Header } from '@/components'
     <Navigasi />
     <Header />
 
-    <main class="flex flex-col flex-1 flex-grow md:ml-[120px] mt-[70px] p-4 md:p-6">
+    <main class="flex flex-col flex-1 flex-grow md:ml-[120px] mt-[94px] md:mt-[70px] p-4 md:p-6">
       <RouterView />
     </main>
   </div>

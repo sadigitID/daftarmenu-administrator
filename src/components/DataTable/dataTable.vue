@@ -39,7 +39,7 @@ const dataArray = data.map((obj) => Object.values(obj))
 <template>
   <div class="flex flex-col gap-6 p-6 bg-white rounded-2xl xl:bg-none -z-10 md:z-0">
     <h1 class="text-[20px] font-medium leading-4">Log Transaksi</h1>
-    <DataTable class="display" :data="dataArray">
+    <DataTable class="disp" :data="dataArray">
       <thead>
         <tr>
           <th>No.</th>

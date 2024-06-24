@@ -750,10 +750,6 @@ video {
   margin-top: 0.25rem;
 }
 
-.mt-10{
-  margin-top: 2.5rem;
-}
-
 .mt-2{
   margin-top: 0.5rem;
 }
@@ -768,6 +764,10 @@ video {
 
 .mt-6{
   margin-top: 1.5rem;
+}
+
+.mt-8{
+  margin-top: 2rem;
 }
 
 .mt-\[94px\]{
@@ -1015,6 +1015,10 @@ video {
 
 .w-\[68px\]{
   width: 68px;
+}
+
+.w-\[70\%\]{
+  width: 70%;
 }
 
 .w-\[74px\]{
@@ -1317,6 +1321,12 @@ video {
   margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
+.space-x-5 > :not([hidden]) ~ :not([hidden]){
+  --tw-space-x-reverse: 0;
+  margin-right: calc(1.25rem * var(--tw-space-x-reverse));
+  margin-left: calc(1.25rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
 .space-y-1 > :not([hidden]) ~ :not([hidden]){
   --tw-space-y-reverse: 0;
   margin-top: calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));
@@ -1339,6 +1349,12 @@ video {
   --tw-space-y-reverse: 0;
   margin-top: calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(0.75rem * var(--tw-space-y-reverse));
+}
+
+.space-y-5 > :not([hidden]) ~ :not([hidden]){
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1.25rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1.25rem * var(--tw-space-y-reverse));
 }
 
 .self-stretch{
@@ -2386,6 +2402,10 @@ video {
 }
 
 @media (min-width: 1024px){
+  .lg\:mt-20{
+    margin-top: 5rem;
+  }
+
   .lg\:h-\[115px\]{
     height: 115px;
   }
@@ -2394,12 +2414,16 @@ video {
     width: 24rem;
   }
 
-  .lg\:w-\[396px\]{
-    width: 396px;
+  .lg\:w-\[30\%\]{
+    width: 30%;
   }
 
   .lg\:w-auto{
     width: auto;
+  }
+
+  .lg\:w-\[70\%\]{
+    width: 70%;
   }
 
   .lg\:grid-cols-4{
@@ -2412,6 +2436,18 @@ video {
 
   .lg\:justify-between{
     justify-content: space-between;
+  }
+
+  .lg\:space-x-5 > :not([hidden]) ~ :not([hidden]){
+    --tw-space-x-reverse: 0;
+    margin-right: calc(1.25rem * var(--tw-space-x-reverse));
+    margin-left: calc(1.25rem * calc(1 - var(--tw-space-x-reverse)));
+  }
+
+  .lg\:space-y-0 > :not([hidden]) ~ :not([hidden]){
+    --tw-space-y-reverse: 0;
+    margin-top: calc(0px * calc(1 - var(--tw-space-y-reverse)));
+    margin-bottom: calc(0px * var(--tw-space-y-reverse));
   }
 
   .lg\:bg-white{

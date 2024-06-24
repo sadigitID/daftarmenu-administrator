@@ -114,25 +114,30 @@ const note = useNoteStore()
       </div>
 
       <div
-        class="flex md:h-[115px] md:flex-row flex-col mt-10 items-center gap-5 pb-20 self-stretch"
+        class="flex md:h-[115px] md:flex-row flex-col mt-8 lg:mt-20 items-center gap-5 pb-20 self-stretch"
       >
         <img
           :src="Menu"
           alt=""
-          class="object-cover object-center w-full lg:w-[396px] h-[140px] lg:h-[115px] rounded-2xl"
+          class="object-cover object-center w-full lg:w-[30%] h-[140px] lg:h-[115px] rounded-2xl"
         />
-        <Info
-          v-for="(item, index) in infoData"
-          :key="index"
-          :icon="item.icon"
-          :title="item.title"
-          :desc="item.desc"
-          :value="item.value"
-          :desc2="item.desc2"
-          :value2="item.value2"
-          :type="item.type"
-        />
+        <div
+          class="flex lg:w-[70%] w-full flex-col lg:flex-row space-y-5 lg:space-x-5 lg:space-y-0"
+        >
+          <Info
+            v-for="(item, index) in infoData"
+            :key="index"
+            :icon="item.icon"
+            :title="item.title"
+            :desc="item.desc"
+            :value="item.value"
+            :desc2="item.desc2"
+            :value2="item.value2"
+            :type="item.type"
+          />
+        </div>
       </div>
+
       <!-- <div name="note" id="note" class="flex items-start gap-6">
         <CardNote v-for="data in noteData" :data="data" />
       </div> -->

@@ -81,37 +81,45 @@ const note = useNoteStore()
   <NewNote :open="showNewNotePopup" @on-close="closeNewNote" />
 
   <section class="custom-spacing">
-    <div class="flex w-full h-full flex-col items-start gap-6 flex-shrink-0 rounded-3xl bg-white">
-      <div class="flex justify-between items-start self-stretch">
+    <div class="flex w-full h-full flex-col items-start gap-2 flex-shrink-0">
+      <!-- flex justify-between items-start self-stretch -->
+      <div class="flex flex-col md:flex-row justify-center md:justify-between gap-6 w-full">
         <div class="flex flex-col items-start gap-2">
           <h2 class="font-sans font-medium text-xl leading-6 text-primary-900">Daftar Catatan</h2>
           <p class="font-sans font-normal text-xs leading-[14.4px] text-gray-800">2 fitur</p>
         </div>
-        <div class="flex items-center gap-4 self-stretch">
-          <div class="flex w-[200px] px-2 items-center gap-2 bg-gray-50 rounded-lg">
+        <!-- flex flex-col md:flex-row items-center self-stretch -->
+        <div class="flex gap-4 flex-col md:flex-row items-center">
+          <div class="flex w-full md:w-[240px] px-2 py-1 items-center gap-2 bg-gray-50 rounded-lg">
             <Search class="flex-shrink size-6"></Search>
             <InputText
               class="font-sans font-normal text-sm leading-[22.4px]"
               placeholder="Cari Menu"
             />
           </div>
-          <div class="flex items-center gap-2 bg-gray-50 rounded-lg">
-            <ButtonFilter />
-          </div>
-          <button
-            @click="openNewNote"
-            class="flex p-2 items-center gap-2 bg-primary-500 rounded-lg"
+
+          <div
+            class="flex items-center justify-between md:justify-normal rounded-lg w-full md:w-auto md:space-x-4"
           >
-            <Add class="flex-shrink size-6"></Add>
-            <p class="font-sans text-sm font-bold leading-[22.4px] text-white">Tambah Catatan</p>
-          </button>
+            <ButtonFilter />
+            <button
+              @click="openNewNote"
+              class="flex p-2 items-center gap-2 bg-primary-500 rounded-lg"
+            >
+              <Add class="flex-shrink size-6"></Add>
+              <p class="font-sans text-sm font-bold leading-[22.4px] text-white">Tambah Catatan</p>
+            </button>
+          </div>
         </div>
       </div>
-      <div class="flex h-[115px] items-center gap-5 flex-shrink-0 self-stretch">
+
+      <div
+        class="flex md:h-[115px] md:flex-row flex-col mt-10 items-center gap-5 pb-20 self-stretch"
+      >
         <img
           :src="Menu"
           alt=""
-          class="object-cover object-center w-[396px] h-[115px] rounded-2xl"
+          class="object-cover object-center w-full lg:w-[396px] h-[140px] lg:h-[115px] rounded-2xl"
         />
         <Info
           v-for="(item, index) in infoData"
@@ -125,9 +133,9 @@ const note = useNoteStore()
           :type="item.type"
         />
       </div>
-      <div name="note" id="note" class="flex items-start gap-6">
+      <!-- <div name="note" id="note" class="flex items-start gap-6">
         <CardNote v-for="data in noteData" :data="data" />
-      </div>
+      </div> -->
     </div>
   </section>
 </template>

@@ -1,0 +1,24 @@
+{
+  "status": true,
+  "data": [
+    {
+      "jumlah": {
+        "total_users": 2000,
+        "active_user": 1425,
+        "inactive_user": 575
+      }
+    },
+    {
+      "gabung": {
+        "join_today": 1200
+      }
+    },
+    {
+      "jenis": {
+        "premium": 600,
+        "free": 900,
+        "trial": 500
+      }
+    }
+  ]
+}

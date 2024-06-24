@@ -2,10 +2,10 @@
 import { CardPaket } from '@/components/card'
 import { HomePageNegara, LaporanPendapatan, LoyalUser, PenilaianUser } from '@/components/'
 import { onMounted } from 'vue'
-import { useHomeStore } from '@/stores/home'
+// import { useHomeStore } from '@/stores/home'
 
-const stores = useHomeStore()
-
+// // const stores = useHomeStore()
+// npm install vue-country-flag
 onMounted(() => {
   // var currentDay = new Date()
   // var lastTimeStamp = 1717984603000
@@ -15,9 +15,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <section
-    class="flex items-start justify-center w-full rounded-lg md:p-6 lg:bg-white md:rounded-3xl"
-  >
+  <section class="custom-spacing">
     <div
       class="flex flex-col gap-6 mb-[100px] md:mb-0 xl:items-start lg:justify-between xl:flex-row w-full"
     >

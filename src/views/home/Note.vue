@@ -7,11 +7,9 @@ import { Menu } from '@/assets/image';
 import  PreviewNote  from '@/components/dialogs/previewNote.vue';
 import  NewNote  from '@/components/dialogs/newNote.vue';
 import { useNoteStore } from '@/stores/note';
-import { useHomeStore } from '@/stores/home';
 
 
 const note = useNoteStore();
-const stores = useHomeStore();
 const infoData = [
   {
     icon: Red,
@@ -20,7 +18,7 @@ const infoData = [
     value: '800',
     desc2: 'Bug',
     value2: '800',
-    type: 'green',
+    type: 'green'
   },
   {
     icon: Red,
@@ -29,15 +27,15 @@ const infoData = [
     value: '800',
     desc2: 'Belum Selesai',
     value2: '800',
-    type: 'gray',
-  },
-];
+    type: 'gray'
+  }
+]
 
 const showNewNotePopup = ref(false);
 
 const openNewNote = () => {
-  showNewNotePopup.value = true;
-};
+  showNewNotePopup.value = true
+}
 
 const closeNewNote = () => {
   showNewNotePopup.value = false;
@@ -49,8 +47,8 @@ const closeNewNote = () => {
   <PreviewNote :open="note.note != null" @on-close="note.note = null" :data="note.note" />
   <NewNote :open="showNewNotePopup" @on-close="closeNewNote" />
 
-  <div class="flex items-center p-6">
-    <section class="flex w-[1100px] h-[525px] p-6 flex-col items-start gap-6 flex-shrink-0 rounded-3xl bg-white m-auto">
+  <section class="custom-spacing">
+    <div class="flex w-full h-full flex-col items-start gap-6 flex-shrink-0 rounded-3xl bg-white">
       <div class="flex justify-between items-start self-stretch">
         <div class="flex flex-col items-start gap-2">
           <h2 class="font-sans font-medium text-xl leading-6 text-primary-900">Daftar Catatan</h2>
@@ -59,19 +57,29 @@ const closeNewNote = () => {
         <div class="flex items-center gap-4 self-stretch">
           <div class="flex w-[200px] px-2 items-center gap-2 bg-gray-50 rounded-lg">
             <Search class="flex-shrink size-6"></Search>
-            <InputText class="font-sans font-normal text-sm leading-[22.4px]" placeholder="Cari Menu" />
+            <InputText
+              class="font-sans font-normal text-sm leading-[22.4px]"
+              placeholder="Cari Menu"
+            />
           </div>
           <div class="flex items-center gap-2 bg-gray-50 rounded-lg">
             <ButtonFilter />
           </div>
-          <button @click="openNewNote" class="flex p-2 items-center gap-2 bg-primary-500 rounded-lg">
+          <button
+            @click="openNewNote"
+            class="flex p-2 items-center gap-2 bg-primary-500 rounded-lg"
+          >
             <Add class="flex-shrink size-6"></Add>
             <p class="font-sans text-sm font-bold leading-[22.4px] text-white">Tambah Catatan</p>
           </button>
         </div>
       </div>
       <div class="flex h-[115px] items-center gap-5 flex-shrink-0 self-stretch">
-        <img :src="Menu" alt="" class="object-cover object-center w-[396px] h-[115px] rounded-2xl" />
+        <img
+          :src="Menu"
+          alt=""
+          class="object-cover object-center w-[396px] h-[115px] rounded-2xl"
+        />
         <Info
           v-for="(item, index) in infoData"
           :key="index"
@@ -84,12 +92,12 @@ const closeNewNote = () => {
           :type="item.type"
         />
       </div>
-      <div name="note" id="note" class="flex items-start gap-6">
+      <div name="note" id="note" class="grid grid-cols-4 items-start gap-6">
         <CardNote 
           v-for="data in note.getNoteData()" 
           :key="data.note.note_id"
           :data="data" />
       </div>
-    </section>
-  </div>
+    </div>
+  </section>
 </template>

@@ -36,9 +36,9 @@ const onSuccessfulLogout = () => {
       <Menu as="div" class="relative inline-block text-left">
         <div class="md:mr-[25px]">
           <MenuButton
-            class="flex justify-center items-center gap-x-2.5 rounded-full bg-primary-50 px-4 py-2 text-sm font-bold text-primary-800"
+            class="flex justify-center items-center gap-x-2.5 rounded-full bg-primary-50 p-2 md:px-4 text-sm font-bold text-primary-800"
           >
-            <Profil class="w-6 h-6" /> Admin</MenuButton
+            <Profil class="w-6 h-6" /> <span class="hidden md:block">Admin</span></MenuButton
           >
         </div>
 

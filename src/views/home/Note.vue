@@ -92,7 +92,7 @@ const closeNewNote = () => {
           :type="item.type"
         />
       </div>
-      <div name="note" id="note" class="grid grid-cols-4 items-start gap-6">
+      <div name="note" id="note" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 items-start gap-6">
         <CardNote 
           v-for="data in note.getNoteData()" 
           :key="data.note.note_id"

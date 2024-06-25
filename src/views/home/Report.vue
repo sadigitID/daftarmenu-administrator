@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { CardJenisUser, CardMetodeBayar } from '@/components/card'
-import { LaporanPendapatan, TableComponents } from '@/components'
-import { dataTable } from '@/components'
+import { LaporanPendapatan, dataTable } from '@/components'
 </script>
 
 <template>

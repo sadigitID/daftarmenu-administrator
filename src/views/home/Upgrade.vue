@@ -4,16 +4,18 @@ import { Food } from '@/assets/image'
 import { CardResto } from '@/components/card'
 import { InputText } from '@/components/'
 import { ButtonFilter } from '@/components'
-import PopUpResto from '@/components/dialogs/PopUpResto.vue'
+// import PopUpResto from '@/components/dialogs/PopUpResto.vue'
 import { useRestoStore } from '@/stores/resto'
 import { useHomeStore } from '@/stores/home'
+
+import { PopUpResto, EditNote } from '@/components'
 
 const resto = useRestoStore()
 const stores = useHomeStore()
 </script>
 
 <template>
-  <popUpResto :open="resto.resto != null" @on-close="resto.resto = null" :data="resto.resto" />
+  <EditNote :open="resto.resto != null" @on-close="resto.resto = null" :data="resto.resto" />
 
   <section class="custom-spacing">
     <div

@@ -4,7 +4,7 @@ import { computed, ref } from 'vue'
 import { XMarkIcon } from '@heroicons/vue/24/outline'
 import { Switch } from '@headlessui/vue'
 import type { NoteModel } from '@/utils/types'
-import { Check, Block} from "@/components/icons";
+import { Check, Block } from '@/components/icons'
 
 const enabled = ref(false)
 
@@ -83,30 +83,33 @@ function close() {
                             <h1 class="py-2 font-medium">Request Feature</h1>
                           </div>
                           <div class="flex flex-col gap-2 w-[50%]">
-    <span class="label text-sm text-gray-700">Status</span>
-    <div class="relative flex items-center gap-2">
-      <!-- Toggle Switch -->
-      <Switch
-        v-model="enabled"
-        :class="enabled ? 'bg-vtd-primary-600' : 'bg-gray-200'"
-        class="relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-300"
-      >
-        <span class="sr-only">Toggle</span>
-        <span
-          :class="enabled ? 'translate-x-6' : 'translate-x-1'"
-          class="inline-block h-4 w-4 transform rounded-full bg-white transition-transform duration-300"
-        />
-      </Switch>
-      <!-- Text based on enabled state -->
-      <span>{{ enabled ? 'Selesai' : 'Belum Selesai' }}</span>
+                            <span class="label text-sm text-gray-700">Status</span>
+                            <div class="relative flex items-center gap-2">
+                              <!-- Toggle Switch -->
+                              <Switch
+                                v-model="enabled"
+                                :class="enabled ? 'bg-vtd-primary-600' : 'bg-gray-200'"
+                                class="relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-300"
+                              >
+                                <span class="sr-only">Toggle</span>
+                                <span
+                                  :class="enabled ? 'translate-x-6' : 'translate-x-1'"
+                                  class="inline-block h-4 w-4 transform rounded-full bg-white transition-transform duration-300"
+                                />
+                              </Switch>
+                              <!-- Text based on enabled state -->
+                              <span>{{ enabled ? 'Selesai' : 'Belum Selesai' }}</span>
 
-      <!-- Icon based on enabled state -->
-      <div class="absolute -top-12 transition-transform duration-300" :class="enabled ? 'left-2' : 'left-1'">
-        <check v-if="enabled" class="h-6 w-6 text-green-500"/>
-        <block v-else class="h-6 w-6" />
-      </div>
-    </div>
-  </div>
+                              <!-- Icon based on enabled state -->
+                              <div
+                                class="absolute -top-12 transition-transform duration-300"
+                                :class="enabled ? 'left-2' : 'left-1'"
+                              >
+                                <check v-if="enabled" class="h-6 w-6 text-green-500" />
+                                <block v-else class="h-6 w-6" />
+                              </div>
+                            </div>
+                          </div>
                         </div>
                         <div class="flex flex-col gap-2">
                           <span class="label text-sm text-gray-700">Deskripsi</span>
@@ -122,6 +125,7 @@ function close() {
                             <div class="img w-[128px] h-[128px] bg-gray-50 rounded-md"></div>
                           </div>
                         </div>
+
                         <div class="absolute bottom-0 left-0 w-full p-4 sm:p-6">
                           <div class="flex action-btn gap-2">
                             <div

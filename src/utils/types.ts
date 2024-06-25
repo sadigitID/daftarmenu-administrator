@@ -36,6 +36,14 @@ note: {
   img?: string
   type: string
 }
+detail:{
+  note_id: number
+  title: string
+  type: string
+  status: string
+  desc: string
+  img: string
+}
 }
 
 export type { NoteModel, RestaurantModel }

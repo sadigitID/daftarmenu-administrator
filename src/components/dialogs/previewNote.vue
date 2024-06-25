@@ -75,12 +75,12 @@ function close() {
                         <!-- Konten Dialog -->
                         <div>
                           <span class="label text-sm text-gray-700">Judul</span>
-                          <h1 class="w-full py-2 font-medium">Fitur Pencarian</h1>
+                          <h1 class="w-full py-2 font-medium">{{ data?.detail.title }}</h1>
                         </div>
                         <div class="flex items-center w-full">
                           <div class="w-[50%]">
                             <span class="label text-sm text-gray-700">Jenis</span>
-                            <h1 class="py-2 font-medium">Request Feature</h1>
+                            <h1 class="py-2 font-medium">{{ data?.detail.type }}e</h1>
                           </div>
                           <div class="flex flex-col gap-2 w-[50%]">
     <span class="label text-sm text-gray-700">Status</span>
@@ -111,8 +111,7 @@ function close() {
                         <div class="flex flex-col gap-2">
                           <span class="label text-sm text-gray-700">Deskripsi</span>
                           <p class="font-medium">
-                            Ada user yang membutuhkan fitur pencarian dengan filter yang lebih
-                            beragam
+                            {{ data?.detail.title }}
                           </p>
                         </div>
                         <div class="flex flex-col gap-4">

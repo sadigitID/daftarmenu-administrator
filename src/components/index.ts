@@ -17,3 +17,4 @@ export { default as HomePageNegara } from '@/components/HomePageNegara.vue'
 export { default as TableComponents } from '@/components/TableComponents.vue'
 
 export { default as dataTable } from '@/components/DataTable/dataTable.vue'
+export { default as SkeletonResto } from '@/components/SkeletonResto.vue'

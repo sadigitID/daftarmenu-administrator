@@ -2,7 +2,7 @@
 import { IconSearch, UserInvalid, UserValid } from '@/components/icons'
 import { Food } from '@/assets/image'
 import { CardResto } from '@/components/card'
-import { InputText } from '@/components/'
+import { InputText, SkeletonResto } from '@/components/'
 import { ButtonFilter } from '@/components'
 import PopUpResto from '@/components/dialogs/PopUpResto.vue'
 import { useRestoStore } from '@/stores/resto'
@@ -12,8 +12,24 @@ import { onMounted } from 'vue'
 const resto = useRestoStore()
 const stores = useHomeStore()
 
+const onPending = () => {
+  console.log('pending')
+}
+
+const onFallback = () => {
+  console.log('fallback')
+}
+
+const onResolve = () => {
+  console.log('resolve')
+}
+
 onMounted(() => {
   document.title = 'Upgrade - Admin Daftar Menu'
+  console.log(stores.getAccountData(), 'ahsdbad')
+  if (stores.getAccountData().length == 0) {
+    stores.fetchAccountData()
+  }
 })
 </script>
 
@@ -119,11 +135,14 @@ onMounted(() => {
         id="resto"
         class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-x-4 gap-y-6"
       >
-        <CardResto
-          v-for="data in stores.getAccountData()"
-          :key="data.resto.resto_id"
-          :data="data"
-        />
+        <Suspense>
+          <template #default>
+            <CardResto />
+          </template>
+          <template #fallback>
+            <SkeletonResto />
+          </template>
+        </Suspense>
       </div>
     </div>
   </section>

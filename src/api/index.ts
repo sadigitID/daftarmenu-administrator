@@ -42,4 +42,8 @@ const fetchUserData = async () => {
   return instance.get('/user_data.json')
 }
 
-export { fetchPendapatanItem, fetchPenilaianUser, createAuth, fetchUserData }
+
+const fetchNoteData = async () => {
+  return instance.get('/note_data.json')
+}
+export { fetchPendapatanItem, fetchPenilaianUser, createAuth, fetchUserData, fetchNoteData }

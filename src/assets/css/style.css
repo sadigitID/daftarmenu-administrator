@@ -1144,6 +1144,10 @@ video {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.grid-cols-4{
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
 .flex-row{
   flex-direction: row;
 }
@@ -1549,6 +1553,11 @@ video {
 .bg-white{
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.bg-black{
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
 }
 
 .bg-opacity-75{
@@ -1962,6 +1971,11 @@ video {
 .text-white{
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.text-black{
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 
 .opacity-0{
@@ -2428,6 +2442,7 @@ video {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   .md\:py-2{
     padding-top: 0.5rem;
@@ -2444,6 +2459,8 @@ video {
   }
 
 >>>>>>> d5f5354147716615e643cf613048c045376ea5be
+=======
+>>>>>>> 7bddfa76a54ab5c2fe5b77cc73fb39a7608174d5
   .md\:text-sm{
     font-size: 0.875rem;
     line-height: 1.25rem;

@@ -1,13 +1,15 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { Search, Add, Red } from '@/components/icons'
-import { Info, ButtonFilter, InputText } from '@/components'
-import { CardNote } from '@/components/card'
-import { Menu, Phone } from '@/assets/image'
-import { NewNote, PreviewNote } from '@/components/dialogs'
-import type { NoteModel } from '@/utils/types'
-import { useNoteStore } from '@/stores/note'
+import { ref } from 'vue';
+import { Search, Add, Red } from '@/components/icons';
+import { Info, ButtonFilter, InputText } from '@/components';
+import { CardNote } from '@/components/card';
+import { Menu } from '@/assets/image';
+import  PreviewNote  from '@/components/dialogs/previewNote.vue';
+import  NewNote  from '@/components/dialogs/newNote.vue';
+import { useNoteStore } from '@/stores/note';
 
+
+const note = useNoteStore();
 const infoData = [
   {
     icon: Red,
@@ -29,51 +31,16 @@ const infoData = [
   }
 ]
 
-const noteData = ref<NoteModel[]>([
-  {
-    title: 'Fitur Pencarian',
-    note1: 'Bug',
-    note2: 'Selesai',
-    desc: 'Ada user yang membutuhkan fitur pencarian dengan filter yang lebih beragam',
-    img: Phone,
-    type: 'jenis'
-  },
-  {
-    title: 'Fitur Pencarian',
-    note1: 'Bug',
-    note2: 'Selesai',
-    desc: 'Ada user yang membutuhkan fitur pencarian dengan filter yang lebih beragam',
-    type: 'jenis'
-  },
-  {
-    title: 'Fitur Pencarian',
-    note1: 'Request Feature',
-    note2: 'Belum Selesai',
-    desc: 'Ada user yang membutuhkan fitur pencarian dengan filter yang lebih beragam',
-    img: Phone,
-    type: 'status'
-  },
-  {
-    title: 'Fitur Pencarian',
-    note1: 'Request Feature',
-    note2: 'Belum Selesai',
-    desc: 'Ada user yang membutuhkan fitur pencarian dengan filter yang lebih beragam',
-    img: Phone,
-    type: 'status'
-  }
-])
-
-const showNewNotePopup = ref(false)
+const showNewNotePopup = ref(false);
 
 const openNewNote = () => {
   showNewNotePopup.value = true
 }
 
 const closeNewNote = () => {
-  showNewNotePopup.value = false
-}
+  showNewNotePopup.value = false;
+};
 
-const note = useNoteStore()
 </script>
 
 <template>
@@ -125,13 +92,12 @@ const note = useNoteStore()
           :type="item.type"
         />
       </div>
-      <div name="note" id="note" class="flex items-start gap-6">
-        <CardNote v-for="data in noteData" :data="data" />
+      <div name="note" id="note" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 items-start gap-6">
+        <CardNote 
+          v-for="data in note.getNoteData()" 
+          :key="data.note.note_id"
+          :data="data" />
       </div>
     </div>
   </section>
 </template>
-
-<style scoped>
-/* Tambahkan gaya tambahan jika perlu */
-</style>

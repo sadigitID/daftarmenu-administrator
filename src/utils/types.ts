@@ -27,12 +27,15 @@ interface RestaurantModel {
 }
 
 interface NoteModel {
+note: {
+  note_id: number
   title: string
   note1: string
   note2: string
   desc: string
   img?: string
   type: string
+}
 }
 
 export type { NoteModel, RestaurantModel }

@@ -2,18 +2,41 @@
 import { IconSearch, UserInvalid, UserValid } from '@/components/icons'
 import { Food } from '@/assets/image'
 import { CardResto } from '@/components/card'
-import { InputText } from '@/components/'
+import { InputText, SkeletonResto } from '@/components/'
 import { ButtonFilter } from '@/components'
-import PopUpResto from '@/components/dialogs/PopUpResto.vue'
+// import PopUpResto from '@/components/dialogs/PopUpResto.vue'
 import { useRestoStore } from '@/stores/resto'
 import { useHomeStore } from '@/stores/home'
+import { onMounted } from 'vue'
+
+import { PopUpResto } from '@/components'
 
 const resto = useRestoStore()
 const stores = useHomeStore()
+
+const onPending = () => {
+  console.log('pending')
+}
+
+const onFallback = () => {
+  console.log('fallback')
+}
+
+const onResolve = () => {
+  console.log('resolve')
+}
+
+onMounted(() => {
+  document.title = 'Upgrade - Admin Daftar Menu'
+  console.log(stores.getAccountData(), 'ahsdbad')
+  if (stores.getAccountData().length == 0) {
+    stores.fetchAccountsData()
+  }
+})
 </script>
 
 <template>
-  <popUpResto :open="resto.resto != null" @on-close="resto.resto = null" :data="resto.resto" />
+  <PopUpResto :open="resto.resto != null" @on-close="resto.resto = null" :data="resto.resto" />
 
   <section class="custom-spacing">
     <div
@@ -26,7 +49,7 @@ const stores = useHomeStore()
             Daftar Pengguna
           </h1>
           <p class="text-xs text-primary-900">
-            Menampilkan {{ stores.getUserData().total_users }} pengguna
+            Menampilkan {{ stores.user_information.users.total_user }} pengguna
           </p>
         </div>
 
@@ -35,25 +58,27 @@ const stores = useHomeStore()
             id="search"
             class="bg-transparent lg:bg-gray-50 m-auto justify-center items-center flex rounded-lg px-2"
           >
-            <IconSearch class="md:block hidden xl:w-4 h-4" />
-            <InputText class="text-sm font-sans text-gray-800" placeholder="Cari Menu" />
+            <IconSearch class="md:block hidden lg:w-4 h-4 lg:bg-gray-50" />
+            <InputText class="text-sm font-sans text-gray-800 px-3" placeholder="Cari Menu" />
           </div>
           <ButtonFilter />
         </div>
       </div>
 
       <div
-        class="flex md:flex-row flex-col justify-between items-center space-y-4 space-x-5 md:space-y-0 py-5"
+        class="flex md:flex-row flex-col justify-between items-center space-y-4 lg:space-x-5 md:space-y-0 py-5"
       >
-        <img :src="Food" alt="food" class="object-cover object-center rounded-xl w-full h-20" />
+        <img :src="Food" alt="food" class="object-cover object-center rounded-xl w-full h-[87px]" />
 
         <div
-          class="bg-primary-900 gap-4 flex justify-center items-center rounded-xl py-4 px-6 w-full h-auto"
+          class="bg-primary-900 gap-4 flex justify-center items-center rounded-xl py-5 px-6 w-full h-auto"
         >
           <UserValid class="w-12 h-12 text-white" />
           <div class="flex flex-col">
             <h1 class="text-white text-xs">Hari Ini Bergabung</h1>
-            <h1 class="text-white text-xl font-bold">{{ stores.getUserData().join_today }}</h1>
+            <h1 class="text-white text-xl font-bold">
+              {{ stores.user_information.joined.join_today }}
+            </h1>
           </div>
         </div>
 
@@ -64,13 +89,13 @@ const stores = useHomeStore()
           <div>
             <div class="flex items-center justify-start gap-1">
               <h1 class="text-primary-900 text-lg font-bold">
-                {{ stores.getUserData().active_user }}
+                {{ stores.user_information.users.active_user }}
               </h1>
               <h1 class="text-primary-900 text-xs">User Aktif</h1>
             </div>
             <div class="flex items-center justify-center gap-1">
               <h1 class="text-primary-900 text-lg font-bold">
-                {{ stores.getUserData().inactive_user }}
+                {{ stores.user_information.users.inactive_user }}
               </h1>
               <h1 class="text-primary-900 text-xs">User Tidak Aktif</h1>
             </div>
@@ -84,19 +109,25 @@ const stores = useHomeStore()
             <UserValid class="fill-primary-900" />
             <div class="text-center md:text-left">
               <h1 class="text-primary-900 text-xs">Premium</h1>
-              <h1 class="text-primary-900 text-xl font-bold">{{ stores.getUserData().premium }}</h1>
+              <h1 class="text-primary-900 text-xl font-bold">
+                {{ stores.user_information.packet.premium }}
+              </h1>
             </div>
           </div>
 
           <div class="bg-primary-900 flex items-center justify-between py-1 px-6 w-full h-auto">
             <div class="flex justify-center items-center gap-1">
               <h1 class="text-sm text-white">Trial</h1>
-              <h1 class="text-xl font-bold text-white">{{ stores.getUserData().trial }}</h1>
+              <h1 class="text-xl font-bold text-white">
+                {{ stores.user_information.packet.trial }}
+              </h1>
             </div>
 
             <div class="flex justify-center items-center gap-1">
               <h1 class="text-sm text-white">Free</h1>
-              <h1 class="text-xl font-bold text-white">{{ stores.getUserData().free }}</h1>
+              <h1 class="text-xl font-bold text-white">
+                {{ stores.user_information.packet.free }}
+              </h1>
             </div>
           </div>
         </div>
@@ -108,11 +139,14 @@ const stores = useHomeStore()
         id="resto"
         class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-x-4 gap-y-6"
       >
-        <CardResto
-          v-for="data in stores.getAccountData()"
-          :key="data.resto.resto_id"
-          :data="data"
-        />
+        <Suspense>
+          <template #default>
+            <CardResto />
+          </template>
+          <template #fallback>
+            <SkeletonResto />
+          </template>
+        </Suspense>
       </div>
     </div>
   </section>

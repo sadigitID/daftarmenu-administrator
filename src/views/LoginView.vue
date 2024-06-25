@@ -5,6 +5,7 @@ import { useDialogStore } from '@/stores/dialog'
 import { createAuth } from '@/api'
 import { useAccountStore } from '@/stores/account'
 import { Login } from '@/assets/image'
+import { onMounted } from 'vue'
 const dialog = useDialogStore()
 const account = useAccountStore()
 const email = ref('')
@@ -95,6 +96,10 @@ const onEmptyPassword = () => {
   dialog.showCancelButton = false
   dialog.open = true
 }
+
+onMounted(() => {
+  document.title = 'Login - Admin Daftar Menu'
+})
 </script>
 
 <template>

@@ -3,29 +3,58 @@ import { ChevronRight } from '@/components/icons'
 import { useRestoStore } from '@/stores/resto'
 import type { RestaurantModel } from '@/utils/types'
 import { timestampToDateFormated, daysSinceNow } from '@/utils/date'
+import { onMounted, ref } from 'vue'
+import { useHomeStore } from '@/stores/home'
 
 const resto = useRestoStore()
+const stores = useHomeStore()
 
-const props = defineProps({
-  data: {
-    type: Object as () => RestaurantModel,
-    required: true
-  }
-})
+// const props = defineProps({
+//   data: {
+//     type: Object as () => RestaurantModel,
+//     required: true
+//   }
+// })
 
 const onSelected = (data: RestaurantModel) => {
   resto.resto = data
 }
 
-const dateNow = new Date().getTime()
-const accountLastActive = props.data.account.account_last_active
-const unactiveLimit = accountLastActive + 2592000000
-const accountStatus = dateNow > unactiveLimit ? 'inactive' : 'active'
-const daysPassed = daysSinceNow(accountLastActive)
+const accountData = ref<RestaurantModel[]>([])
+
+const loadRestoData = async () => {
+  return new Promise((resolve) => {
+    stores.fetchAccountsData()
+    setTimeout(() => {
+      accountData.value = stores.getAccountData()
+      resolve(accountData.value)
+    }, 2000)
+  })
+}
+
+const getAccountStatus = (data: RestaurantModel) => {
+  const dateNow = new Date().getTime()
+  const accountLastActive = data.account.account_last_active
+  const unactiveLimit = accountLastActive + 2592000000
+  const accountStatus = dateNow > unactiveLimit ? 'inactive' : 'active'
+
+  return accountStatus
+}
+
+const getDaysPassed = (data: RestaurantModel) => {
+  const accountLastActive = data.account.account_last_active
+  const daysPassed = daysSinceNow(accountLastActive)
+
+  return daysPassed
+}
+
+await loadRestoData()
 </script>
 
 <template>
   <button
+    v-for="data in accountData"
+    :key="data.resto.resto_id"
     @click="onSelected(data)"
     class="flex flex-1 p-2 bg-white justify-between items-center rounded-2xl font-sans shadow-[1px_1px_8px_0px_rgba(180,180,180,0.39)]"
   >
@@ -57,10 +86,13 @@ const daysPassed = daysSinceNow(accountLastActive)
               <p class="text-xs font-medium text-primary-900">Premium</p>
             </div>
 
-            <div v-if="accountStatus == 'active'" class="flex p-1 items-center gap-2.5">
+            <div v-if="getAccountStatus(data) == 'active'" class="flex p-1 items-center gap-2.5">
               <p class="text-xs font-medium text-superorange">Aktif</p>
             </div>
-            <div v-else-if="accountStatus == 'inactive'" class="flex p-1 items-center gap-2.5">
+            <div
+              v-else-if="getAccountStatus(data) == 'inactive'"
+              class="flex p-1 items-center gap-2.5"
+            >
               <p class="text-xs font-medium text-red-500">Tidak Aktif</p>
             </div>
           </div>
@@ -70,17 +102,17 @@ const daysPassed = daysSinceNow(accountLastActive)
             </p>
           </div>
         </div>
-        <div v-if="props.data.resto.resto_transaction_today != 0" class="flex items-start gap-2.5">
+        <div v-if="data.resto.resto_transaction_today != 0" class="flex items-start gap-2.5">
           <p class="text-xs font-medium text-gray-700 text-left">
-            {{ props.data.resto.resto_transaction_today }} transaksi pada hari ini
+            {{ data.resto.resto_transaction_today }} transaksi pada hari ini
           </p>
         </div>
-        <div v-else-if="daysPassed > 30" class="flex items-start gap-2.5">
+        <div v-else-if="getDaysPassed(data) > 30" class="flex items-start gap-2.5">
           <p class="text-xs font-medium text-gray-700 text-left">Tidak aktif lebih dari 30 hari</p>
         </div>
         <div v-else class="flex items-start gap-2.5">
           <p class="text-xs font-medium text-gray-700 text-left">
-            Exp: {{ timestampToDateFormated(props.data.account.account_last_active) }}
+            Exp: {{ timestampToDateFormated(data.account.account_last_active) }}
           </p>
         </div>
       </div>

@@ -51,10 +51,23 @@ const onSuccessfulLogout = () => {
           leave-to-class="transform scale-95 opacity-0"
         >
           <MenuItems
-            class="absolute right-0 z-10 w-56 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+            class="absolute right-0 z-10 w-[338px] mt-2 origin-top-right flex flex-col items-start shadow-custom-gray rounded-lg"
           >
-            <div class="py-1">
-              <MenuItem v-slot="{ active }">
+            <div
+              class="flex px-6 py-4 items-center self-stretch bg-primary-800 shadow-[0px 4px 4px 0px rgba(0, 0, 0, 0.25)] rounded-t-lg"
+            >
+              <div class="flex items-center flex-1 gap-2">
+                <img src="" alt="" class="w-12 h-12" />
+                <div class="flex flex-col items-start gap-1">
+                  <p class="text-base font-medium text-white">Admin</p>
+                  <p class="text-xs font-normal text-white">Admin</p>
+                </div>
+              </div>
+            </div>
+            <div
+              class="flex py-2 px-6 flex-col justify-center items-center gap-0.5 self-stretch bg-white rounded-b-lg"
+            >
+              <!-- <MenuItem v-slot="{ active }">
                 <a
                   href="#"
                   :class="[
@@ -83,16 +96,16 @@ const onSuccessfulLogout = () => {
                   ]"
                   >License</a
                 >
-              </MenuItem>
-              <MenuItem v-slot="{ active }">
+              </MenuItem> -->
+              <MenuItem v-slot="{ active }" class="flex p-2 items-start gap-2.5 self-strecth">
                 <button
                   @click="confirmLogout"
                   :class="[
-                    active ? 'bg-gray-100 text-red-700' : 'text-red-600',
-                    'block w-full px-4 py-2 text-left text-sm font-semibold'
+                    active ? 'text-red-700' : 'text-red-600',
+                    'block w-full text-left text-sm font-normal'
                   ]"
                 >
-                  Sign out
+                  Keluar
                 </button>
               </MenuItem>
             </div>

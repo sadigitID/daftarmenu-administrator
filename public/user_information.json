@@ -1,0 +1,18 @@
+{
+  "status": true,
+  "data": {
+    "users": {
+      "total_user": 2000,
+      "active_user": 1425,
+      "inactive_user": 575
+    },
+    "joined": {
+      "join_today": 1200
+    },
+    "packet": {
+      "premium": 600,
+      "free": 900,
+      "trial": 500
+    }
+  }
+}

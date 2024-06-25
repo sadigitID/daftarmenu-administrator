@@ -40,14 +40,14 @@ const selectedRadio = reactive({
       <div>
         <button
           @click="toggleDropdown('filters')"
-          class="bg-gray-50 text-gray-900 rounded-lg flex text-left text-sm font-bold px-4 py-2 gap-2"
+          class="bg-gray-50 text-gray-900 rounded-lg flex text-left text-sm font-bold py-2 px-1 md:px-4 md:py-2 gap-2"
         >
           Filter
           <Dropdown />
         </button>
         <div
           v-if="dropdowns.filters"
-          class="absolute bg-white border items-center justify-center text-left text-sm self-stretch font-bold xl:py-4 px-6 lg:py-4 px-6 md:py-2 px-4 sm:py-1 px-2 right-20"
+          class="absolute bg-white border items-center justify-center text-left text-sm self-stretch font-bold xl:py-4 lg:px-6 lg:py-4 md:py-2 md:px-4 sm:py-1 sm:px-2 right-20"
         >
           <h1 class="justify-center items-center text-gray-700">Status Berlangganan</h1>
           <label

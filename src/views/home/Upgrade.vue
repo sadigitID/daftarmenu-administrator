@@ -26,7 +26,7 @@ const stores = useHomeStore()
             Daftar Pengguna
           </h1>
           <p class="text-xs text-primary-900">
-            Menampilkan {{ stores.getUserData().total_users }} pengguna
+            Menampilkan {{ stores.user_information.users.total_user }} pengguna
           </p>
         </div>
 
@@ -53,7 +53,9 @@ const stores = useHomeStore()
           <UserValid class="w-12 h-12 text-white" />
           <div class="flex flex-col">
             <h1 class="text-white text-xs">Hari Ini Bergabung</h1>
-            <h1 class="text-white text-xl font-bold">{{ stores.getUserData().join_today }}</h1>
+            <h1 class="text-white text-xl font-bold">
+              {{ stores.user_information.joined.join_today }}
+            </h1>
           </div>
         </div>
 
@@ -64,13 +66,13 @@ const stores = useHomeStore()
           <div>
             <div class="flex items-center justify-start gap-1">
               <h1 class="text-primary-900 text-lg font-bold">
-                {{ stores.getUserData().active_user }}
+                {{ stores.user_information.users.active_user }}
               </h1>
               <h1 class="text-primary-900 text-xs">User Aktif</h1>
             </div>
             <div class="flex items-center justify-center gap-1">
               <h1 class="text-primary-900 text-lg font-bold">
-                {{ stores.getUserData().inactive_user }}
+                {{ stores.user_information.users.inactive_user }}
               </h1>
               <h1 class="text-primary-900 text-xs">User Tidak Aktif</h1>
             </div>
@@ -84,19 +86,25 @@ const stores = useHomeStore()
             <UserValid class="fill-primary-900" />
             <div class="text-center md:text-left">
               <h1 class="text-primary-900 text-xs">Premium</h1>
-              <h1 class="text-primary-900 text-xl font-bold">{{ stores.getUserData().premium }}</h1>
+              <h1 class="text-primary-900 text-xl font-bold">
+                {{ stores.user_information.packet.premium }}
+              </h1>
             </div>
           </div>
 
           <div class="bg-primary-900 flex items-center justify-between py-1 px-6 w-full h-auto">
             <div class="flex justify-center items-center gap-1">
               <h1 class="text-sm text-white">Trial</h1>
-              <h1 class="text-xl font-bold text-white">{{ stores.getUserData().trial }}</h1>
+              <h1 class="text-xl font-bold text-white">
+                {{ stores.user_information.packet.trial }}
+              </h1>
             </div>
 
             <div class="flex justify-center items-center gap-1">
               <h1 class="text-sm text-white">Free</h1>
-              <h1 class="text-xl font-bold text-white">{{ stores.getUserData().free }}</h1>
+              <h1 class="text-xl font-bold text-white">
+                {{ stores.user_information.packet.free }}
+              </h1>
             </div>
           </div>
         </div>
@@ -108,11 +116,7 @@ const stores = useHomeStore()
         id="resto"
         class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-x-4 gap-y-6"
       >
-        <CardResto
-          v-for="data in stores.getAccountData()"
-          :key="data.resto.resto_id"
-          :data="data"
-        />
+        <CardResto v-for="data in stores.account_data" :key="data.resto.resto_id" :data="data" />
       </div>
     </div>
   </section>

@@ -1,17 +1,18 @@
 <script setup lang="ts">
 import { CardPaket } from '@/components/card'
 import { HomePageNegara, LaporanPendapatan, LoyalUser, PenilaianUser } from '@/components/'
-import { onMounted } from 'vue'
+// import { onMounted } from 'vue'
+
 // import { useHomeStore } from '@/stores/home'
 
 // // const stores = useHomeStore()
 // npm install vue-country-flag
-onMounted(() => {
-  // var currentDay = new Date()
-  // var lastTimeStamp = 1717984603000
-  // var date = new Date(lastTimeStamp)
-  // console.log('defferenceInDays', defferenceInDays(currentDay, date))
-})
+// onMounted(() => {
+//   var currentDay = new Date()
+//   var lastTimeStamp = 1717984603000
+//   var date = new Date(lastTimeStamp)
+//   console.log('defferenceInDays', defferenceInDays(currentDay, date))
+// })
 </script>
 
 <template>

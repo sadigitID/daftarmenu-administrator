@@ -2,22 +2,6 @@
 import { CardJenisUser, CardMetodeBayar } from '@/components/card'
 import { LaporanPendapatan, TableComponents } from '@/components'
 import { dataTable } from '@/components'
-
-// Data belum dari API
-const chartData = [
-  {
-    title: 'Jenis User',
-    desc: 'Statistik Pembelian Paket Dipilih',
-    values: [5, 10, 5],
-    labels: ['Free', 'Trial', 'Premium']
-  },
-  {
-    title: 'Metode Bayar',
-    desc: 'Metode Pembayaran',
-    values: [5, 10, 5],
-    labels: ['Bank Transfer', 'Paypal', 'Qris']
-  }
-]
 </script>
 
 <template>

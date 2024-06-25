@@ -1,9 +1,13 @@
 <script setup lang="ts">
+import { onMounted } from 'vue'
 import { CardJenisUser, CardMetodeBayar } from '@/components/card'
 import { LaporanPendapatan, TableComponents } from '@/components'
 import { dataTable } from '@/components'
 
 // Data belum dari API
+onMounted(() => {
+  document.title = 'Laporan'
+})
 const chartData = [
   {
     title: 'Jenis User',

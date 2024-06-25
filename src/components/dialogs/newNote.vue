@@ -1,13 +1,16 @@
 <script setup lang="ts">
-import { Dialog, DialogPanel, TransitionChild, TransitionRoot } from '@headlessui/vue'
+import { Dialog, DialogPanel, TransitionChild, TransitionRoot, Switch } from '@headlessui/vue'
 import { computed, ref } from 'vue'
 import { XMarkIcon } from '@heroicons/vue/24/outline'
 import Editor from '@tinymce/tinymce-vue'
 import { UploadArea } from '@/components'
+import { Block, Check } from '@/components/icons'
 
 const props = defineProps({
   open: Boolean
 })
+
+const enabled = ref(false)
 const emits = defineEmits(['onClose', 'onSelected'])
 const open = ref(computed(() => props.open))
 
@@ -72,29 +75,64 @@ function close() {
                               Judul Note
                             </label>
                             <input
-                              class="appearance-none rounded w-full py-[12px] px-4 text-gray-800 leading-tight focus:outline-none bg-gray-50 focus:shadow-outline"
+                              class="appearance-none rounded w-full py-4 px-4 text-gray-800 leading-tight outline-none bg-gray-50 text-sm"
                               id="judul"
                               type="text"
-                              placeholder="Judul Note"
+                              placeholder="Masukan Judul Catatan"
                             />
                           </div>
-                          <div class="flex flex-col gap-1">
-                            <label for="jenis" class="text-gray-700 text-sm font-normal mb-2"
-                              >Jenis</label
-                            >
-                            <div class="flex items-center gap-4">
-                              <div class="flex items-center gap-2">
-                                <input
-                                  type="radio"
-                                  class="form-radio"
-                                  name="bug"
-                                  id="requestFeatures"
-                                />
-                                <label for="requestFeatures">Request Feature</label>
+
+                          <div class="flex items-start gap-4">
+                            <div class="flex flex-col gap">
+                              <label for="jenis" class="text-gray-700 text-sm font-normal mb-2"
+                                >Jenis</label
+                              >
+                              <div class="flex items-center gap-4 py-1">
+                                <div class="flex items-center gap-2">
+                                  <input
+                                    type="radio"
+                                    class="w-4 h-4"
+                                    name="bug"
+                                    id="requestFeatures"
+                                  />
+                                  <label class="text-sm" for="requestFeatures"
+                                    >Request Feature</label
+                                  >
+                                </div>
+                                <div class="flex items-center gap-2">
+                                  <input type="radio" class="w-4 h-4" name="bug" id="bug" />
+                                  <label class="text-sm" for="bug">Bug</label>
+                                </div>
                               </div>
+                            </div>
+                            <div class="flex flex-col">
+                              <label for="Status" class="text-gray-700 text-sm font-normal mb-2"
+                                >Status</label
+                              >
                               <div class="flex items-center gap-2">
-                                <input type="radio" class="form-radio" name="bug" id="bug" />
-                                <label for="bug">Bug</label>
+                                <Switch
+                                  v-model="enabled"
+                                  :class="enabled ? 'bg-vtd-primary-600' : 'bg-gray-200'"
+                                  class="relative inline-flex h-7 w-12 items-center rounded-full transition"
+                                >
+                                  <span class="sr-only">Enable notifications</span>
+
+                                  <div
+                                    :class="enabled ? 'translate-x-6' : 'translate-x-1'"
+                                    class="flex justify-center items-center w-5 h-5 bg-white rounded-full transform transition"
+                                  >
+                                    <span v-if="enabled">
+                                      <Check />
+                                    </span>
+                                    <span v-else>
+                                      <Block />
+                                    </span>
+                                  </div>
+                                </Switch>
+
+                                <span class="text-sm font-bold">{{
+                                  enabled ? 'Selesai' : 'Belum Selesai'
+                                }}</span>
                               </div>
                             </div>
                           </div>

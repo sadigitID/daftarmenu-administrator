@@ -1,0 +1,7 @@
+<template>
+<svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+<g id="x">
+<path id="Path" d="M6 6L8 8M4 8L6 6L4 8ZM6 6L8 4L6 6ZM6 6L4 4L6 6Z" stroke="#9CA3AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</svg>
+</template>

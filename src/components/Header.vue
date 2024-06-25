@@ -28,9 +28,7 @@ const onSuccessfulLogout = () => {
 <!-- fixed top-0 left-0 right-0 h-[82px] flex items-center justify-between bg-white shadow-md px-4 py-2 -->
 
 <template>
-  <header
-    class="fixed top-0 flex items-center justify-between w-full px-6 py-4 bg-white md:px-4 md:py-2"
-  >
+  <header class="fixed top-0 flex items-center justify-between w-full bg-white px-4 py-2">
     <div class="flex items-center md:ml-4">
       <Logo class="w-[110px] h-[52px] md:ml-28" />
     </div>
@@ -38,9 +36,9 @@ const onSuccessfulLogout = () => {
       <Menu as="div" class="relative inline-block text-left">
         <div class="md:mr-[25px]">
           <MenuButton
-            class="flex justify-center items-center gap-x-2.5 rounded-full bg-primary-50 px-4 py-2 text-sm font-bold text-primary-800"
+            class="flex justify-center items-center gap-x-2.5 rounded-full bg-primary-50 p-2 md:px-4 text-sm font-bold text-primary-800"
           >
-            <Profil class="w-6 h-6" /> Admin</MenuButton
+            <Profil class="w-6 h-6" /> <span class="hidden md:block">Admin</span></MenuButton
           >
         </div>
 

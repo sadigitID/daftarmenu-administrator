@@ -8,14 +8,14 @@ import { ButtonFilter } from '@/components'
 import { useRestoStore } from '@/stores/resto'
 import { useHomeStore } from '@/stores/home'
 
-import { PopUpResto, EditNote } from '@/components'
+import { PopUpResto } from '@/components'
 
 const resto = useRestoStore()
 const stores = useHomeStore()
 </script>
 
 <template>
-  <EditNote :open="resto.resto != null" @on-close="resto.resto = null" :data="resto.resto" />
+  <PopUpResto :open="resto.resto != null" @on-close="resto.resto = null" :data="resto.resto" />
 
   <section class="custom-spacing">
     <div

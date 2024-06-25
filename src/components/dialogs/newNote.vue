@@ -83,11 +83,16 @@ function close() {
                             >
                             <div class="flex items-center gap-4">
                               <div class="flex items-center gap-2">
-                                <input type="radio" name="requestFeatures" id="requestFeatures" />
+                                <input
+                                  type="radio"
+                                  class="form-radio"
+                                  name="bug"
+                                  id="requestFeatures"
+                                />
                                 <label for="requestFeatures">Request Feature</label>
                               </div>
                               <div class="flex items-center gap-2">
-                                <input type="radio" name="bug" id="bug" />
+                                <input type="radio" class="form-radio" name="bug" id="bug" />
                                 <label for="bug">Bug</label>
                               </div>
                             </div>

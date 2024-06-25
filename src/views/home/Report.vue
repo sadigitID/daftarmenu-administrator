@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { CardJenisUser, CardMetodeBayar } from '@/components/card'
-import { LaporanPendapatan } from '@/components'
-import { TableComponents } from '@/components'
+import { LaporanPendapatan, TableComponents } from '@/components'
+import { dataTable } from '@/components'
 
 // Data belum dari API
 const chartData = [
@@ -21,19 +21,23 @@ const chartData = [
 </script>
 
 <template>
-  <section class="custom-spacing">
-    <div
-      class="flex flex-col gap-6 mb-[100px] md:mb-0 xl:items-start lg:justify-between xl:flex-row w-full"
-    >
-      <section class="flex flex-col gap-6 xl:w-[70%]">
-        <LaporanPendapatan />
-        <TableComponents />
-      </section>
-      <div class="inline-flex flex-col items-start gap-6 shrink-0 rounded-3xl">
-        <CardJenisUser />
-        <CardMetodeBayar />
+  <section
+    class="flex items-start justify-center w-full rounded-lg md:p-6 lg:bg-white md:rounded-3xl -z-10"
+  >
+    <section class="custom-spacing">
+      <div
+        class="flex flex-col gap-6 mb-[100px] md:mb-0 xl:items-start lg:justify-between xl:flex-row w-full"
+      >
+        <section class="flex flex-col gap-10 xl:w-[70%]">
+          <LaporanPendapatan />
+          <dataTable />
+        </section>
+        <div class="inline-flex flex-col items-start gap-6 shrink-0 rounded-3xl">
+          <CardJenisUser />
+          <CardMetodeBayar />
+        </div>
       </div>
-    </div>
+    </section>
   </section>
 </template>
 

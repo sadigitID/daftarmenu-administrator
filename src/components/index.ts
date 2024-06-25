@@ -18,3 +18,6 @@ export { default as TableComponents } from '@/components/TableComponents.vue'
 
 export { default as dataTable } from '@/components/DataTable/dataTable.vue'
 export { default as SkeletonResto } from '@/components/SkeletonResto.vue'
+export { default as EditNote } from '@/components/dialogs/EditNote.vue'
+export { default as PopUpResto } from '@/components/dialogs/PopUpResto.vue'
+export { default as UploadArea } from '@/components/UploadArea.vue'

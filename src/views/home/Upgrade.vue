@@ -4,10 +4,12 @@ import { Food } from '@/assets/image'
 import { CardResto } from '@/components/card'
 import { InputText, SkeletonResto } from '@/components/'
 import { ButtonFilter } from '@/components'
-import PopUpResto from '@/components/dialogs/PopUpResto.vue'
+// import PopUpResto from '@/components/dialogs/PopUpResto.vue'
 import { useRestoStore } from '@/stores/resto'
 import { useHomeStore } from '@/stores/home'
 import { onMounted } from 'vue'
+
+import { PopUpResto } from '@/components'
 
 const resto = useRestoStore()
 const stores = useHomeStore()
@@ -34,7 +36,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <popUpResto :open="resto.resto != null" @on-close="resto.resto = null" :data="resto.resto" />
+  <PopUpResto :open="resto.resto != null" @on-close="resto.resto = null" :data="resto.resto" />
 
   <section class="custom-spacing">
     <div

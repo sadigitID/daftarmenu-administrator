@@ -2,14 +2,35 @@
 import { IconSearch, UserInvalid, UserValid } from '@/components/icons'
 import { Food } from '@/assets/image'
 import { CardResto } from '@/components/card'
-import { InputText } from '@/components/'
+import { InputText, SkeletonResto } from '@/components/'
 import { ButtonFilter } from '@/components'
 import PopUpResto from '@/components/dialogs/PopUpResto.vue'
 import { useRestoStore } from '@/stores/resto'
 import { useHomeStore } from '@/stores/home'
+import { onMounted } from 'vue'
 
 const resto = useRestoStore()
 const stores = useHomeStore()
+
+const onPending = () => {
+  console.log('pending')
+}
+
+const onFallback = () => {
+  console.log('fallback')
+}
+
+const onResolve = () => {
+  console.log('resolve')
+}
+
+onMounted(() => {
+  document.title = 'Upgrade - Admin Daftar Menu'
+  console.log(stores.getAccountData(), 'ahsdbad')
+  if (stores.getAccountData().length == 0) {
+    stores.fetchAccountData()
+  }
+})
 </script>
 
 <template>
@@ -35,20 +56,20 @@ const stores = useHomeStore()
             id="search"
             class="bg-transparent lg:bg-gray-50 m-auto justify-center items-center flex rounded-lg px-2"
           >
-            <IconSearch class="md:block hidden xl:w-4 h-4" />
-            <InputText class="text-sm font-sans text-gray-800" placeholder="Cari Menu" />
+            <IconSearch class="md:block hidden lg:w-4 h-4 lg:bg-gray-50" />
+            <InputText class="text-sm font-sans text-gray-800 px-3" placeholder="Cari Menu" />
           </div>
           <ButtonFilter />
         </div>
       </div>
 
       <div
-        class="flex md:flex-row flex-col justify-between items-center space-y-4 space-x-5 md:space-y-0 py-5"
+        class="flex md:flex-row flex-col justify-between items-center space-y-4 lg:space-x-5 md:space-y-0 py-5"
       >
-        <img :src="Food" alt="food" class="object-cover object-center rounded-xl w-full h-20" />
+        <img :src="Food" alt="food" class="object-cover object-center rounded-xl w-full h-[87px]" />
 
         <div
-          class="bg-primary-900 gap-4 flex justify-center items-center rounded-xl py-4 px-6 w-full h-auto"
+          class="bg-primary-900 gap-4 flex justify-center items-center rounded-xl py-5 px-6 w-full h-auto"
         >
           <UserValid class="w-12 h-12 text-white" />
           <div class="flex flex-col">
@@ -116,7 +137,14 @@ const stores = useHomeStore()
         id="resto"
         class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-x-4 gap-y-6"
       >
-        <CardResto v-for="data in stores.account_data" :key="data.resto.resto_id" :data="data" />
+        <Suspense>
+          <template #default>
+            <CardResto />
+          </template>
+          <template #fallback>
+            <SkeletonResto />
+          </template>
+        </Suspense>
       </div>
     </div>
   </section>

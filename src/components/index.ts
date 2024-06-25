@@ -1,6 +1,5 @@
-export { default as InputPassword } from '@/components/InputPassword.vue'
-export { default as InputEmail } from '@/components/InputEmail.vue'
 export { default as Header } from '@/components/Header.vue'
+export { default as Footer } from '@/components/Footer.vue'
 export { default as Navigasi } from '@/components/Navigasi.vue'
 export { default as NavComponents } from '@/components/NavComponents.vue'
 export { default as InputText } from '@/components/InputText.vue'
@@ -18,3 +17,4 @@ export { default as HomePageNegara } from '@/components/HomePageNegara.vue'
 export { default as TableComponents } from '@/components/TableComponents.vue'
 
 export { default as dataTable } from '@/components/DataTable/dataTable.vue'
+export { default as SkeletonResto } from '@/components/SkeletonResto.vue'

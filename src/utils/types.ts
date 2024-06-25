@@ -36,6 +36,14 @@ interface NoteModel {
     img?: string
     type: string
   }
+  detail: {
+    note_id: number
+    title: string
+    type: string
+    status: string
+    desc: string
+    img: string
+  }
 }
 
 interface UserInformationModel {

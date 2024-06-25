@@ -1,12 +1,10 @@
 <script setup lang="ts">
 import { Dialog, DialogPanel, TransitionChild, TransitionRoot } from '@headlessui/vue'
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { XMarkIcon } from '@heroicons/vue/24/outline'
 import { Switch } from '@headlessui/vue'
 import type { NoteModel } from '@/utils/types'
-import { Check, Block} from "@/components/icons";
-
-const enabled = ref(false)
+import { Check, Block } from "@/components/icons";
 
 const props = defineProps({
   open: Boolean,
@@ -19,7 +17,25 @@ const open = ref(computed(() => props.open))
 function close() {
   emits('onClose', false)
 }
+
+const enabled = ref(props.data?.detail.status === 'Selesai')
+
+
+watch(() => props.data, (newData) => {
+  if (newData) {
+    enabled.value = newData.detail.status === 'Selesai'
+  }
+}, { immediate: true })
+
+
+watch(enabled, (newValue) => {
+  if (props.data) {
+    props.data.detail.status = newValue ? 'Selesai' : 'Belum Selesai'
+  }
+})
+
 </script>
+
 
 <template>
   <TransitionRoot as="template" :show="open">
@@ -75,51 +91,57 @@ function close() {
                         <!-- Konten Dialog -->
                         <div>
                           <span class="label text-sm text-gray-700">Judul</span>
-                          <h1 class="w-full py-2 font-medium">Fitur Pencarian</h1>
+                          <h1 class="w-full py-2 font-medium">{{ data?.detail.title }}</h1>
                         </div>
                         <div class="flex items-center w-full">
                           <div class="w-[50%]">
                             <span class="label text-sm text-gray-700">Jenis</span>
-                            <h1 class="py-2 font-medium">Request Feature</h1>
+                            <h1 class="py-2 font-medium">{{ data?.detail.type }}</h1>
                           </div>
                           <div class="flex flex-col gap-2 w-[50%]">
-    <span class="label text-sm text-gray-700">Status</span>
-    <div class="relative flex items-center gap-2">
-      <!-- Toggle Switch -->
-      <Switch
-        v-model="enabled"
-        :class="enabled ? 'bg-vtd-primary-600' : 'bg-gray-200'"
-        class="relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-300"
-      >
-        <span class="sr-only">Toggle</span>
-        <span
-          :class="enabled ? 'translate-x-6' : 'translate-x-1'"
-          class="inline-block h-4 w-4 transform rounded-full bg-white transition-transform duration-300"
-        />
-      </Switch>
-      <!-- Text based on enabled state -->
-      <span>{{ enabled ? 'Selesai' : 'Belum Selesai' }}</span>
-
-      <!-- Icon based on enabled state -->
-      <div class="absolute -top-12 transition-transform duration-300" :class="enabled ? 'left-2' : 'left-1'">
-        <check v-if="enabled" class="h-6 w-6 text-green-500"/>
-        <block v-else class="h-6 w-6" />
-      </div>
-    </div>
-  </div>
+                            <span class="label text-sm text-gray-700">Status</span>
+                            <div class="relative flex items-center gap-2">
+                              <!-- Toggle Switch -->
+                              <Switch
+                                v-model="enabled"
+                                :class="enabled ? 'bg-vtd-primary-600' : 'bg-gray-200'"
+                                class="relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-300"
+                              >
+                                <span class="sr-only">Toggle</span>
+                                <span
+                                  :class="enabled ? 'translate-x-6' : 'translate-x-1'"
+                                  class="inline-block h-4 w-4 transform rounded-full bg-white transition-transform duration-300">
+                             
+                             
+                                <Check v-if="enabled" class="h-4 w-4 text-vtd-primary-500"/>
+                              <Block v-else class="h-4 w-4 text-vtd-primary-500" />
+                            </span>
+                              </Switch>
+                             
+                              <span>{{ enabled ? 'Selesai' : 'Belum Selesai' }}</span>
+                              <!-- Icon based on enabled state -->
+                        
+                            </div>
+                          </div>
                         </div>
                         <div class="flex flex-col gap-2">
                           <span class="label text-sm text-gray-700">Deskripsi</span>
                           <p class="font-medium">
-                            Ada user yang membutuhkan fitur pencarian dengan filter yang lebih
-                            beragam
+                            {{ data?.detail.desc }}
                           </p>
                         </div>
                         <div class="flex flex-col gap-4">
                           <span class="label text-sm text-gray-"> Gambar Pendukung </span>
                           <div class="preview-img flex items-start flex-wrap gap-1">
-                            <div class="img w-[128px] h-[128px] bg-gray-50 rounded-md"></div>
-                            <div class="img w-[128px] h-[128px] bg-gray-50 rounded-md"></div>
+                            <img
+                            :src="data?.detail.img"
+                            class="img w-[128px] h-[128px] bg-gray-50 rounded-md"/>
+                            <img
+                            :src="data?.detail.img"
+                            class="img w-[128px] h-[128px] bg-gray-50 rounded-md"/>
+                                <img
+                            :src="data?.detail.img"
+                            class="img w-[128px] h-[128px] bg-gray-50 rounded-md"/>
                           </div>
                         </div>
                         <div class="absolute bottom-0 left-0 w-full p-4 sm:p-6">
@@ -148,3 +170,4 @@ function close() {
     </Dialog>
   </TransitionRoot>
 </template>
+

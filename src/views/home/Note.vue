@@ -55,7 +55,7 @@ const closeNewNote = () => {
         </div>
         <!-- flex flex-col md:flex-row items-center self-stretch -->
         <div class="flex gap-4 flex-col md:flex-row items-center">
-          <div class="flex w-full md:w-[240px] px-2 py-1 items-center gap-2 bg-gray-50 rounded-lg">
+          <div class="flex w-full md:w-[240px] px-2 items-center gap-2 bg-gray-50 rounded-lg">
             <Search class="flex-shrink size-6"></Search>
             <InputText
               class="font-sans font-normal text-sm leading-[22.4px]"

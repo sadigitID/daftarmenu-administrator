@@ -7,6 +7,7 @@
         "account_name": "Holywing Resto",
         "account_email": "restoholywing@gmail.com",
         "account_access": "Super Admin",
+        "account_last_active": 1719210401000,
         "account_subscription": true,
         "account_subscription_name": "Paket 12 bulan",
         "account_subscription_expired": 1726444800000,
@@ -23,7 +24,7 @@
         "resto_currency": "USD",
         "resto_slug": "holywing-resto",
         "resto_order_method": 0,
-        "resto_transaction_today": 20,
+        "resto_transaction_today": 0,
         "resto_menu": 17
       }
     },
@@ -33,6 +34,7 @@
         "account_name": "Sadigit Resto",
         "account_email": "restoholywing@gmail.com",
         "account_access": "Super Admin",
+        "account_last_active": 1719210401000,
         "account_subscription": true,
         "account_subscription_name": "Paket 3 bulan",
         "account_subscription_expired": 1726444800000,
@@ -59,6 +61,7 @@
         "account_name": "Sadigit Resto",
         "account_email": "restoholywing@gmail.com",
         "account_access": "Super Admin",
+        "account_last_active": 1719210401000,
         "account_subscription": true,
         "account_subscription_name": "Paket 1 bulan",
         "account_subscription_expired": 1726444800000,
@@ -75,7 +78,7 @@
         "resto_currency": "USD",
         "resto_slug": "holywing-resto",
         "resto_order_method": 0,
-        "resto_transaction_today": 20,
+        "resto_transaction_today": 0,
         "resto_menu": 17
       }
     },
@@ -85,6 +88,7 @@
         "account_name": "Padang Saudara",
         "account_email": "restoholywing@gmail.com",
         "account_access": "Super Admin",
+        "account_last_active": 1719210401000,
         "account_subscription": true,
         "account_subscription_name": "Trial",
         "account_subscription_expired": 1726444800000,
@@ -101,7 +105,7 @@
         "resto_currency": "USD",
         "resto_slug": "holywing-resto",
         "resto_order_method": 0,
-        "resto_transaction_today": 20,
+        "resto_transaction_today": 0,
         "resto_menu": 17
       }
     },
@@ -111,6 +115,7 @@
         "account_name": "Sate Mang Jajang",
         "account_email": "restoholywing@gmail.com",
         "account_access": "Super Admin",
+        "account_last_active": 1718532001000,
         "account_subscription": false,
         "account_subscription_name": "Free",
         "account_subscription_expired": 1718344800000,
@@ -127,7 +132,7 @@
         "resto_currency": "USD",
         "resto_slug": "holywing-resto",
         "resto_order_method": 0,
-        "resto_transaction_today": 20,
+        "resto_transaction_today": 0,
         "resto_menu": 17
       }
     },
@@ -137,6 +142,7 @@
         "account_name": "Sate Mang Jajang",
         "account_email": "restoholywing@gmail.com",
         "account_access": "Super Admin",
+        "account_last_active": 1715532001000,
         "account_subscription": true,
         "account_subscription_name": "Paket 3 bulan",
         "account_subscription_expired": 1768344800000,
@@ -153,7 +159,7 @@
         "resto_currency": "USD",
         "resto_slug": "holywing-resto",
         "resto_order_method": 0,
-        "resto_transaction_today": 20,
+        "resto_transaction_today": 0,
         "resto_menu": 17
       }
     }

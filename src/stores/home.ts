@@ -1,5 +1,5 @@
 import { fetchPendapatanItem, fetchPenilaianUser, fetchUserData } from '@/api'
-import type { RestaurantModel } from '@/utils/types'
+import type {NoteModel, RestaurantModel } from '@/utils/types'
 import { defineStore } from 'pinia'
 import { onMounted, ref } from 'vue'
 
@@ -35,6 +35,7 @@ export const useHomeStore = defineStore('homeStore', () => {
   const getAccountData = () => {
     return user_data.value
   }
+
 
   const getLaporanPendapatanItem = () => {
     return laporanPendapatanItem.value

@@ -28,8 +28,10 @@ const NegaraItem = [
       class="flex items-center justify-between mb-4 rounded-lg"
     >
       <div class="flex items-center space-x-2">
-        <CountryFlag :country="negara.code" size="normal" :title="negara.title" rounded="true" />
-        <span class="text-base">{{ negara.title }}</span>
+        <div>
+          <CountryFlag :country="negara.code" size="normal" :title="negara.title" rounded="true" />
+        </div>
+        <p class="text-base">{{ negara.title }}</p>
       </div>
       <p class="text-sm font-medium">{{ negara.jmlpengguna }}</p>
     </div>

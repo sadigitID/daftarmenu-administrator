@@ -48,12 +48,12 @@ onMounted(() => {
       </div>
 
       <div
-        class="flex md:flex-row flex-col justify-between items-center space-y-4 space-x-5 md:space-y-0 py-5"
+        class="flex md:flex-row flex-col justify-between items-center space-y-4 lg:space-x-5 md:space-y-0 py-5"
       >
-        <img :src="Food" alt="food" class="object-cover object-center rounded-xl w-full h-20" />
+        <img :src="Food" alt="food" class="object-cover object-center rounded-xl w-full h-[87px]" />
 
         <div
-          class="bg-primary-900 gap-4 flex justify-center items-center rounded-xl py-4 px-6 w-full h-auto"
+          class="bg-primary-900 gap-4 flex justify-center items-center rounded-xl py-5 px-6 w-full h-auto"
         >
           <UserValid class="w-12 h-12 text-white" />
           <div class="flex flex-col">

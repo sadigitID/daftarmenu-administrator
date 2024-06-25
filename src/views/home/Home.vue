@@ -12,6 +12,10 @@ onMounted(() => {
   // var date = new Date(lastTimeStamp)
   // console.log('defferenceInDays', defferenceInDays(currentDay, date))
 })
+
+onMounted(() => {
+  document.title = 'Home - Admin Daftar Menu'
+})
 </script>
 
 <template>

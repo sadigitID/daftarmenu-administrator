@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
-import { Navigasi, Header } from '@/components'
+import { Navigasi, Header, Footer } from '@/components'
 </script>
 
 <template>

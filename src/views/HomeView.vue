@@ -2,6 +2,7 @@
 import Navigasi from '@/components/Navigasi.vue'
 import Header from '@/components/Header.vue'
 import ReportView from '@/views/pages/ReportView.vue'
+import Footer from '@/components/Footer.vue'
 </script>
 
 <template>

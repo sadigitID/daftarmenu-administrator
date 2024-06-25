@@ -7,9 +7,14 @@ import { ButtonFilter } from '@/components'
 import PopUpResto from '@/components/dialogs/PopUpResto.vue'
 import { useRestoStore } from '@/stores/resto'
 import { useHomeStore } from '@/stores/home'
+import { onMounted } from 'vue'
 
 const resto = useRestoStore()
 const stores = useHomeStore()
+
+onMounted(() => {
+  document.title = 'Upgrade - Admin Daftar Menu'
+})
 </script>
 
 <template>
@@ -35,8 +40,8 @@ const stores = useHomeStore()
             id="search"
             class="bg-transparent lg:bg-gray-50 m-auto justify-center items-center flex rounded-lg px-2"
           >
-            <IconSearch class="md:block hidden xl:w-4 h-4" />
-            <InputText class="text-sm font-sans text-gray-800" placeholder="Cari Menu" />
+            <IconSearch class="md:block hidden lg:w-4 h-4 lg:bg-gray-50" />
+            <InputText class="text-sm font-sans text-gray-800 px-3" placeholder="Cari Menu" />
           </div>
           <ButtonFilter />
         </div>
@@ -84,19 +89,25 @@ const stores = useHomeStore()
             <UserValid class="fill-primary-900" />
             <div class="text-center md:text-left">
               <h1 class="text-primary-900 text-xs">Premium</h1>
-              <h1 class="text-primary-900 text-xl font-bold">{{ stores.getUserData().premium }}</h1>
+              <h1 class="text-primary-900 lg:text-xl md:text-lg sm:text-md font-bold">
+                {{ stores.getUserData().premium }}
+              </h1>
             </div>
           </div>
 
           <div class="bg-primary-900 flex items-center justify-between py-1 px-6 w-full h-auto">
             <div class="flex justify-center items-center gap-1">
               <h1 class="text-sm text-white">Trial</h1>
-              <h1 class="text-xl font-bold text-white">{{ stores.getUserData().trial }}</h1>
+              <h1 class="lg:text-xl md:text-lg sm:text-md font-bold text-white">
+                {{ stores.getUserData().trial }}
+              </h1>
             </div>
 
             <div class="flex justify-center items-center gap-1">
               <h1 class="text-sm text-white">Free</h1>
-              <h1 class="text-xl font-bold text-white">{{ stores.getUserData().free }}</h1>
+              <h1 class="lg:text-xl md:text-lg sm:text-md font-bold text-white">
+                {{ stores.getUserData().free }}
+              </h1>
             </div>
           </div>
         </div>

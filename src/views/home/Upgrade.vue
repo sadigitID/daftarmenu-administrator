@@ -30,7 +30,7 @@ onMounted(() => {
   document.title = 'Upgrade - Admin Daftar Menu'
   console.log(stores.getAccountData(), 'ahsdbad')
   if (stores.getAccountData().length == 0) {
-    stores.fetchAccountData()
+    stores.fetchAccountsData()
   }
 })
 </script>

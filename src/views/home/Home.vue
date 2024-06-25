@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { CardPaket } from '@/components/card'
 import { HomePageNegara, LaporanPendapatan, LoyalUser, PenilaianUser } from '@/components/'
-// import { onMounted } from 'vue'
+import { onMounted } from 'vue'
 
 // import { useHomeStore } from '@/stores/home'
 

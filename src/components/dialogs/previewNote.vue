@@ -6,8 +6,6 @@ import { Switch } from '@headlessui/vue'
 import type { NoteModel } from '@/utils/types'
 import { Check, Block } from '@/components/icons'
 
-const enabled = ref(false)
-
 const props = defineProps({
   open: Boolean,
   data: Object as () => NoteModel | null
@@ -34,6 +32,7 @@ watch(
 
 watch(enabled, (newValue) => {
   if (props.data) {
+    // eslint-disable-next-line vue/no-mutating-props
     props.data.detail.status = newValue ? 'Selesai' : 'Belum Selesai'
   }
 })

@@ -24,7 +24,7 @@ const accountData = ref<RestaurantModel[]>([])
 
 const loadRestoData = async () => {
   return new Promise((resolve) => {
-    stores.fetchAccountData()
+    stores.fetchAccountsData()
     setTimeout(() => {
       accountData.value = stores.getAccountData()
       resolve(accountData.value)

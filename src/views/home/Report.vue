@@ -2,7 +2,6 @@
 import { onMounted } from 'vue'
 import { CardJenisUser, CardMetodeBayar } from '@/components/card'
 import { LaporanPendapatan, dataTable } from '@/components'
-import { onMounted } from 'vue'
 
 onMounted(() => {
   document.title = 'Laporan - Admin Daftar Menu'

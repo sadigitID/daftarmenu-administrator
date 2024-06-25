@@ -17,10 +17,11 @@ const onSelected = (data: RestaurantModel) => {
   resto.resto = data
 }
 
-const accountExpired = props.data.account.account_subscription_expired
-const isExpired = new Date().getTime() > accountExpired
-const accountStatus = isExpired ? 'inactive' : 'active'
-const daysPassed = isExpired ? daysSinceNow(accountExpired) : 0
+const dateNow = new Date().getTime()
+const accountLastActive = props.data.account.account_last_active
+const unactiveLimit = accountLastActive + 2592000000
+const accountStatus = dateNow > unactiveLimit ? 'inactive' : 'active'
+const daysPassed = daysSinceNow(accountLastActive)
 </script>
 
 <template>
@@ -69,9 +70,9 @@ const daysPassed = isExpired ? daysSinceNow(accountExpired) : 0
             </p>
           </div>
         </div>
-        <div v-if="daysPassed > 1 && daysPassed <= 30" class="flex items-start gap-2.5">
+        <div v-if="props.data.resto.resto_transaction_today != 0" class="flex items-start gap-2.5">
           <p class="text-xs font-medium text-gray-700 text-left">
-            Tidak aktif {{ daysPassed }} hari yang lalu
+            {{ props.data.resto.resto_transaction_today }} transaksi pada hari ini
           </p>
         </div>
         <div v-else-if="daysPassed > 30" class="flex items-start gap-2.5">
@@ -79,7 +80,7 @@ const daysPassed = isExpired ? daysSinceNow(accountExpired) : 0
         </div>
         <div v-else class="flex items-start gap-2.5">
           <p class="text-xs font-medium text-gray-700 text-left">
-            Exp: {{ timestampToDateFormated(accountExpired) }}
+            Exp: {{ timestampToDateFormated(props.data.account.account_last_active) }}
           </p>
         </div>
       </div>

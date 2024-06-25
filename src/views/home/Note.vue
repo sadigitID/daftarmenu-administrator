@@ -3,11 +3,12 @@ import { ref } from 'vue'
 import { Search, Add, Red } from '@/components/icons'
 import { Info, ButtonFilter, InputText } from '@/components'
 import { CardNote } from '@/components/card'
-import { Menu, Phone } from '@/assets/image'
-import { NewNote, PreviewNote } from '@/components/dialogs'
-import type { NoteModel } from '@/utils/types'
+import { Menu } from '@/assets/image'
+import PreviewNote from '@/components/dialogs/previewNote.vue'
+import NewNote from '@/components/dialogs/newNote.vue'
 import { useNoteStore } from '@/stores/note'
 
+const note = useNoteStore()
 const infoData = [
   {
     icon: Red,
@@ -29,40 +30,6 @@ const infoData = [
   }
 ]
 
-const noteData = ref<NoteModel[]>([
-  {
-    title: 'Fitur Pencarian',
-    note1: 'Bug',
-    note2: 'Selesai',
-    desc: 'Ada user yang membutuhkan fitur pencarian dengan filter yang lebih beragam',
-    img: Phone,
-    type: 'jenis'
-  },
-  {
-    title: 'Fitur Pencarian',
-    note1: 'Bug',
-    note2: 'Selesai',
-    desc: 'Ada user yang membutuhkan fitur pencarian dengan filter yang lebih beragam',
-    type: 'jenis'
-  },
-  {
-    title: 'Fitur Pencarian',
-    note1: 'Request Feature',
-    note2: 'Belum Selesai',
-    desc: 'Ada user yang membutuhkan fitur pencarian dengan filter yang lebih beragam',
-    img: Phone,
-    type: 'status'
-  },
-  {
-    title: 'Fitur Pencarian',
-    note1: 'Request Feature',
-    note2: 'Belum Selesai',
-    desc: 'Ada user yang membutuhkan fitur pencarian dengan filter yang lebih beragam',
-    img: Phone,
-    type: 'status'
-  }
-])
-
 const showNewNotePopup = ref(false)
 
 const openNewNote = () => {
@@ -72,15 +39,13 @@ const openNewNote = () => {
 const closeNewNote = () => {
   showNewNotePopup.value = false
 }
-
-const note = useNoteStore()
 </script>
 
 <template>
   <PreviewNote :open="note.note != null" @on-close="note.note = null" :data="note.note" />
   <NewNote :open="showNewNotePopup" @on-close="closeNewNote" />
 
-  <section class="custom-spacing">
+  <section class="custom-spacing mb-20 lg:mb-0 md:mb-0">
     <div class="flex w-full h-full flex-col items-start gap-2 flex-shrink-0">
       <!-- flex justify-between items-start self-stretch -->
       <div class="flex flex-col lg:flex-row justify-center md:justify-between gap-6 w-full">
@@ -148,7 +113,3 @@ const note = useNoteStore()
     </div>
   </section>
 </template>
-
-<style scoped>
-/* Tambahkan gaya tambahan jika perlu */
-</style>

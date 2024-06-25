@@ -23,7 +23,7 @@ const onSelected = (data: NoteModel) => {
       <p
         class="webkit-box webkit-box-orient-vertical webkit-line-clamp-1 overflow-hidden text-gray-800 truncate font-sans font-bold text-xl leading-6 py-2 md:py-0"
       >
-        {{ props.data.title }}
+        {{ props.data.note.title }}
       </p>
       <div v-if="props.data.type === 'jenis'" class="flex items-start gap-1">
         <div class="flex p-1 items-center gap-[10px] rounded-full bg-orange-50">
@@ -55,11 +55,11 @@ const onSelected = (data: NoteModel) => {
       <p
         class="text-left text-gray-800 overflow-ellipsis overflow-hidden font-sans text-sm font-normal leading-[22.4px] h-11"
       >
-        {{ props.data.desc }}
+        {{ props.data.note.desc }}
       </p>
       <div v-if="props.data.img" class="w-full">
         <img
-          :src="props.data.img"
+          :src="props.data.note.img"
           alt=""
           class="self-stretch object-cover object-center w-[100%] h-[124px] lg:w-[256px] lg:h-[96px] rounded-2xl"
         />

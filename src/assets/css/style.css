@@ -672,10 +672,6 @@ video {
   top: 0px;
 }
 
-.-z-10{
-  z-index: -10;
-}
-
 .z-10{
   z-index: 10;
 }
@@ -2045,6 +2041,10 @@ video {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
+.outline{
+  outline-style: solid;
+}
+
 .outline-0{
   outline-width: 0px;
 }
@@ -2269,10 +2269,6 @@ video {
 @media (min-width: 768px){
   .md\:visible{
     visibility: visible;
-  }
-
-  .md\:z-0{
-    z-index: 0;
   }
 
   .md\:mb-0{
@@ -2594,6 +2590,10 @@ video {
     --tw-bg-opacity: 1;
     background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 >>>>>>> ad9ab8ded88a5c0ebca238fc7b3f40cace8d8db5
+  }
+
+  .lg\:p-6{
+    padding: 1.5rem;
   }
 
   .lg\:text-xl{

@@ -22,7 +22,7 @@ const chartData = [
 
 <template>
   <section
-    class="flex items-start justify-center w-full rounded-lg md:p-6 lg:bg-white md:rounded-3xl -z-10"
+    class="flex items-start justify-center w-full rounded-lg md:p-6 lg:bg-white md:rounded-3xl"
   >
     <section class="custom-spacing">
       <div

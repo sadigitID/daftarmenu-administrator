@@ -5,9 +5,12 @@ import { useNoteStore } from '@/stores/note'
 
 const note = useNoteStore()
 
-const props = defineProps<{
-  data: NoteModel
-}>()
+const props = defineProps({
+  data: {
+    type: Object as () => NoteModel,
+    required: true
+  }
+})
 
 const onSelected = (data: NoteModel) => {
   note.note = data

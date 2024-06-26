@@ -22,7 +22,7 @@ onMounted(() => {
       <div class="flex flex-col gap-6 xl:w-[70%]">
         <LaporanPendapatan />
 
-        <div class="flex flex-col items-start gap-4 lg:flex-row shrink-0 rounded-3xl">
+        <div class="flex flex-col items-start gap-4 lg:flex-row shrink-0 rounded-3xl rounde">
           <CardPaket />
           <LoyalUser />
         </div>

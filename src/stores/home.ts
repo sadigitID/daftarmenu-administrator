@@ -95,52 +95,6 @@ export const useHomeStore = defineStore('homeStore', () => {
       })
   }
 
-  // const pageLimit = ref(1)
-  // const pageCurrent = ref(1)
-  // const isLoadingData = ref(false)
-  // const isLoadingMore = ref(false)
-  // const restoShowed = ref<RestaurantModel[]>([])
-
-  // const splitRestoData = (data: RestaurantModel[]) => {
-  //   if (data.length > 0) {
-  //     // split data to every 8 item/page
-  //     let restoData = data
-  //     let restoDataChunk = []
-  //     let chunkSize = 12
-  //     for (let i = 0; i < restoData.length; i += chunkSize) {
-  //       restoDataChunk.push(restoData.slice(i, i + chunkSize))
-  //     }
-  //     pageLimit.value = restoDataChunk.length
-  //   } else {
-  //     pageLimit.value = 1
-  //   }
-  // }
-
-  // const handleScroll = () => {
-  //   const scrollPosition = window.innerHeight + document.documentElement.scrollTop
-  //   const documentHeight = document.documentElement.scrollHeight
-
-  //   if (scrollPosition >= documentHeight) {
-  //     if (pageCurrent.value <= pageLimit.value) {
-  //       if (restoShowed.value.length != account_data.value.length) {
-  //         loadMore(pageCurrent.value + 1)
-  //       }
-  //     }
-  //   }
-  // }
-
-  // const showMenuByPage = (page: number) => {
-  //   pageCurrent.value = page
-  // }
-
-  // const loadMore = (page: number) => {
-  //   isLoadingMore.value = true
-  //   setTimeout(() => {
-  //     isLoadingMore.value = false
-  //     showMenuByPage(page)
-  //   }, 1000)
-  // }
-
   // Data for Card Components
   const countPaketBulan = (data: string): number => {
     return account_data.value.filter(

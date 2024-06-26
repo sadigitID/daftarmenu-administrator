@@ -7,7 +7,7 @@ import { ButtonFilter } from '@/components'
 // import PopUpResto from '@/components/dialogs/PopUpResto.vue'
 import { useRestoStore } from '@/stores/resto'
 import { useHomeStore } from '@/stores/home'
-import { onMounted } from 'vue'
+import { onBeforeUnmount, onMounted } from 'vue'
 
 import { PopUpResto } from '@/components'
 
@@ -28,11 +28,20 @@ const onResolve = () => {
 
 onMounted(() => {
   document.title = 'Upgrade - Admin Daftar Menu'
-  console.log(stores.getAccountData(), 'ahsdbad')
-  if (stores.getAccountData().length == 0) {
-    stores.fetchAccountsData()
+  // if (stores.getAccountData().length == 0) {
+  //   stores.fetchAccountsData()
+  // }
+  if (resto.getAccountData().length == 0) {
+    resto.fetchAccountsData()
+    window.addEventListener('scroll', resto.handleScroll)
   }
 })
+
+onBeforeUnmount(() => {
+  window.removeEventListener('scroll', resto.handleScroll)
+})
+const searchQuery = resto.searchQuery
+// 
 </script>
 
 <template>
@@ -59,7 +68,7 @@ onMounted(() => {
             class="bg-transparent lg:bg-gray-50 m-auto justify-center items-center flex rounded-lg px-2"
           >
             <IconSearch class="md:block hidden lg:w-4 h-4 lg:bg-gray-50" />
-            <InputText class="text-sm font-sans text-gray-800 px-3" placeholder="Cari Menu" />
+            <InputText v-model="searchQuery" class="text-sm font-sans text-gray-800 px-3" placeholder="Cari Menu" />
           </div>
           <ButtonFilter />
         </div>

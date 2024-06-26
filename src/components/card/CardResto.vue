@@ -24,9 +24,10 @@ const accountData = ref<RestaurantModel[]>([])
 
 const loadRestoData = async () => {
   return new Promise((resolve) => {
-    stores.fetchAccountsData()
+    resto.fetchAccountsData()
     setTimeout(() => {
-      accountData.value = stores.getAccountData()
+      // accountData.value = resto.visibleItems
+      accountData.value = resto.account_data
       resolve(accountData.value)
     }, 2000)
   })
@@ -49,6 +50,10 @@ const getDaysPassed = (data: RestaurantModel) => {
 }
 
 await loadRestoData()
+
+// const searchQuery = resto.searchQuery
+// const sortOrder = resto.sortOrder
+// const filteredAndSortedItems = resto.filteredAndSortedItems
 </script>
 
 <template>

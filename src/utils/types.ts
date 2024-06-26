@@ -4,6 +4,7 @@ interface RestaurantModel {
     account_name: string
     account_email: string
     account_access: string
+    account_last_active: number
     account_subscription: boolean
     account_subscription_name: string
     account_subscription_expired: number
@@ -25,14 +26,40 @@ interface RestaurantModel {
   }
 }
 
-
 interface NoteModel {
-  title: string
-  note1: string
-  note2: string
-  desc: string
-  img?: string
-  type: string
+  note: {
+    note_id: number
+    title: string
+    note1: string
+    note2: string
+    desc: string
+    img?: string
+    type: string
+  }
+  detail: {
+    note_id: number
+    title: string
+    type: string
+    status: string
+    desc: string
+    img: string
+  }
 }
 
-export type { NoteModel, RestaurantModel }
+interface UserInformationModel {
+  users: {
+    total_user: number
+    active_user: number
+    inactive_user: number
+  }
+  joined: {
+    join_today: number
+  }
+  packet: {
+    premium: number
+    free: number
+    trial: number
+  }
+}
+
+export type { NoteModel, RestaurantModel, UserInformationModel }

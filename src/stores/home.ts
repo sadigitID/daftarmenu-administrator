@@ -1,24 +1,31 @@
-import { fetchPendapatanItem, fetchPenilaianUser, fetchUserData } from '@/api'
-import type { RestaurantModel } from '@/utils/types'
+import { fetchUserInformation, fetchAccountData } from '@/api'
+import type { RestaurantModel, UserInformationModel } from '@/utils/types'
 import { defineStore } from 'pinia'
 import { onMounted, ref } from 'vue'
 
 export const useHomeStore = defineStore('homeStore', () => {
-  const laporanPendapatanItem = ref([])
-  const users = ref({
-    total_users: 0,
-    active_user: 0,
-    inactive_user: 0,
-    join_today: 0,
-    premium: 0,
-    free: 0,
-    trial: 0
+  // const laporanPendapatanItem = ref([])
+  const user_information = ref<UserInformationModel>({
+    users: {
+      total_user: 0,
+      active_user: 0,
+      inactive_user: 0
+    },
+    joined: {
+      join_today: 0
+    },
+    packet: {
+      premium: 0,
+      free: 0,
+      trial: 0
+    }
   })
 
-  const user_data = ref<RestaurantModel[]>([])
+  const account_data = ref<RestaurantModel[]>([])
 
   const getRetentionRateStatus = () => {
-    const rate = (users.value.active_user / users.value.total_users) * 100
+    const rate =
+      (user_information.value.users.active_user / user_information.value.users.total_user) * 100
     if (rate >= 70) {
       return 'baik'
     } else if (rate >= 50 && rate < 70) {
@@ -28,24 +35,54 @@ export const useHomeStore = defineStore('homeStore', () => {
     }
   }
 
-  const getUserData = () => {
-    return users.value
+  const getUserInformationData = () => {
+    return user_information.value
   }
 
   const getAccountData = () => {
-    return user_data.value
+    return account_data.value
   }
 
-  const getLaporanPendapatanItem = () => {
-    return laporanPendapatanItem.value
+  // const getLaporanPendapatanItem = () => {
+  //   return laporanPendapatanItem.value
+  // }
+
+  // const fetchLaporanPendapatanItem = async () => {
+  //   fetchPendapatanItem()
+  //     .then((response) => {
+  //       const result = response.data
+  //       if (result.status) {
+  //         laporanPendapatanItem.value = result.data
+  //       } else {
+  //         console.log(result.message)
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.log(error)
+  //     })
+  //     .finally(() => {
+  //       console.log('fetch pendapatan item done')
+  //     })
+  // }
+
+  const fetchUserInformations = async () => {
+    fetchUserInformation().then((response) => {
+      console.log(response.data)
+      const result = response.data
+      if (result.status) {
+        user_information.value = result.data
+      } else {
+        console.log(result.message)
+      }
+    })
   }
 
-  const fetchAccountData = async () => {
-    fetchUserData()
+  const fetchAccountsData = async () => {
+    fetchAccountData()
       .then((response) => {
         const result = response.data
         if (result.status) {
-          user_data.value = result.data
+          account_data.value = result.data
         } else {
           console.log(result.message)
         }
@@ -58,68 +95,43 @@ export const useHomeStore = defineStore('homeStore', () => {
       })
   }
 
-  const fetchLaporanPendapatanItem = async () => {
-    fetchPendapatanItem()
-      .then((response) => {
-        const result = response.data
-        if (result.status) {
-          laporanPendapatanItem.value = result.data
-        } else {
-          console.log(result.message)
-        }
-      })
-      .catch((error) => {
-        console.log(error)
-      })
-      .finally(() => {
-        console.log('fetch pendapatan item done')
-      })
-  }
-
-  const fetchDataPenilaianUser = async () => {
-    fetchPenilaianUser().then((response) => {
-      console.log(response.data)
-      const result = response.data
-      if (result.status) {
-        users.value = result.data
-      } else {
-        console.log(result.message)
-      }
-    })
-  }
-
+  // Data for Card Components
   const countPaketBulan = (data: string): number => {
-    return user_data.value.filter(
-      (user_data) => user_data.account.account_subscription_name === data
+    return account_data.value.filter(
+      (account_data) => account_data.account.account_subscription_name === data
     ).length
   }
 
   const countJenisLanggananUser = (data: number): number => {
-    return user_data.value.filter((user_data) => user_data.account.account_subscription_id === data)
-      .length
+    return account_data.value.filter(
+      (account_data) => account_data.account.account_subscription_id === data
+    ).length
   }
 
   const countMetodePembayaran = (data: string): number => {
-    return user_data.value.filter((user_data) => user_data.account.account_payment_method === data)
-      .length
+    return account_data.value.filter(
+      (account_data) => account_data.account.account_payment_method === data
+    ).length
   }
 
   onMounted(() => {
-    fetchLaporanPendapatanItem()
-    fetchDataPenilaianUser()
-    fetchAccountData()
+    // fetchLaporanPendapatanItem()
+    fetchUserInformations()
+    fetchAccountsData()
   })
 
   return {
-    fetchLaporanPendapatanItem,
-    getLaporanPendapatanItem,
-    getUserData,
+    // fetchLaporanPendapatanItem,
+    // getLaporanPendapatanItem,
+    getUserInformationData,
     getAccountData,
     getRetentionRateStatus,
-    fetchDataPenilaianUser,
-    fetchAccountData,
+    fetchUserInformations,
+    fetchAccountsData,
     countPaketBulan,
     countJenisLanggananUser,
-    countMetodePembayaran
+    countMetodePembayaran,
+    user_information,
+    account_data
   }
 })

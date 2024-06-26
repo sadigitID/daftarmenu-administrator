@@ -1,0 +1,7 @@
+<template>
+<svg width="12" height="12" viewBox="0 0 12 12" fill="white" xmlns="http://www.w3.org/2000/svg">
+<g id="Check">
+<path id="Path" d="M9 4L5 8L3 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</svg>
+</template>

@@ -3,28 +3,63 @@ import { ChevronRight } from '@/components/icons'
 import { useRestoStore } from '@/stores/resto'
 import type { RestaurantModel } from '@/utils/types'
 import { timestampToDateFormated, daysSinceNow } from '@/utils/date'
+import { onMounted, ref } from 'vue'
+import { useHomeStore } from '@/stores/home'
 
 const resto = useRestoStore()
+const stores = useHomeStore()
 
-const props = defineProps({
-  data: {
-    type: Object as () => RestaurantModel,
-    required: true
-  }
-})
+// const props = defineProps({
+//   data: {
+//     type: Object as () => RestaurantModel,
+//     required: true
+//   }
+// })
 
 const onSelected = (data: RestaurantModel) => {
   resto.resto = data
 }
 
-const accountExpired = props.data.account.account_subscription_expired
-const isExpired = new Date().getTime() > accountExpired
-const accountStatus = isExpired ? 'inactive' : 'active'
-const daysPassed = isExpired ? daysSinceNow(accountExpired) : 0
+const accountData = ref<RestaurantModel[]>([])
+
+const loadRestoData = async () => {
+  return new Promise((resolve) => {
+    resto.fetchAccountsData()
+    setTimeout(() => {
+      // accountData.value = resto.visibleItems
+      accountData.value = resto.account_data
+      resolve(accountData.value)
+    }, 2000)
+  })
+}
+
+const getAccountStatus = (data: RestaurantModel) => {
+  const dateNow = new Date().getTime()
+  const accountLastActive = data.account.account_last_active
+  const unactiveLimit = accountLastActive + 2592000000
+  const accountStatus = dateNow > unactiveLimit ? 'inactive' : 'active'
+
+  return accountStatus
+}
+
+const getDaysPassed = (data: RestaurantModel) => {
+  const accountLastActive = data.account.account_last_active
+  const daysPassed = daysSinceNow(accountLastActive)
+
+  return daysPassed
+}
+
+await loadRestoData()
+
+// const searchQuery = resto.searchQuery
+// const sortOrder = resto.sortOrder
+// const filteredAndSortedItems = resto.filteredAndSortedItems
 </script>
 
 <template>
   <button
+    v-for="data in accountData"
+    :key="data.resto.resto_id"
     @click="onSelected(data)"
     class="flex flex-1 p-2 bg-white justify-between items-center rounded-2xl font-sans shadow-[1px_1px_8px_0px_rgba(180,180,180,0.39)]"
   >
@@ -56,10 +91,13 @@ const daysPassed = isExpired ? daysSinceNow(accountExpired) : 0
               <p class="text-xs font-medium text-primary-900">Premium</p>
             </div>
 
-            <div v-if="accountStatus == 'active'" class="flex p-1 items-center gap-2.5">
+            <div v-if="getAccountStatus(data) == 'active'" class="flex p-1 items-center gap-2.5">
               <p class="text-xs font-medium text-superorange">Aktif</p>
             </div>
-            <div v-else-if="accountStatus == 'inactive'" class="flex p-1 items-center gap-2.5">
+            <div
+              v-else-if="getAccountStatus(data) == 'inactive'"
+              class="flex p-1 items-center gap-2.5"
+            >
               <p class="text-xs font-medium text-red-500">Tidak Aktif</p>
             </div>
           </div>
@@ -69,17 +107,17 @@ const daysPassed = isExpired ? daysSinceNow(accountExpired) : 0
             </p>
           </div>
         </div>
-        <div v-if="daysPassed > 1 && daysPassed <= 30" class="flex items-start gap-2.5">
+        <div v-if="data.resto.resto_transaction_today != 0" class="flex items-start gap-2.5">
           <p class="text-xs font-medium text-gray-700 text-left">
-            Tidak aktif {{ daysPassed }} hari yang lalu
+            {{ data.resto.resto_transaction_today }} transaksi pada hari ini
           </p>
         </div>
-        <div v-else-if="daysPassed > 30" class="flex items-start gap-2.5">
+        <div v-else-if="getDaysPassed(data) > 30" class="flex items-start gap-2.5">
           <p class="text-xs font-medium text-gray-700 text-left">Tidak aktif lebih dari 30 hari</p>
         </div>
         <div v-else class="flex items-start gap-2.5">
           <p class="text-xs font-medium text-gray-700 text-left">
-            Exp: {{ timestampToDateFormated(accountExpired) }}
+            Exp: {{ timestampToDateFormated(data.account.account_last_active) }}
           </p>
         </div>
       </div>

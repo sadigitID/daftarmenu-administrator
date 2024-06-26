@@ -1,6 +1,19 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { NotFound } from '@/assets/image'
+import { onMounted } from 'vue'
+
+onMounted(() => {
+  document.title = '404 Not Found - Admin Daftar Menu'
+})
+</script>
 <template>
-  <div>
-    <h1>Halaman Tidak Ditemukan</h1>
-  </div>
+  <section>
+    <div class="bg-white rounded-3xl w-auto h-full p-32 lg:p-52">
+      <img :src="NotFound" alt="Not Found" class="m-auto" />
+      <h1 class="font-sans font-bold text-dark text-base text-center">Link Tidak Ditemukan</h1>
+      <h2 class="text-center font-sans text-sm text-gray-800">
+        Silahkan untuk <a href="/login" class="underline text-primary-600">kembali</a>
+      </h2>
+    </div>
+  </section>
 </template>

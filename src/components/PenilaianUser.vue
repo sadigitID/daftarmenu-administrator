@@ -16,7 +16,9 @@ const stores = useHomeStore()
             <p class="font-sans text-3xl font-bold leading-9 text-white">
               {{
                 formatPercentage(
-                  (stores.getUserData().active_user / stores.getUserData().total_users) * 100
+                  (stores.user_information.users.active_user /
+                    stores.user_information.users.total_user) *
+                    100
                 )
               }}
             </p>
@@ -38,7 +40,7 @@ const stores = useHomeStore()
               Total Pengguna
             </p>
             <h1 class="font-sans text-2xl leading-[28.8px] font-bold text-primary-800">
-              {{ stores.getUserData().total_users }}
+              {{ stores.user_information.users.total_user }}
             </h1>
           </div>
         </div>
@@ -50,7 +52,7 @@ const stores = useHomeStore()
             <Green class="size-6 fill-primary-800" />
             <p class="font-sans font-normal leading-[22.4px] text-sm text-primary-800">Aktif</p>
             <h1 class="font-sasns font-bold leading-[28.8px] text-2xl text-primary-800">
-              {{ stores.getUserData().active_user }}
+              {{ stores.user_information.users.active_user }}
             </h1>
           </div>
 
@@ -62,7 +64,7 @@ const stores = useHomeStore()
               Tidak Aktif
             </p>
             <h1 class="font-sasns font-bold leading-[28.8px] text-2xl text-orange-800">
-              {{ stores.getUserData().inactive_user }}
+              {{ stores.user_information.users.inactive_user }}
             </h1>
           </div>
         </div>

@@ -2383,10 +2383,6 @@ video {
     border-radius: 1rem;
   }
 
-  .md\:rounded-3xl{
-    border-radius: 1.5rem;
-  }
-
   .md\:rounded-lg{
     border-radius: 0.5rem;
   }
@@ -2509,11 +2505,6 @@ video {
   .lg\:bg-gray-50{
     --tw-bg-opacity: 1;
     background-color: rgb(246 246 246 / var(--tw-bg-opacity));
-  }
-
-  .lg\:bg-white{
-    --tw-bg-opacity: 1;
-    background-color: rgb(255 255 255 / var(--tw-bg-opacity));
   }
 
   .lg\:p-52{

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { Search, Add, Red } from '@/components/icons'
 import { Info, ButtonFilter, InputText } from '@/components'
 import { CardNote } from '@/components/card'
@@ -39,6 +39,11 @@ const openNewNote = () => {
 const closeNewNote = () => {
   showNewNotePopup.value = false
 }
+
+onMounted(() => {
+  document.title = 'Note - Admin Daftar Menu'
+})
+
 </script>
 
 <template>

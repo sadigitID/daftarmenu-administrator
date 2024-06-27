@@ -2,21 +2,20 @@
 import { Dialog, DialogPanel, TransitionChild, TransitionRoot, Switch } from '@headlessui/vue'
 import { computed, ref } from 'vue'
 import { XMarkIcon } from '@heroicons/vue/24/outline'
-import Editor from '@tinymce/tinymce-vue'
 import { UploadArea } from '@/components'
-import { Block, Check } from '@/components/icons'
+import { Block, uploadImgIcon, Check } from '@/components/icons'
+import Editor from '@tinymce/tinymce-vue'
 
 const props = defineProps({
   open: Boolean
 })
-
-const enabled = ref(false)
 const emits = defineEmits(['onClose', 'onSelected'])
 const open = ref(computed(() => props.open))
 
-function close() {
+const close = () => {
   emits('onClose', false)
 }
+const enabled = ref(true)
 </script>
 
 <template>
@@ -50,9 +49,7 @@ function close() {
                 <div class="flex flex-col h-full overflow-y-hidden bg-white shadow-xl">
                   <div class="px-4 py-4 shadow-lg sm:px-6">
                     <div class="flex items-start justify-between">
-                      <h2 id="slide-over-heading" class="font-bold text-dark text-md">
-                        Tambah Catatan
-                      </h2>
+                      <h2 id="slide-over-heading" class="font-bold text-dark text-md">Edit</h2>
                       <div class="flex items-center ml-3 h-7">
                         <button
                           type="button"
@@ -68,7 +65,6 @@ function close() {
                   <div class="overflow-y-auto">
                     <div class="px-4 pt-2 pb-5 sm:px-0 sm:pt-0">
                       <div class="my-6 space-y-3 overflow-y-auto sm:px-4 md:px-6">
-                        <!-- Konten Dialog -->
                         <form action="#" class="flex flex-col mt-2 gap-4">
                           <div class="flex flex-col gap-1">
                             <label class="text-gray-700 text-sm font-normal mb-2" for="judul">
@@ -79,9 +75,9 @@ function close() {
                               id="judul"
                               type="text"
                               placeholder="Masukan Judul Catatan"
+                              value="Catatan 1"
                             />
                           </div>
-
                           <div class="flex items-start gap-4">
                             <div class="flex flex-col gap">
                               <label for="jenis" class="text-gray-700 text-sm font-normal mb-2"
@@ -136,18 +132,21 @@ function close() {
                               </div>
                             </div>
                           </div>
+
                           <div class="flex flex-col gap-1">
                             <label for="Deskripsi" class="text-gray-700 text-sm font-normal mb-2"
                               >Deskripsi</label
                             >
                             <Editor api-key="dmoh15uxnrfvrcgujpfgw83dqqqe6cuxnozmfwr9ezx2fokg" />
                           </div>
+
                           <div class="flex flex-col gap-1">
-                            <label for="Deskripsi" class="text-gray-700 text-sm font-normal mb-2"
-                              >Gambar Pendukung</label
-                            >
+                            <label for="Deskripsi" class="text-gray-700 text-sm font-normal mb-2">
+                              Gambar Pendukung
+                            </label>
                             <UploadArea />
                           </div>
+
                           <button
                             class="bg-vtd-primary-500 py-3 rounded-md text-white hover:bg-vtd-primary-600"
                           >

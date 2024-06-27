@@ -5,7 +5,7 @@ import { XMarkIcon } from '@heroicons/vue/24/outline'
 import { Switch } from '@headlessui/vue'
 import type { NoteModel } from '@/utils/types'
 import { Check, Block } from "@/components/icons";
-
+import { EditNote } from "@/components/dialogs";
 const props = defineProps({
   open: Boolean,
   data: Object as () => NoteModel | null
@@ -34,10 +34,21 @@ watch(enabled, (newValue) => {
   }
 })
 
+const showEditNotePopup = ref(false)
+
+const openEditNote = () => {
+  showEditNotePopup.value = true
+}
+
+const closeEditNote = () => {
+  showEditNotePopup.value = false
+}
+
 </script>
 
 
 <template>
+    <EditNote :open="showEditNotePopup" @on-close="closeEditNote" />
   <TransitionRoot as="template" :show="open">
     <Dialog as="div" class="relative z-20" @close="close">
       <TransitionChild
@@ -146,11 +157,12 @@ watch(enabled, (newValue) => {
                         </div>
                         <div class="absolute bottom-0 left-0 w-full p-4 sm:p-6">
                           <div class="flex action-btn gap-2">
-                            <div
+                            <Button
+                            @click="openEditNote"
                               class="cursor-pointer w-[50%] text-center py-2 rounded-md bg-vtd-primary-500 text-white font-medium hover:bg-vtd-primary-600 transition-all duration-300"
                             >
                               Edit Catatan
-                            </div>
+                            </Button>
                             <div
                               class="cursor-pointer w-[50%] text-center py-2 rounded-md bg-gray-50 text-gray-900 font-semibold hover:bg-gray-100 duration-300"
                             >

@@ -1,5 +1,5 @@
 <template>
-    <button v-for="button in 8" :key="button"
+    <button v-for="button in 16" :key="button"
     class="flex flex-col items-start gap-2 p-4 flex-1 rounded-2xl bg-white shadow-custom-gray">
       <div class="flex flex-col items-start gap-1 self-stret">
         <div class="w-56 h-7  rounded-lg shimmer">
@@ -18,11 +18,11 @@
       </div>
   
       <div class="flex flex-col items-start gap-[11px]">
-        <h1 class="text-left w-full rounded-lg  rounded-lg h-11 shimmer">
-        </h1>
+        <div class="text-left w-full rounded-lg h-11 shimmer">
+        </div>
         <div>
-          <h1 class=" w-56 h-[96px] rounded-lg shimmer">
-          </h1>
+          <div class=" w-56 h-[96px] rounded-lg shimmer">
+          </div>
         </div>
       </div>
     </button>

@@ -18,7 +18,7 @@ const loadNoteData = async () => {
       // accountData.value = note.visibleItems
       noteData.value = note.note_data
       resolve(noteData.value)
-    }, 3000)
+    }, 4000)
   })
 }
 

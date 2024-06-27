@@ -2087,8 +2087,6 @@ video {
   -webkit-line-clamp: 1;
 }
 
-<<<<<<< Updated upstream
-=======
 @keyframes shimmer {
   0% {
     background-position: -1000px 0;
@@ -2105,7 +2103,6 @@ video {
   animation: shimmer 2.5s infinite linear;
 }
 
->>>>>>> Stashed changes
 .placeholder\:text-gray-400::-moz-placeholder{
   --tw-text-opacity: 1;
   color: rgb(185 185 185 / var(--tw-text-opacity));
@@ -2402,10 +2399,6 @@ video {
     border-radius: 1rem;
   }
 
-  .md\:rounded-3xl{
-    border-radius: 1.5rem;
-  }
-
   .md\:rounded-lg{
     border-radius: 0.5rem;
   }
@@ -2528,11 +2521,6 @@ video {
   .lg\:bg-gray-50{
     --tw-bg-opacity: 1;
     background-color: rgb(246 246 246 / var(--tw-bg-opacity));
-  }
-
-  .lg\:bg-white{
-    --tw-bg-opacity: 1;
-    background-color: rgb(255 255 255 / var(--tw-bg-opacity));
   }
 
   .lg\:p-52{

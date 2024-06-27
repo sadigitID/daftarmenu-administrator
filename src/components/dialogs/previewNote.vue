@@ -20,19 +20,16 @@ function close() {
 
 const enabled = ref(props.data?.detail.status === 'Selesai')
 
-watch(
-  () => props.data,
-  (newData) => {
-    if (newData) {
-      enabled.value = newData.detail.status === 'Selesai'
-    }
-  },
-  { immediate: true }
-)
+
+watch(() => props.data, (newData) => {
+  if (newData) {
+    enabled.value = newData.detail.status === 'Selesai'
+  }
+}, { immediate: true })
+
 
 watch(enabled, (newValue) => {
   if (props.data) {
-    // eslint-disable-next-line vue/no-mutating-props
     props.data.detail.status = newValue ? 'Selesai' : 'Belum Selesai'
   }
 })
@@ -48,6 +45,7 @@ const closeEditNote = () => {
 }
 
 </script>
+
 
 <template>
     <EditNote :open="showEditNotePopup" @on-close="closeEditNote" />
@@ -123,15 +121,17 @@ const closeEditNote = () => {
                                 <span class="sr-only">Toggle</span>
                                 <span
                                   :class="enabled ? 'translate-x-6' : 'translate-x-1'"
-                                  class="inline-block h-4 w-4 transform rounded-full bg-white transition-transform duration-300"
-                                >
-                                  <Check v-if="enabled" class="h-4 w-4 text-vtd-primary-500" />
-                                  <Block v-else class="h-4 w-4 text-vtd-primary-500" />
-                                </span>
+                                  class="inline-block h-4 w-4 transform rounded-full bg-white transition-transform duration-300">
+                             
+                             
+                                <Check v-if="enabled" class="h-4 w-4 text-vtd-primary-500"/>
+                              <Block v-else class="h-4 w-4 text-vtd-primary-500" />
+                            </span>
                               </Switch>
-
+                             
                               <span>{{ enabled ? 'Selesai' : 'Belum Selesai' }}</span>
                               <!-- Icon based on enabled state -->
+                        
                             </div>
                           </div>
                         </div>
@@ -145,20 +145,16 @@ const closeEditNote = () => {
                           <span class="label text-sm text-gray-"> Gambar Pendukung </span>
                           <div class="preview-img flex items-start flex-wrap gap-1">
                             <img
-                              :src="data?.detail.img"
-                              class="img w-[128px] h-[128px] bg-gray-50 rounded-md"
-                            />
+                            :src="data?.detail.img"
+                            class="img w-[128px] h-[128px] bg-gray-50 rounded-md"/>
                             <img
-                              :src="data?.detail.img"
-                              class="img w-[128px] h-[128px] bg-gray-50 rounded-md"
-                            />
-                            <img
-                              :src="data?.detail.img"
-                              class="img w-[128px] h-[128px] bg-gray-50 rounded-md"
-                            />
+                            :src="data?.detail.img"
+                            class="img w-[128px] h-[128px] bg-gray-50 rounded-md"/>
+                                <img
+                            :src="data?.detail.img"
+                            class="img w-[128px] h-[128px] bg-gray-50 rounded-md"/>
                           </div>
                         </div>
-
                         <div class="absolute bottom-0 left-0 w-full p-4 sm:p-6">
                           <div class="flex action-btn gap-2">
                             <Button
@@ -186,3 +182,4 @@ const closeEditNote = () => {
     </Dialog>
   </TransitionRoot>
 </template>
+

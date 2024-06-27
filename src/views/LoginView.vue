@@ -31,15 +31,16 @@ const onLogin = () => {
   if (!isLoading.value) {
     isLoading.value = true
 
-    setTimeout(() => {
+    setTimeout(async () => {
       if (validate()) {
         const data = {
           email: email.value,
           password: password.value
         }
-        createAuth(data)
+        await createAuth(data)
           .then((res) => {
             const result = res.data
+            console.log(result)
             if (result.status) {
               onSuccessfulLogin()
             } else {
@@ -103,17 +104,17 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="flex h-screen justify-center items-center bg-layout font-sans">
+  <div class="flex items-center justify-center h-screen font-sans bg-layout">
     <section
-      class="flex w-screen md:w-fit justify-center items-center p-4 m-4 md:gap-6 bg-white rounded-2xl"
+      class="flex items-center justify-center w-screen p-4 m-4 bg-white md:w-fit md:gap-6 rounded-2xl"
     >
       <div
-        class="flex w-full md:w-auto py-4 px-6 flex-col justify-center items-center gap-12 md:shrink-0 self-stretch"
+        class="flex flex-col items-center self-stretch justify-center w-full gap-12 px-6 py-4 md:w-auto md:shrink-0"
       >
-        <div class="flex flex-col justify-center items-center gap-6 self-stretch">
-          <div class="flex flex-col justify-center items-center gap-6 self-stretch">
-            <div class="flex flex-col justify-center items-start gap-2 self-stretch">
-              <div class="flex justify-between items-center self-stretch">
+        <div class="flex flex-col items-center self-stretch justify-center gap-6">
+          <div class="flex flex-col items-center self-stretch justify-center gap-6">
+            <div class="flex flex-col items-start self-stretch justify-center gap-2">
+              <div class="flex items-center self-stretch justify-between">
                 <h1 class="font-sans text-3xl font-medium text-dark">Selamat Datang</h1>
               </div>
               <p class="font-sans text-base font-medium text-gray-800">
@@ -125,10 +126,10 @@ onMounted(() => {
           <form
             id="login"
             @submit.prevent="onLogin"
-            class="flex flex-col items-start gap-8 self-stretch"
+            class="flex flex-col items-start self-stretch gap-8"
           >
-            <div class="flex flex-col justify-center gap-4 self-stretch">
-              <div class="flex flex-col justify-center gap-2 self-stretch">
+            <div class="flex flex-col self-stretch justify-center gap-4">
+              <div class="flex flex-col self-stretch justify-center gap-2">
                 <h1 class="font-sans text-base font-medium text-dark">Email</h1>
                 <InputText
                   :disabled="isLoading"
@@ -138,7 +139,7 @@ onMounted(() => {
                 />
               </div>
 
-              <div class="flex flex-col justify-center gap-2 self-stretch">
+              <div class="flex flex-col self-stretch justify-center gap-2">
                 <h1 class="font-sans text-base font-medium text-dark">Password</h1>
                 <InputText
                   class="relative"
@@ -168,7 +169,7 @@ onMounted(() => {
       </div>
 
       <div
-        class="flex justify-center items-center shrink rounded-lg bg-primary-50 invisible md:visible self-stretch"
+        class="flex items-center self-stretch justify-center invisible rounded-lg shrink bg-primary-50 md:visible"
       >
         <img class="w-0 md:w-[540px]" :src="Login" alt="halaman login" />
       </div>

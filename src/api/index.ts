@@ -28,7 +28,7 @@ const fetchUserInformation = async () => {
 // }
 
 const createAuth = async (data: object) => {
-  return instance.post('/auth.json', data)
+  return instance.post('/login', data)
 }
 
 // const createAuth2 = async (username: string, passowrd: string) => {

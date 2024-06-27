@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory, type RouteLocationNormalized } from 'vue-router'
 import LoginView from '@/views/LoginView.vue'
 import DashboardView from '@/views/DashboardView.vue'
 import { HomeView, ReportView, UpgradeView, NoteView } from '@/views/home'
@@ -59,7 +59,11 @@ const router = createRouter({
       name: 'not-found',
       component: NotFound
     }
-  ]
+  ],
+
+  scrollBehavior(to, from, savedPosition) {
+    return { top: 0 }
+  }
 })
 
 router.beforeEach((to, from, next) => {

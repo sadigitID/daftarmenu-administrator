@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import { Search, Add, Red } from '@/components/icons'
-import { Info, ButtonFilter, InputText } from '@/components'
+import { Info, ButtonFilter, InputText, SkeletonNote } from '@/components'
 import { CardNote } from '@/components/card'
 import { Menu } from '@/assets/image'
 import PreviewNote from '@/components/dialogs/previewNote.vue'
@@ -111,7 +111,14 @@ onMounted(() => {
         id="note"
         class="grid mt-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-x-4 gap-y-6"
       >
-        <CardNote v-for="data in note.getNoteData()" :key="data.note.note_id" :data="data" />
+      <Suspense>
+          <template #default>
+            <CardNote />
+          </template>
+          <template #fallback>
+            <SkeletonNote  />
+          </template>
+        </Suspense>
       </div>
     </div>
   </section>

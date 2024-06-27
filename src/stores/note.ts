@@ -1,11 +1,12 @@
 import { fetchNoteData } from '@/api'
 import type { NoteModel } from '@/utils/types'
+import Note from '@/views/home/Note.vue'
 import { defineStore } from 'pinia'
 import { onMounted, ref } from 'vue'
 
 export const useNoteStore = defineStore('note', () => {
-  const note_data = ref<NoteModel[]>([])
   const note = ref<NoteModel | null>(null)
+  const note_data = ref<NoteModel[]>([])
   const getNoteData = () => {
     return note_data.value
   }
@@ -39,10 +40,11 @@ export const useNoteStore = defineStore('note', () => {
     fetchNotesData()
   })
   return {
-    fetchNotesData,
-    getNoteData,
     note,
+    fetchNotesData,
+    note_data,
     setNoteData,
-    clearNoteData
+    clearNoteData,
+    getNoteData
   }
 })

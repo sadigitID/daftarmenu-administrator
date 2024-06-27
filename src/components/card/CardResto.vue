@@ -29,7 +29,7 @@ const loadRestoData = async () => {
       // accountData.value = resto.visibleItems
       accountData.value = resto.account_data
       resolve(accountData.value)
-    }, 2000)
+    }, 4000)
   })
 }
 

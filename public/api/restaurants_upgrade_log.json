@@ -2,144 +2,151 @@
   "status": true,
   "data": [
     {
-      "resto_name": "Nama Resto 1",
+      "resto_name": "Sushi King",
       "resto_subs_package": "1 Bulan",
       "resto_expr_date": 1726444800000,
       "resto_pay_method": "Bank Transfer",
       "resto_pay_price": 0.0
     },
     {
-      "resto_name": "Nama Resto 2",
+      "resto_name": "Pizza Hut",
       "resto_subs_package": "3 Bulan",
       "resto_expr_date": 1733923200000,
       "resto_pay_method": "Credit Card",
       "resto_pay_price": 150.0
     },
     {
-      "resto_name": "Nama Resto 3",
+      "resto_name": "McDonald's",
       "resto_subs_package": "6 Bulan",
       "resto_expr_date": 1738704000000,
       "resto_pay_method": "PayPal",
       "resto_pay_price": 300.0
     },
     {
-      "resto_name": "Nama Resto 4",
+      "resto_name": "Starbucks",
       "resto_subs_package": "1 Bulan",
       "resto_expr_date": 1743561600000,
       "resto_pay_method": "Bank Transfer",
       "resto_pay_price": 0.0
     },
     {
-      "resto_name": "Nama Resto 5",
+      "resto_name": "KFC",
       "resto_subs_package": "3 Bulan",
       "resto_expr_date": 1748342400000,
       "resto_pay_method": "Credit Card",
       "resto_pay_price": 150.0
     },
     {
-      "resto_name": "Nama Resto 6",
+      "resto_name": "Burger King",
       "resto_subs_package": "6 Bulan",
       "resto_expr_date": 1753123200000,
       "resto_pay_method": "PayPal",
       "resto_pay_price": 300.0
     },
     {
-      "resto_name": "Nama Resto 7",
+      "resto_name": "Subway",
       "resto_subs_package": "1 Bulan",
       "resto_expr_date": 1757980800000,
       "resto_pay_method": "Bank Transfer",
       "resto_pay_price": 0.0
     },
     {
-      "resto_name": "Nama Resto 8",
+      "resto_name": "Domino's Pizza",
       "resto_subs_package": "3 Bulan",
       "resto_expr_date": 1762761600000,
       "resto_pay_method": "Credit Card",
       "resto_pay_price": 150.0
     },
     {
-      "resto_name": "Nama Resto 9",
+      "resto_name": "Dunkin'",
       "resto_subs_package": "6 Bulan",
       "resto_expr_date": 1767542400000,
       "resto_pay_method": "PayPal",
       "resto_pay_price": 300.0
     },
     {
-      "resto_name": "Nama Resto 10",
+      "resto_name": "Chick-fil-A",
       "resto_subs_package": "1 Bulan",
       "resto_expr_date": 1772400000000,
       "resto_pay_method": "Bank Transfer",
       "resto_pay_price": 0.0
     },
     {
-      "resto_name": "Nama Resto 11",
+      "resto_name": "Panera Bread",
       "resto_subs_package": "3 Bulan",
       "resto_expr_date": 1777180800000,
       "resto_pay_method": "Credit Card",
       "resto_pay_price": 150.0
     },
     {
-      "resto_name": "Nama Resto 12",
+      "resto_name": "Wendy's",
       "resto_subs_package": "6 Bulan",
       "resto_expr_date": 1781961600000,
       "resto_pay_method": "PayPal",
       "resto_pay_price": 300.0
     },
     {
-      "resto_name": "Nama Resto 13",
+      "resto_name": "Taco Bell",
       "resto_subs_package": "1 Bulan",
       "resto_expr_date": 1786819200000,
       "resto_pay_method": "Bank Transfer",
       "resto_pay_price": 0.0
     },
     {
-      "resto_name": "Nama Resto 14",
+      "resto_name": "Chipotle",
       "resto_subs_package": "3 Bulan",
       "resto_expr_date": 1791600000000,
       "resto_pay_method": "Credit Card",
       "resto_pay_price": 150.0
     },
     {
-      "resto_name": "Nama Resto 15",
+      "resto_name": "Papa John's",
       "resto_subs_package": "6 Bulan",
       "resto_expr_date": 1796380800000,
       "resto_pay_method": "PayPal",
       "resto_pay_price": 300.0
     },
     {
-      "resto_name": "Nama Resto 16",
+      "resto_name": "Five Guys",
       "resto_subs_package": "1 Bulan",
       "resto_expr_date": 1801238400000,
       "resto_pay_method": "Bank Transfer",
       "resto_pay_price": 0.0
     },
     {
-      "resto_name": "Nama Resto 17",
+      "resto_name": "In-N-Out Burger",
       "resto_subs_package": "3 Bulan",
       "resto_expr_date": 1806019200000,
       "resto_pay_method": "Credit Card",
       "resto_pay_price": 150.0
     },
     {
-      "resto_name": "Nama Resto 18",
+      "resto_name": "Panda Express",
       "resto_subs_package": "6 Bulan",
       "resto_expr_date": 1810800000000,
       "resto_pay_method": "PayPal",
       "resto_pay_price": 300.0
     },
     {
-      "resto_name": "Nama Resto 19",
+      "resto_name": "Shake Shack",
       "resto_subs_package": "1 Bulan",
       "resto_expr_date": 1815657600000,
       "resto_pay_method": "Bank Transfer",
       "resto_pay_price": 0.0
     },
     {
-      "resto_name": "Nama Resto 20",
+      "resto_name": "Cinnabon",
       "resto_subs_package": "3 Bulan",
       "resto_expr_date": 1820438400000,
       "resto_pay_method": "Credit Card",
       "resto_pay_price": 150.0
+    },
+    {
+      "resto_name": "Cold Stone Creamery",
+      "resto_subs_package": "6 Bulan",
+      "resto_expr_date": 1825219200000,
+      "resto_pay_method": "PayPal",
+      "resto_pay_price": 300.0
     }
   ]
 }

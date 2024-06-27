@@ -13,6 +13,30 @@ export const timestampToDateFormated = (timestamp: number): string => {
   return `${day}-${month}-${year}`
 }
 
+export const timestampToMonthNameFormatted = (timestamp: number): string => {
+  const date = new Date(timestamp)
+  const monthNames = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'Mei',
+    'Juni',
+    'Juli',
+    'Agt',
+    'Sep',
+    'Okt',
+    'Nov',
+    'Des'
+  ]
+
+  const day = String(date.getDate()).padStart(2, '0')
+  const month = monthNames[date.getMonth()]
+  const year = date.getFullYear()
+
+  return `${day} ${month} ${year}`
+}
+
 export const daysSinceNow = (timestamp: number): number => {
   const now = new Date()
   const expiredDate = new Date(timestamp)

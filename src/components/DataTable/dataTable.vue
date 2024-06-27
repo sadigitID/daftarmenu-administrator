@@ -7,6 +7,11 @@ import { layouts } from 'chart.js'
 
 import { useRestoStore } from '@/stores/resto'
 import { computed, onMounted, ref } from 'vue'
+import {
+  timestampToDate,
+  timestampToDateFormated,
+  timestampToMonthNameFormatted
+} from '@/utils/date'
 
 DataTable.use(DataTablesCore)
 
@@ -15,264 +20,25 @@ const data = ref<any>([])
 
 const loadData = () => {
   let number = 0
-  data.value = resto.account_data.map((e) => {
+  data.value = resto.upgrade_log.map((e) => {
     number += 1
     return Object.values({
       resto_number: number,
-      resto_name: e.resto.resto_name,
-      resto_subs: e.account.account_subscription,
-      resto_expr: e.account.account_subscription_expired,
-      resto_pay_method: e.account.account_payment_method,
-      resto_price: 0.0
+      resto_name: e.resto_name,
+      resto_subs: e.resto_subs_package,
+      resto_expr_date: timestampToMonthNameFormatted(e.resto_expr_date),
+      resto_pay_method: e.resto_pay_method,
+      resto_price: e.resto_pay_price
+      // resto_date: timestampToDateFormated(e.resto_expr_date),
+      // ...e
     })
   })
 }
 
-loadData()
-// const dataDummy = [
-//   {
-//     resto_idx: '1',
-//     resto_name: 'KFC Sumedang',
-//     resto_subs_id: '3 Bulan',
-//     resto_expr: '5 Mei 2024',
-//     resto_payment_method: 'Bank Transfer',
-//     resto_total_price: '75.000'
-//   },
-//   {
-//     resto_idx: '2',
-//     resto_name: 'KFC Sumedang',
-//     resto_subs_id: '1 Bulan',
-//     resto_expr: '5 Mei 2024',
-//     resto_payment_method: 'Bank Transfer',
-//     resto_total_price: '75.000'
-//   },
-//   {
-//     resto_idx: '3',
-//     resto_name: 'KFC Sumedang',
-//     resto_subs_id: '6 Bulan',
-//     resto_expr: '5 Mei 2024',
-//     resto_payment_method: 'Bank Transfer',
-//     resto_total_price: '75.000'
-//   },
-//   {
-//     resto_idx: '1',
-//     resto_name: 'KFC Sumedang',
-//     resto_subs_id: '3 Bulan',
-//     resto_expr: '5 Mei 2024',
-//     resto_payment_method: 'Bank Transfer',
-//     resto_total_price: '75.000'
-//   },
-//   {
-//     resto_idx: '2',
-//     resto_name: 'KFC Sumedang',
-//     resto_subs_id: '1 Bulan',
-//     resto_expr: '5 Mei 2024',
-//     resto_payment_method: 'Bank Transfer',
-//     resto_total_price: '75.000'
-//   },
-//   {
-//     resto_idx: '3',
-//     resto_name: 'KFC Sumedang',
-//     resto_subs_id: '6 Bulan',
-//     resto_expr: '5 Mei 2024',
-//     resto_payment_method: 'Bank Transfer',
-//     resto_total_price: '75.000'
-//   },
-//   {
-//     resto_idx: '1',
-//     resto_name: 'KFC Sumedang',
-//     resto_subs_id: '3 Bulan',
-//     resto_expr: '5 Mei 2024',
-//     resto_payment_method: 'Bank Transfer',
-//     resto_total_price: '75.000'
-//   },
-//   {
-//     resto_idx: '2',
-//     resto_name: 'KFC Sumedang',
-//     resto_subs_id: '1 Bulan',
-//     resto_expr: '5 Mei 2024',
-//     resto_payment_method: 'Bank Transfer',
-//     resto_total_price: '75.000'
-//   },
-//   {
-//     resto_idx: '3',
-//     resto_name: 'KFC Sumedang',
-//     resto_subs_id: '6 Bulan',
-//     resto_expr: '5 Mei 2024',
-//     resto_payment_method: 'Bank Transfer',
-//     resto_total_price: '75.000'
-//   },
-//   {
-//     resto_idx: '1',
-//     resto_name: 'KFC Sumedang',
-//     resto_subs_id: '3 Bulan',
-//     resto_expr: '5 Mei 2024',
-//     resto_payment_method: 'Bank Transfer',
-//     resto_total_price: '75.000'
-//   },
-//   {
-//     resto_idx: '2',
-//     resto_name: 'KFC Sumedang',
-//     resto_subs_id: '1 Bulan',
-//     resto_expr: '5 Mei 2024',
-//     resto_payment_method: 'Bank Transfer',
-//     resto_total_price: '75.000'
-//   },
-//   {
-//     resto_idx: '3',
-//     resto_name: 'KFC Sumedang',
-//     resto_subs_id: '6 Bulan',
-//     resto_expr: '5 Mei 2024',
-//     resto_payment_method: 'Bank Transfer',
-//     resto_total_price: '75.000'
-//   },
-//   {
-//     resto_idx: '1',
-//     resto_name: 'KFC Sumedang',
-//     resto_subs_id: '3 Bulan',
-//     resto_expr: '5 Mei 2024',
-//     resto_payment_method: 'Bank Transfer',
-//     resto_total_price: '75.000'
-//   },
-//   {
-//     resto_idx: '2',
-//     resto_name: 'KFC Sumedang',
-//     resto_subs_id: '1 Bulan',
-//     resto_expr: '5 Mei 2024',
-//     resto_payment_method: 'Bank Transfer',
-//     resto_total_price: '75.000'
-//   },
-//   {
-//     resto_idx: '3',
-//     resto_name: 'KFC Sumedang',
-//     resto_subs_id: '6 Bulan',
-//     resto_expr: '5 Mei 2024',
-//     resto_payment_method: 'Bank Transfer',
-//     resto_total_price: '75.000'
-//   },
-//   {
-//     resto_idx: '1',
-//     resto_name: 'KFC Sumedang',
-//     resto_subs_id: '3 Bulan',
-//     resto_expr: '5 Mei 2024',
-//     resto_payment_method: 'Bank Transfer',
-//     resto_total_price: '75.000'
-//   },
-//   {
-//     resto_idx: '2',
-//     resto_name: 'KFC Sumedang',
-//     resto_subs_id: '1 Bulan',
-//     resto_expr: '5 Mei 2024',
-//     resto_payment_method: 'Bank Transfer',
-//     resto_total_price: '75.000'
-//   },
-//   {
-//     resto_idx: '3',
-//     resto_name: 'KFC Sumedang',
-//     resto_subs_id: '6 Bulan',
-//     resto_expr: '5 Mei 2024',
-//     resto_payment_method: 'Bank Transfer',
-//     resto_total_price: '75.000'
-//   },
-//   {
-//     resto_idx: '1',
-//     resto_name: 'KFC Sumedang',
-//     resto_subs_id: '3 Bulan',
-//     resto_expr: '5 Mei 2024',
-//     resto_payment_method: 'Bank Transfer',
-//     resto_total_price: '75.000'
-//   },
-//   {
-//     resto_idx: '2',
-//     resto_name: 'KFC Sumedang',
-//     resto_subs_id: '1 Bulan',
-//     resto_expr: '5 Mei 2024',
-//     resto_payment_method: 'Bank Transfer',
-//     resto_total_price: '75.000'
-//   },
-//   {
-//     resto_idx: '3',
-//     resto_name: 'KFC Sumedang',
-//     resto_subs_id: '6 Bulan',
-//     resto_expr: '5 Mei 2024',
-//     resto_payment_method: 'Bank Transfer',
-//     resto_total_price: '75.000'
-//   },
-//   {
-//     resto_idx: '1',
-//     resto_name: 'KFC Sumedang',
-//     resto_subs_id: '3 Bulan',
-//     resto_expr: '5 Mei 2024',
-//     resto_payment_method: 'Bank Transfer',
-//     resto_total_price: '75.000'
-//   },
-//   {
-//     resto_idx: '2',
-//     resto_name: 'KFC Sumedang',
-//     resto_subs_id: '1 Bulan',
-//     resto_expr: '5 Mei 2024',
-//     resto_payment_method: 'Bank Transfer',
-//     resto_total_price: '75.000'
-//   },
-//   {
-//     resto_idx: '3',
-//     resto_name: 'KFC Sumedang',
-//     resto_subs_id: '6 Bulan',
-//     resto_expr: '5 Mei 2024',
-//     resto_payment_method: 'Bank Transfer',
-//     resto_total_price: '75.000'
-//   },
-//   {
-//     resto_idx: '1',
-//     resto_name: 'KFC Sumedang',
-//     resto_subs_id: '3 Bulan',
-//     resto_expr: '5 Mei 2024',
-//     resto_payment_method: 'Bank Transfer',
-//     resto_total_price: '75.000'
-//   },
-//   {
-//     resto_idx: '2',
-//     resto_name: 'KFC Sumedang',
-//     resto_subs_id: '1 Bulan',
-//     resto_expr: '5 Mei 2024',
-//     resto_payment_method: 'Bank Transfer',
-//     resto_total_price: '75.000'
-//   },
-//   {
-//     resto_idx: '3',
-//     resto_name: 'KFC Sumedang',
-//     resto_subs_id: '6 Bulan',
-//     resto_expr: '5 Mei 2024',
-//     resto_payment_method: 'Bank Transfer',
-//     resto_total_price: '75.000'
-//   },
-//   {
-//     resto_idx: '1',
-//     resto_name: 'KFC Sumedang',
-//     resto_subs_id: '3 Bulan',
-//     resto_expr: '5 Mei 2024',
-//     resto_payment_method: 'Bank Transfer',
-//     resto_total_price: '75.000'
-//   },
-//   {
-//     resto_idx: '2',
-//     resto_name: 'KFC Sumedang',
-//     resto_subs_id: '1 Bulan',
-//     resto_expr: '5 Mei 2024',
-//     resto_payment_method: 'Bank Transfer',
-//     resto_total_price: '75.000'
-//   },
-//   {
-//     resto_idx: '3',
-//     resto_name: 'Rumah Makan Saayana',
-//     resto_subs_id: '6 Bulan',
-//     resto_expr: '5 Mei 2024',
-//     resto_payment_method: 'Bank Transfer',
-//     resto_total_price: '75.000'
-//   }
-// ]
-
-// const data = data1.map((obj) => Object.values(obj))
+onMounted(async () => {
+  await resto.fetchUpgradeLogData()
+  loadData()
+})
 
 const optionTable = {
   responsive: true,
@@ -308,4 +74,36 @@ const optionTable = {
 
 <style>
 @import 'datatables.net-dt';
+
+:root {
+  --gray-50: #f6f6f6;
+  --gray-200: #d7d7d7;
+  --gray-200-40: #d7d7d740;
+}
+
+.dt-layout-cell > .dt-length > select {
+  border: none;
+  background-color: var(--gray-50);
+  padding: 8px !important;
+  margin-right: 14px !important;
+}
+.dt-layout-cell > .dt-length > select:focus {
+  outline-color: var(--gray-200);
+}
+
+.dt-layout-cell > .dt-search > label {
+  font-size: 14px !important;
+  margin-right: 14px !important;
+}
+.dt-layout-cell > .dt-search > input {
+  /* background: #000 !important; */
+  border: none !important;
+  background-color: var(--gray-50) !important;
+  padding: 8px 16px !important;
+  outline: none !important;
+  border-radius: 8px !important;
+}
+.dt-layout-cell > .dt-search > input:focus {
+  outline-color: var(--gray-200-40) !important;
+}
 </style>

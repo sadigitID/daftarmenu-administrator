@@ -1,5 +1,5 @@
-import { fetchAccountData } from '@/api'
-import type { RestaurantModel } from '@/utils/types'
+import { fetchAccountData, fetchUpgradeLog } from '@/api'
+import type { RestaurantModel, UpgradeLogModel } from '@/utils/types'
 import { defineStore } from 'pinia'
 import { computed, onMounted, ref, watch } from 'vue'
 
@@ -7,6 +7,19 @@ export const useRestoStore = defineStore('restoStore', () => {
   const resto = ref<RestaurantModel | null>(null)
 
   const account_data = ref<RestaurantModel[]>([])
+
+  const upgrade_log = ref<UpgradeLogModel[]>([])
+
+  const fetchUpgradeLogData = async () => {
+    await fetchUpgradeLog().then((response) => {
+      const result = response.data
+      if (result.status) {
+        upgrade_log.value = result.data
+      } else {
+        upgrade_log.value = []
+      }
+    })
+  }
 
   // UNDER DEVELOPMENT
   const restoShowed = ref<RestaurantModel[]>([])
@@ -86,7 +99,9 @@ export const useRestoStore = defineStore('restoStore', () => {
   const filteredAndSortedItems = computed(() => {
     // eslint-disable-next-line prefer-const
     let filtered = visibleItems.value.filter((account_data) => {
-      return account_data.account.account_name.toLowerCase().includes(searchQuery.value.toLowerCase())
+      return account_data.account.account_name
+        .toLowerCase()
+        .includes(searchQuery.value.toLowerCase())
     })
 
     return filtered.sort((a, b) => {
@@ -109,6 +124,7 @@ export const useRestoStore = defineStore('restoStore', () => {
 
   onMounted(() => {
     fetchAccountsData()
+    fetchUpgradeLogData()
   })
 
   return {
@@ -125,6 +141,8 @@ export const useRestoStore = defineStore('restoStore', () => {
     handleScroll,
     account_data,
     getAccountData,
-    visibleItems
+    visibleItems,
+    fetchUpgradeLogData,
+    upgrade_log
   }
 })

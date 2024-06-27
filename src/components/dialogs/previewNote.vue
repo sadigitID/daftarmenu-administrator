@@ -5,7 +5,7 @@ import { XMarkIcon } from '@heroicons/vue/24/outline'
 import { Switch } from '@headlessui/vue'
 import type { NoteModel } from '@/utils/types'
 import { Check, Block } from '@/components/icons'
-
+import { EditNote } from '@/components/dialogs'
 const props = defineProps({
   open: Boolean,
   data: Object as () => NoteModel | null
@@ -32,13 +32,23 @@ watch(
 
 watch(enabled, (newValue) => {
   if (props.data) {
-    // eslint-disable-next-line vue/no-mutating-props
     props.data.detail.status = newValue ? 'Selesai' : 'Belum Selesai'
   }
 })
+
+const showEditNotePopup = ref(false)
+
+const openEditNote = () => {
+  showEditNotePopup.value = true
+}
+
+const closeEditNote = () => {
+  showEditNotePopup.value = false
+}
 </script>
 
 <template>
+  <EditNote :open="showEditNotePopup" @on-close="closeEditNote" />
   <TransitionRoot as="template" :show="open">
     <Dialog as="div" class="relative z-20" @close="close">
       <TransitionChild
@@ -131,29 +141,55 @@ watch(enabled, (newValue) => {
                         </div>
                         <div class="flex flex-col gap-4">
                           <span class="label text-sm text-gray-"> Gambar Pendukung </span>
-                          <div class="preview-img flex items-start flex-wrap gap-1">
+                          <div
+                            class="preview-img flex items-center justify-evenly flex-wrap gap-1 pb-12"
+                          >
                             <img
                               :src="data?.detail.img"
-                              class="img w-[128px] h-[128px] bg-gray-50 rounded-md"
+                              class="img w-[32%] h-[128px] bg-gray-50 rounded-md"
                             />
                             <img
                               :src="data?.detail.img"
-                              class="img w-[128px] h-[128px] bg-gray-50 rounded-md"
+                              class="img w-[32%] h-[128px] bg-gray-50 rounded-md"
                             />
                             <img
                               :src="data?.detail.img"
-                              class="img w-[128px] h-[128px] bg-gray-50 rounded-md"
+                              class="img w-[32%] h-[128px] bg-gray-50 rounded-md"
+                            />
+                            <img
+                              :src="data?.detail.img"
+                              class="img w-[32%] h-[128px] bg-gray-50 rounded-md"
+                            />
+                            <img
+                              :src="data?.detail.img"
+                              class="img w-[32%] h-[128px] bg-gray-50 rounded-md"
+                            />
+                            <img
+                              :src="data?.detail.img"
+                              class="img w-[32%] h-[128px] bg-gray-50 rounded-md"
+                            />
+                            <img
+                              :src="data?.detail.img"
+                              class="img w-[32%] h-[128px] bg-gray-50 rounded-md"
+                            />
+                            <img
+                              :src="data?.detail.img"
+                              class="img w-[32%] h-[128px] bg-gray-50 rounded-md"
+                            />
+                            <img
+                              :src="data?.detail.img"
+                              class="img w-[32%] h-[128px] bg-gray-50 rounded-md"
                             />
                           </div>
                         </div>
-
-                        <div class="absolute bottom-0 left-0 w-full p-4 sm:p-6">
+                        <div class="absolute bottom-0 left-0 w-full p-4 sm:p-4 bg-white">
                           <div class="flex action-btn gap-2">
-                            <div
+                            <Button
+                              @click="openEditNote"
                               class="cursor-pointer w-[50%] text-center py-2 rounded-md bg-vtd-primary-500 text-white font-medium hover:bg-vtd-primary-600 transition-all duration-300"
                             >
                               Edit Catatan
-                            </div>
+                            </Button>
                             <div
                               class="cursor-pointer w-[50%] text-center py-2 rounded-md bg-gray-50 text-gray-900 font-semibold hover:bg-gray-100 duration-300"
                             >

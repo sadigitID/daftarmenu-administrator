@@ -25,8 +25,8 @@ const fetchNoteData = async () => {
   return instance.get('/note_data.json')
 }
 
-const fetchRestaurants = async () => {
+const fetchUpgradeLog = async () => {
   return instance.get('/restaurants_upgrade_log.json')
 }
 
-export { fetchUserInformation, createAuth, fetchAccountData, fetchNoteData, fetchRestaurants }
+export { fetchUserInformation, createAuth, fetchAccountData, fetchNoteData, fetchUpgradeLog }

@@ -122,15 +122,15 @@ function close() {
                                     class="flex justify-center items-center w-5 h-5 bg-white rounded-full transform transition"
                                   >
                                     <span v-if="enabled">
-                                      <Check />
+                                      <Check class="text-vtd-primary-600"/>
                                     </span>
                                     <span v-else>
-                                      <Block />
+                                      <Block class="text-vtd-primary-600"/>
                                     </span>
                                   </div>
                                 </Switch>
 
-                                <span class="text-sm font-bold">{{
+                                <span class="text-sm font-medium">{{
                                   enabled ? 'Selesai' : 'Belum Selesai'
                                 }}</span>
                               </div>

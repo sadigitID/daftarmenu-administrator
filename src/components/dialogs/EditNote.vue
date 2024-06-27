@@ -1,22 +1,40 @@
 <script setup lang="ts">
 import { Dialog, DialogPanel, TransitionChild, TransitionRoot, Switch } from '@headlessui/vue'
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { XMarkIcon } from '@heroicons/vue/24/outline'
 import { UploadArea } from '@/components'
-import { Block, uploadImgIcon, Check } from '@/components/icons'
+import type { NoteModel } from '@/utils/types'
+import { Block, Check } from '@/components/icons'
 import Editor from '@tinymce/tinymce-vue'
 
 const props = defineProps({
-  open: Boolean
+  open: Boolean,
+  data: Object as () => NoteModel | null
 })
+
 const emits = defineEmits(['onClose', 'onSelected'])
-const open = ref(computed(() => props.open))
+const open = computed(() => props.open)
 
 const close = () => {
   emits('onClose', false)
 }
+
 const enabled = ref(true)
+
+// Ensure the detail.title value is updated
+const title = ref(props.data?.detail.title || '')
+
+watch(() => props.data?.detail.title, (newTitle) => {
+  title.value = newTitle || ''
+})
+
+const handleSubmit = () => {
+  // Handle form submission logic here
+  // Emits event to parent component if needed
+  console.log('Form submitted with title:', title.value)
+}
 </script>
+
 
 <template>
   <TransitionRoot as="template" :show="open">
@@ -71,18 +89,18 @@ const enabled = ref(true)
                               Judul Note
                             </label>
                             <input
+                              v-model="title"
                               class="appearance-none rounded w-full py-4 px-4 text-gray-800 leading-tight outline-none bg-gray-50 text-sm"
                               id="judul"
                               type="text"
-                              placeholder="Masukan Judul Catatan"
-                              value="Catatan 1"
+                              placeholder="Masukkan Judul Catatan"
                             />
                           </div>
                           <div class="flex items-start gap-4">
-                            <div class="flex flex-col gap">
-                              <label for="jenis" class="text-gray-700 text-sm font-normal mb-2"
-                                >Jenis</label
-                              >
+                            <div class="flex flex-col gap-1">
+                              <label for="jenis" class="text-gray-700 text-sm font-normal mb-2">
+                                Jenis
+                              </label>
                               <div class="flex items-center gap-4 py-1">
                                 <div class="flex items-center gap-2">
                                   <input
@@ -91,20 +109,25 @@ const enabled = ref(true)
                                     name="bug"
                                     id="requestFeatures"
                                   />
-                                  <label class="text-sm" for="requestFeatures"
-                                    >Request Feature</label
-                                  >
+                                  <label class="text-sm" for="requestFeatures">
+                                    Request Feature
+                                  </label>
                                 </div>
                                 <div class="flex items-center gap-2">
-                                  <input type="radio" class="w-4 h-4" name="bug" id="bug" />
+                                  <input
+                                    type="radio"
+                                    class="w-4 h-4"
+                                    name="bug"
+                                    id="bug"
+                                  />
                                   <label class="text-sm" for="bug">Bug</label>
                                 </div>
                               </div>
                             </div>
                             <div class="flex flex-col">
-                              <label for="Status" class="text-gray-700 text-sm font-normal mb-2"
-                                >Status</label
-                              >
+                              <label for="Status" class="text-gray-700 text-sm font-normal mb-2">
+                                Status
+                              </label>
                               <div class="flex items-center gap-2">
                                 <Switch
                                   v-model="enabled"
@@ -112,43 +135,40 @@ const enabled = ref(true)
                                   class="relative inline-flex h-7 w-12 items-center rounded-full transition"
                                 >
                                   <span class="sr-only">Enable notifications</span>
-
                                   <div
                                     :class="enabled ? 'translate-x-6' : 'translate-x-1'"
                                     class="flex justify-center items-center w-5 h-5 bg-white rounded-full transform transition"
                                   >
                                     <span v-if="enabled">
-                                      <Check />
+                                      <Check class="text-vtd-primary-600" />
                                     </span>
                                     <span v-else>
-                                      <Block />
+                                      <Block class="text-vtd-primary-600" />
                                     </span>
                                   </div>
                                 </Switch>
-
-                                <span class="text-sm font-bold">{{
-                                  enabled ? 'Selesai' : 'Belum Selesai'
-                                }}</span>
+                                <span class="text-sm font-bold">
+                                  {{ enabled ? 'Selesai' : 'Belum Selesai' }}
+                                </span>
                               </div>
                             </div>
                           </div>
-
                           <div class="flex flex-col gap-1">
-                            <label for="Deskripsi" class="text-gray-700 text-sm font-normal mb-2"
-                              >Deskripsi</label
-                            >
+                            <label for="Deskripsi" class="text-gray-700 text-sm font-normal mb-2">
+                              Deskripsi
+                            </label>
                             <Editor api-key="dmoh15uxnrfvrcgujpfgw83dqqqe6cuxnozmfwr9ezx2fokg" />
                           </div>
-
                           <div class="flex flex-col gap-1">
                             <label for="Deskripsi" class="text-gray-700 text-sm font-normal mb-2">
                               Gambar Pendukung
                             </label>
                             <UploadArea />
                           </div>
-
                           <button
+                            type="button"
                             class="bg-vtd-primary-500 py-3 rounded-md text-white hover:bg-vtd-primary-600"
+                            @click="handleSubmit"
                           >
                             Simpan
                           </button>

@@ -12,6 +12,8 @@ import {
   timestampToDateFormated,
   timestampToMonthNameFormatted
 } from '@/utils/date'
+import { formatCurrency } from '@/utils/text'
+import { formatRupiah } from '@/utils/number'
 
 DataTable.use(DataTablesCore)
 
@@ -28,7 +30,7 @@ const loadData = () => {
       resto_subs: e.resto_subs_package,
       resto_expr_date: timestampToMonthNameFormatted(e.resto_expr_date),
       resto_pay_method: e.resto_pay_method,
-      resto_price: e.resto_pay_price
+      resto_price: formatRupiah(e.resto_pay_price)
       // resto_date: timestampToDateFormated(e.resto_expr_date),
       // ...e
     })
@@ -79,6 +81,7 @@ const optionTable = {
   --gray-50: #f6f6f6;
   --gray-200: #d7d7d7;
   --gray-200-40: #d7d7d740;
+  --vtd-primary-500: #70b44e;
 }
 
 .dt-layout-cell > .dt-length > select {
@@ -105,5 +108,11 @@ const optionTable = {
 }
 .dt-layout-cell > .dt-search > input:focus {
   outline-color: var(--gray-200-40) !important;
+}
+.dataTable td:nth-child(1) {
+  text-align: center !important;
+}
+.dataTable td:nth-child(6) {
+  text-align: right !important;
 }
 </style>

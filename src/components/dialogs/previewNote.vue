@@ -141,22 +141,48 @@ const closeEditNote = () => {
                         </div>
                         <div class="flex flex-col gap-4">
                           <span class="label text-sm text-gray-"> Gambar Pendukung </span>
-                          <div class="preview-img flex items-start flex-wrap gap-1">
+                          <div
+                            class="preview-img flex items-center justify-evenly flex-wrap gap-1 pb-12"
+                          >
                             <img
                               :src="data?.detail.img"
-                              class="img w-[128px] h-[128px] bg-gray-50 rounded-md"
+                              class="img w-[32%] h-[128px] bg-gray-50 rounded-md"
                             />
                             <img
                               :src="data?.detail.img"
-                              class="img w-[128px] h-[128px] bg-gray-50 rounded-md"
+                              class="img w-[32%] h-[128px] bg-gray-50 rounded-md"
                             />
                             <img
                               :src="data?.detail.img"
-                              class="img w-[128px] h-[128px] bg-gray-50 rounded-md"
+                              class="img w-[32%] h-[128px] bg-gray-50 rounded-md"
+                            />
+                            <img
+                              :src="data?.detail.img"
+                              class="img w-[32%] h-[128px] bg-gray-50 rounded-md"
+                            />
+                            <img
+                              :src="data?.detail.img"
+                              class="img w-[32%] h-[128px] bg-gray-50 rounded-md"
+                            />
+                            <img
+                              :src="data?.detail.img"
+                              class="img w-[32%] h-[128px] bg-gray-50 rounded-md"
+                            />
+                            <img
+                              :src="data?.detail.img"
+                              class="img w-[32%] h-[128px] bg-gray-50 rounded-md"
+                            />
+                            <img
+                              :src="data?.detail.img"
+                              class="img w-[32%] h-[128px] bg-gray-50 rounded-md"
+                            />
+                            <img
+                              :src="data?.detail.img"
+                              class="img w-[32%] h-[128px] bg-gray-50 rounded-md"
                             />
                           </div>
                         </div>
-                        <div class="absolute bottom-0 left-0 w-full p-4 sm:p-6">
+                        <div class="absolute bottom-0 left-0 w-full p-4 sm:p-4 bg-white">
                           <div class="flex action-btn gap-2">
                             <Button
                               @click="openEditNote"

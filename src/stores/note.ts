@@ -5,6 +5,7 @@ import { onMounted, ref } from 'vue'
 
 export const useNoteStore = defineStore('note', () => {
   const note_data = ref<NoteModel[]>([])
+  const note = ref<NoteModel | null>(null)
   const getNoteData = () => {
     return note_data.value
   }
@@ -26,11 +27,22 @@ export const useNoteStore = defineStore('note', () => {
       })
   }
 
+  const setNoteData = (data: NoteModel) => {
+    note.value = data
+  }
+
+  const clearNoteData = () => {
+    note.value = null
+  }
+
   onMounted(() => {
     fetchNotesData()
   })
   return {
     fetchNotesData,
-    getNoteData
+    getNoteData,
+    note,
+    setNoteData,
+    clearNoteData
   }
 })

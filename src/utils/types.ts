@@ -62,4 +62,12 @@ interface UserInformationModel {
   }
 }
 
-export type { NoteModel, RestaurantModel, UserInformationModel }
+interface UpgradeLogModel {
+  resto_name: string
+  resto_subs_package: string
+  resto_expr_date: number
+  resto_pay_method: string
+  resto_pay_price: number
+}
+
+export type { NoteModel, RestaurantModel, UserInformationModel, UpgradeLogModel }

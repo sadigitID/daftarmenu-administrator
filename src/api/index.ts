@@ -3,7 +3,7 @@ import axios from 'axios'
 
 const url = location.origin
 const instance = axios.create({
-  baseURL: url,
+  baseURL: `${url}/api`,
   headers: {
     Authorization: 'Bearer ' + readData('token')
   }

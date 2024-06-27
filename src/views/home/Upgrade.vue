@@ -31,17 +31,10 @@ onMounted(() => {
   // if (stores.getAccountData().length == 0) {
   //   stores.fetchAccountsData()
   // }
-  if (resto.getAccountData().length == 0) {
-    resto.fetchAccountsData()
-    window.addEventListener('scroll', resto.handleScroll)
-  }
+  window.addEventListener('scroll', resto.handleScroll)
 })
-
-onBeforeUnmount(() => {
-  window.removeEventListener('scroll', resto.handleScroll)
-})
-const searchQuery = resto.searchQuery
-// 
+// const searchQuery = resto.searchQuery
+//
 </script>
 
 <template>
@@ -68,7 +61,7 @@ const searchQuery = resto.searchQuery
             class="bg-transparent lg:bg-gray-50 m-auto justify-center items-center flex rounded-lg px-2"
           >
             <IconSearch class="md:block hidden lg:w-4 h-4 lg:bg-gray-50" />
-            <InputText v-model="searchQuery" class="text-sm font-sans text-gray-800 px-3" placeholder="Cari Menu" />
+            <InputText class="text-sm font-sans text-gray-800 px-3" placeholder="Cari Menu" />
           </div>
           <ButtonFilter />
         </div>
@@ -148,14 +141,9 @@ const searchQuery = resto.searchQuery
         id="resto"
         class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-x-4 gap-y-6"
       >
-        <Suspense>
-          <template #default>
-            <CardResto />
-          </template>
-          <template #fallback>
-            <SkeletonResto />
-          </template>
-        </Suspense>
+        <CardResto />
+
+        <SkeletonResto v-if="resto.isLoadingMore" />
       </div>
     </div>
   </section>

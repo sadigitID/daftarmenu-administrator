@@ -22,16 +22,15 @@ const onSelected = (data: RestaurantModel) => {
 
 const accountData = ref<RestaurantModel[]>([])
 
-const loadRestoData = async () => {
-  return new Promise((resolve) => {
-    resto.fetchAccountsData()
-    setTimeout(() => {
-      // accountData.value = resto.visibleItems
-      accountData.value = resto.account_data
-      resolve(accountData.value)
-    }, 4000)
-  })
-}
+// const loadRestoData = async () => {
+//   return new Promise((resolve) => {
+//     setTimeout(() => {
+//       accountData.value = resto.visibleItems
+//       // accountData.value = resto.account_data
+//       resolve(accountData.value)
+//     }, 2000)
+//   })
+// }
 
 const getAccountStatus = (data: RestaurantModel) => {
   const dateNow = new Date().getTime()
@@ -49,7 +48,7 @@ const getDaysPassed = (data: RestaurantModel) => {
   return daysPassed
 }
 
-await loadRestoData()
+// await loadRestoData()
 
 // const searchQuery = resto.searchQuery
 // const sortOrder = resto.sortOrder
@@ -58,7 +57,7 @@ await loadRestoData()
 
 <template>
   <button
-    v-for="data in accountData"
+    v-for="data in resto.visibleItems"
     :key="data.resto.resto_id"
     @click="onSelected(data)"
     class="flex flex-1 p-2 bg-white justify-between items-center rounded-2xl font-sans shadow-[1px_1px_8px_0px_rgba(180,180,180,0.39)]"

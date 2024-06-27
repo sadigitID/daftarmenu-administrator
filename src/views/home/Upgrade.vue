@@ -68,7 +68,7 @@ onMounted(() => {
       </div>
 
       <div
-        class="flex md:flex-row flex-col justify-between items-center space-y-4 lg:space-x-5 md:space-y-0 py-5"
+        class="flex lg:flex-row flex-col justify-between items-center space-y-4 lg:space-x-5 lg:space-y-0 py-5"
       >
         <img :src="Food" alt="food" class="object-cover object-center rounded-xl w-full h-[87px]" />
 

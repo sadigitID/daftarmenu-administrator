@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { Search, Add, Red } from '@/components/icons'
 import { Info, ButtonFilter, InputText } from '@/components'
 import { CardNote } from '@/components/card'
@@ -43,6 +43,7 @@ const closeNewNote = () => {
 onMounted(() => {
   document.title = 'Note - Admin Daftar Menu'
 })
+
 </script>
 
 <template>
@@ -52,16 +53,14 @@ onMounted(() => {
   <section class="custom-spacing mb-20 lg:mb-0 md:mb-0">
     <div class="flex w-full h-full flex-col items-start gap-2 flex-shrink-0">
       <!-- flex justify-between items-start self-stretch -->
-      <div class="flex flex-col lg:flex-row justify-center md:justify-between gap-6 w-full">
+      <div class="flex flex-col md:flex-row justify-center md:justify-between gap-6 w-full">
         <div class="flex flex-col items-start gap-2">
           <h2 class="font-sans font-medium text-xl leading-6 text-primary-900">Daftar Catatan</h2>
           <p class="font-sans font-normal text-xs leading-[14.4px] text-gray-800">2 fitur</p>
         </div>
         <!-- flex flex-col md:flex-row items-center self-stretch -->
         <div class="flex gap-4 flex-col md:flex-row items-center">
-          <div
-            class="flex w-full md:w-[60%] lg:w-[240px] px-2 items-center gap-2 bg-gray-50 rounded-lg"
-          >
+          <div class="flex w-full md:w-[240px] px-2 items-center gap-2 bg-gray-50 rounded-lg">
             <Search class="flex-shrink size-6"></Search>
             <InputText
               class="font-sans font-normal text-sm leading-[22.4px]"
@@ -70,7 +69,7 @@ onMounted(() => {
           </div>
 
           <div
-            class="flex items-center justify-between md:justify-normal rounded-lg w-full md:w-[40%] lg:w-auto md:space-x-4"
+            class="flex items-center justify-between md:justify-normal rounded-lg w-full md:w-auto md:space-x-4"
           >
             <ButtonFilter />
             <button
@@ -84,14 +83,14 @@ onMounted(() => {
         </div>
       </div>
 
-      <div class="flex xl:h-[115px] lg:flex-row flex-col mt-8 items-center gap-5 self-stretch">
+      <div class="flex flex-col lg:flex-row mt-6 items-center gap-5 self-stretch">
         <img
           :src="Menu"
           alt=""
           class="object-cover object-center w-full lg:w-[30%] h-[140px] lg:h-[115px] rounded-2xl"
         />
         <div
-          class="flex lg:w-[70%] w-full flex-col md:flex-row space-y-5 md:space-x-5 md:space-y-0"
+          class="flex lg:w-[70%] w-full flex-col md:flex-row space-y-5 lg:space-x-5 md:space-y-0 md:space-x-2"
         >
           <Info
             v-for="(item, index) in infoData"
@@ -110,9 +109,9 @@ onMounted(() => {
       <div
         name="note"
         id="note"
-        class="flex flex-col md:flex-row md:flex-wrap md:justify-between items-start gap-6 mt-10 w-full"
+        class="grid mt-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-x-4 gap-y-6"
       >
-        <CardNote v-for="data in noteData" :data="data" />
+        <CardNote v-for="data in note.getNoteData()" :key="data.note.note_id" :data="data" />
       </div>
     </div>
   </section>
